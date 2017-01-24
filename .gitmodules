@@ -1,0 +1,3 @@
+[submodule "src/hector"]
+	path = src/hector
+	url = https://github.com/swillner/hector.git

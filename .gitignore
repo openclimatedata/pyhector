@@ -1,0 +1,11 @@
+bin
+*.pyc
+GPATH
+GRTAGS
+GTAGS
+python/pyhector/lib
+build/
+dist/
+pyhector.egg-info
+.ipynb_checkpoints
+*.so
