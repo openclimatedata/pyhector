@@ -254,4 +254,4 @@ def run(scenario, options=None):
         global_temp = h.get_observable("temperature", "Tgav")
         start = int(options["core"]["startDate"])
         end = int(options["core"]["endDate"])
-    return pd.Series(global_temp, index=pd.Index(range(start, end + 1)))
+    return pd.Series(global_temp, index=pd.Index(range(start, end)))
