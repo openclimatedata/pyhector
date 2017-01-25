@@ -54,6 +54,6 @@ setup(
     ],
     keywords='',
     packages=['pyhector'],
-    install_requires=['pandas', 'numpy', 'configparser'],
+    install_requires=['pandas', 'numpy', 'configparser', 'pytest'],
     ext_modules=[libpyhector]
 )
