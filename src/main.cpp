@@ -1,5 +1,4 @@
 #include <vector>
-#include <iostream>
 #include <string>
 #include <string.h>
 #include "core/core.hpp"
@@ -67,7 +66,7 @@ void OutputVisitor::add_variable(const State* state, const std::string& componen
     OutputVariable variable = {
         component_,
         name,
-        std::vector<double>(static_cast<int>(state->hcore()->getEndDate() - start_date + 1))
+        std::vector<double>(static_cast<int>(state->hcore()->getEndDate() - start_date))
     };
     variables.push_back(variable);
 }
@@ -82,7 +81,7 @@ double* OutputVisitor::get_variable(const State* state, const std::string& compo
 }
 
 bool OutputVisitor::shouldVisit(const bool in_spinup, const double date) {
-    index = static_cast<int>(date -  start_date);
+    index = static_cast<int>(date - start_date - 1); // date is at the end of the timestep
     return !in_spinup;
 }
 
@@ -97,7 +96,7 @@ void OutputVisitor::visit(Hector::Core* core) {
 };
 
 int OutputVisitor::run_size(const State* state) {
-    return static_cast<int>(state->hcore()->getEndDate() - start_date + 1);
+    return static_cast<int>(state->hcore()->getEndDate() - start_date);
 }
 
 static std::string last_error;
