@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import configparser
 import ctypes
 import os
 import pkg_resources
@@ -8,6 +7,7 @@ import pkg_resources
 import numpy as np
 import pandas as pd
 
+from .default_config import default_config
 
 _lib = np.ctypeslib.load_library('libpyhector', pkg_resources.resource_filename(__name__, '..'))
 _lib.open.restype = ctypes.c_int
@@ -122,10 +122,12 @@ class PyHector():
 
     def config(self, config=None):
         self._check_state(at_least=self.__STATE_INITIALIZED)
-        conf = _read_default_config()
+        parameters = default_config.copy()
         if config is not None:
-            conf.update(config)
-        for section, data in conf.items():
+            for key, data in config.items():
+                for option, value in data.items():
+                    parameters[key][option] = value
+        for section, data in parameters.items():
             for variable, value in data.items():
                 if "[" in variable:
                     variable = variable.split("[")
@@ -134,27 +136,13 @@ class PyHector():
                 else:
                     self._check(_lib.set_config_value(self.__state, _conv(section), _conv(variable), _conv(value)))
         self.__state_id = self.__STATE_CONFIGURED
+        return parameters
 
     def set_emissions(self, scenario):
         self._check_state(at_least=self.__STATE_INITIALIZED)
         for section, variable, array, unit in _convert_emissions(scenario):
             self._check(
                 _lib.set_emissions_array(self.__state, _conv(section), _conv(variable), array.astype(np.float64), len(array)))
-
-
-def _read_default_config():
-    default_config = os.path.join(os.path.dirname(__file__), './rcp_default.ini')
-    config = configparser.ConfigParser(inline_comment_prefixes=(';'))
-    config.optionxform = str
-    config.read(default_config)
-
-    # From http://stackoverflow.com/a/3220740
-    dictionary = {}
-    for section in config.sections():
-        dictionary[section] = {}
-        for option in config.options(section):
-            dictionary[section][option] = config.get(section, option)
-    return dictionary
 
 
 def read_hector_input(csv_file):
@@ -244,14 +232,16 @@ def _convert_emissions(scenario):
     return output
 
 
-def run(scenario, options=None):
-    options = _read_default_config()
+def run(scenario, config_options=None):
+    """
+    TODO
+    """
     with PyHector() as h:
-        h.config()  # TODO options
+        parameters = h.config(config_options)
         h.set_emissions(scenario)
         h.add_observable("temperature", "Tgav")
         h.run()
         global_temp = h.get_observable("temperature", "Tgav")
-        start = int(options["core"]["startDate"])
-        end = int(options["core"]["endDate"])
-    return pd.Series(global_temp, index=pd.Index(range(start, end + 1)))
+        start = int(parameters["core"]["startDate"])
+        end = int(parameters["core"]["endDate"])
+    return pd.Series(global_temp, index=np.arange(start, end + 1))

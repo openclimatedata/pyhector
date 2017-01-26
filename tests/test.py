@@ -5,7 +5,7 @@ import os
 import pandas as pd
 
 import pyhector
-from pyhector import rcp26, rcp45, rcp60, rcp85
+from pyhector import PyHector, rcp26, rcp45, rcp60, rcp85
 
 
 path = os.path.dirname(__file__)
@@ -41,3 +41,18 @@ def test_rcps():
         )
         output = pyhector.run(scenario)
         assert output.loc[1746:].round(2).equals(original.Tgav.round(2))
+
+
+def test_default_options():
+    with PyHector() as h:
+        parameters = h.config()
+        assert parameters["core"]["endDate"] == "2300"
+
+
+def test_changed_default_options():
+    config_options = {
+        "core": {"endDate": "2100"}
+    }
+    with PyHector() as h:
+        parameters = h.config(config_options)
+        assert parameters["core"]["endDate"] == "2100"
