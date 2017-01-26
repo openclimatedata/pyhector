@@ -1,39 +1,21 @@
 from setuptools import setup, Extension
+import glob
 
 libpyhector = Extension(
     'libpyhector',
-    include_dirs = ['src/hector/headers'],
+    include_dirs = [
+        'hector-wrapper/include',
+        'hector-wrapper/hector/headers'
+    ],
     libraries = ['m', 'boost_system', 'boost_filesystem'],
+    extra_compile_args=['-std=c++0x'],
     sources = [
         'src/main.cpp',
-        'src/hector/source/core/carbon-cycle-solver.cpp',
-        'src/hector/source/core/core.cpp',
-        'src/hector/source/core/logger.cpp',
-        'src/hector/source/core/dependency_finder.cpp',
-        'src/hector/source/models/carbon-cycle-model.cpp',
-        'src/hector/source/models/simpleNbox.cpp',
-        'src/hector/source/models/ocean_csys.cpp',
-        'src/hector/source/models/oceanbox.cpp',
-        'src/hector/source/components/n2o_component.cpp',
-        'src/hector/source/components/slr_component.cpp',
-        'src/hector/source/components/onelineocean_component.cpp',
-        'src/hector/source/components/ocean_component.cpp',
-        'src/hector/source/components/bc_component.cpp',
-        'src/hector/source/components/oh_component.cpp',
-        'src/hector/source/components/ch4_component.cpp',
-        'src/hector/source/components/o3_component.cpp',
-        'src/hector/source/components/dummy_model_component.cpp',
-        'src/hector/source/components/oc_component.cpp',
-        'src/hector/source/components/so2_component.cpp',
-        'src/hector/source/components/halocarbon_component.cpp',
-        'src/hector/source/components/forcing_component.cpp',
-        'src/hector/source/components/temperature_component.cpp',
-        'src/hector/source/visitors/csv_outputstream_visitor.cpp',
-        'src/hector/source/visitors/csv_output_visitor.cpp',
-        'src/hector/source/data/h_interpolator.cpp',
-        'src/hector/source/data/unitval.cpp',
-        'src/hector/source/data/spline_forsythe.cpp',
-    ]
+        'hector-wrapper/src/HectorWrapper.cpp',
+    ] + glob.glob('hector-wrapper/hector/source/core/*.cpp')
+    + glob.glob('hector-wrapper/hector/source/models/*.cpp')
+    + glob.glob('hector-wrapper/hector/source/components/*.cpp')
+    + glob.glob('hector-wrapper/hector/source/data/*.cpp')
 )
 
 setup(
