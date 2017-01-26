@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 
-# Save Hector default config as a Python dictionary.
-# Usage:
+# Save Hector default config and emissions units as importable Python
+# modules.
+# Usage (requires Pandas):
 # Run this script as
-#   ./write_default_config.py
+#   ./write_defaults.py
 
 import configparser
 import os
 
+import pandas as pd
+
 from pprint import pformat
 
 
+# Default config from `ini`-file
 default_config = os.path.join(os.path.dirname(__file__),
                               '../pyhector/rcp_default.ini')
 config = configparser.ConfigParser(inline_comment_prefixes=(';'))
@@ -31,3 +35,16 @@ output = "default_config = {\n    " + \
 with open(os.path.join(os.path.dirname(__file__),
           '../pyhector/default_config.py'), 'w') as f:
     f.write(output)
+
+# Default units from input CSV
+units = pd.read_csv(
+    os.path.join(os.path.dirname(__file__),
+        '../pyhector/emissions/RCP26_emissions.csv'),
+    skiprows=2,
+    header=None)
+units = units.loc[:1, 1:].T.set_index(1).to_dict()[0]
+with open(os.path.join(os.path.dirname(__file__),
+          "../pyhector/units.py"), "w") as f:
+    f.write("units = {\n ")
+    f.write(pformat(units, indent=4)[1:-1])
+    f.write("\n}\n")

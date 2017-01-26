@@ -56,3 +56,9 @@ def test_changed_default_options():
     with PyHector() as h:
         parameters = h.config(config_options)
         assert parameters["core"]["endDate"] == "2100"
+
+
+def test_units():
+    assert pyhector.units["anthroEmissions"] == 'GtC/yr'
+    assert pyhector.units["lucEmissions"] == 'GtC/yr'
+    assert pyhector.units["NOX_emissions"] == 'MtN/yr'

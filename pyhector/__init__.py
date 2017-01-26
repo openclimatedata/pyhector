@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 
 from .default_config import default_config
+from .units import units
 
 _lib = np.ctypeslib.load_library('libpyhector', pkg_resources.resource_filename(__name__, '..'))
 _lib.open.restype = ctypes.c_int
@@ -164,17 +165,6 @@ rcp85 = read_hector_input(os.path.join(os.path.dirname(__file__),
 
 
 # TODO Revise
-def _get_units():
-    """Return a dict of units used in emissions file."""
-    units = pd.read_csv(
-        os.path.join(os.path.dirname(__file__),
-            './emissions/RCP26_emissions.csv'),
-        skiprows=2,
-        header=None)
-    return units.loc[:1, 1:].T.set_index(1).to_dict()[0]
-
-
-# TODO Revise
 def _convert_emissions(scenario):
     emissions = {
         "simpleNbox": ["anthroEmissions", "lucEmissions"],
@@ -216,7 +206,6 @@ def _convert_emissions(scenario):
         "CH3Cl_halocarbon": ["CH3Cl_emissions"],
         "CH3Br_halocarbon": ["CH3Br_emissions"]
     }
-    units = _get_units()
     # List of tuples [("so2", "SO2_emissions", [... array ], unit), ...]
     output = []
     for category in emissions:
