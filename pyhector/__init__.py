@@ -18,20 +18,11 @@ _lib.run.restype = ctypes.c_int
 _lib.run.argtypes = [ctypes.c_void_p]
 _lib.get_last_error.restype = ctypes.c_char_p
 _lib.get_last_error.argtypes = None
-_lib.set_config_value.restype = ctypes.c_int
-_lib.set_config_value.argtypes = [ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p]
-_lib.set_config_timed_value.restype = ctypes.c_int
-_lib.set_config_timed_value.argtypes = [
-    ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_double, ctypes.c_char_p
-]
-_lib.set_emissions.restype = ctypes.c_int
-_lib.set_emissions.argtypes = [
-    ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_double, ctypes.c_double
-]
-_lib.set_emissions_array.restype = ctypes.c_int
-_lib.set_emissions_array.argtypes = [
-    ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, np.ctypeslib.ndpointer(
-        ctypes.c_double, ndim=2, flags='contiguous'), ctypes.c_uint
+_lib.set_value.restype = ctypes.c_int
+_lib.set_value.argtypes = [ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p]
+_lib.set_array.restype = ctypes.c_int
+_lib.set_array.argtypes = [
+    ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, np.ctypeslib.ndpointer(ctypes.c_int, flags='contiguous'), np.ctypeslib.ndpointer(ctypes.c_double, flags='contiguous'), ctypes.c_uint
 ]
 _lib.add_observable.restype = ctypes.c_int
 _lib.add_observable.argtypes = [
@@ -52,63 +43,30 @@ def _conv(v):
 
 class PyHector():
 
-    __STATE_BEGIN = 0
-    __STATE_INITIALIZED = 1
-    __STATE_CONFIGURED = 2
-    __STATE_HAS_RUN = 3
-
-    def __init__(self):
-        self.__state_id = self.__STATE_BEGIN
-
     def __del__(self):
         self.close()
 
     def init(self):
-        self._check_state(at_least=self.__STATE_BEGIN, before=self.__STATE_INITIALIZED)
         self.__state = ctypes.c_void_p()
         self._check(_lib.open(self.__state))
-        self.__state_id = self.__STATE_INITIALIZED
 
     def close(self):
-        if self.__state_id >= self.__STATE_INITIALIZED:
+        if self.__state is not None:
             _lib.close(self.__state)
-            self.__state_id = self.__STATE_BEGIN
+            self.__state = None
 
     def _check(self, v):
         if v < 0:
-            if v == -1:
-                raise PyHectorException(_lib.get_last_error())
-            else:
-                raise Exception(_lib.get_last_error())
-
-    def _check_state(self, at_least=None, before=None):
-        if at_least is not None and self.__state_id < at_least:
-            if at_least == self.__STATE_INITIALIZED:
-                raise Exception("Not initialized yet")
-            elif at_least == self.__STATE_CONFIGURED:
-                raise Exception("Not configured yet")
-            elif at_least == self.__STATE_HAS_RUN:
-                raise Exception("Has not run yet")
-        elif before is not None and self.__state_id >= before:
-            if before == self.__STATE_INITIALIZED:
-                raise Exception("Already initialized")
-            elif before == self.__STATE_CONFIGURED:
-                raise Exception("Already configured")
-            elif before == self.__STATE_HAS_RUN:
-                raise Exception("Has already run")
+            raise PyHectorException(_lib.get_last_error())
 
     def run(self):
-        self._check_state(at_least=self.__STATE_CONFIGURED)
         self.__run_size = _lib.run(self.__state)
         self._check(self.__run_size)
-        self.__state_id = self.__STATE_HAS_RUN
 
     def add_observable(self, component, name):
-        self._check_state(at_least=self.__STATE_CONFIGURED)
         self._check(_lib.add_observable(self.__state, _conv(component), _conv(name)))
 
     def get_observable(self, component, name):
-        self._check_state(at_least=self.__STATE_HAS_RUN)
         result = np.empty((self.__run_size,), dtype=np.float64)
         self._check(_lib.get_observable(self.__state, _conv(component), _conv(name), result))
         return result
@@ -121,25 +79,17 @@ class PyHector():
         self.close()
 
     def config(self, config=None):
-        self._check_state(at_least=self.__STATE_INITIALIZED)
         conf = _read_default_config()
         if config is not None:
             conf.update(config)
         for section, data in conf.items():
             for variable, value in data.items():
-                if "[" in variable:
-                    variable = variable.split("[")
-                    self._check(
-                        _lib.set_config_timed_value(self.__state, _conv(section), _conv(variable[0]), float(variable[1][:-1]), _conv(value)))
-                else:
-                    self._check(_lib.set_config_value(self.__state, _conv(section), _conv(variable), _conv(value)))
-        self.__state_id = self.__STATE_CONFIGURED
+                self._check(_lib.set_value(self.__state, _conv(section), _conv(variable), _conv(value)))
 
     def set_emissions(self, scenario):
-        self._check_state(at_least=self.__STATE_INITIALIZED)
-        for section, variable, array, unit in _convert_emissions(scenario):
+        for section, variable, years, values, unit in _convert_emissions(scenario):
             self._check(
-                _lib.set_emissions_array(self.__state, _conv(section), _conv(variable), array.astype(np.float64), len(array)))
+                _lib.set_array(self.__state, _conv(section), _conv(variable), years.astype(np.int32), values.astype(np.float64), len(years)))
 
 
 def _read_default_config():
@@ -238,7 +188,8 @@ def _convert_emissions(scenario):
                 output.append((
                   category,
                   source,
-                  np.array(list(zip(gas.index, gas))),
+                  np.array(gas.index),
+                  np.array(gas),
                   units[source],
                 ))
     return output
