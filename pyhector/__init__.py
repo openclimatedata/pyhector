@@ -10,6 +10,7 @@ import pandas as pd
 from .default_config import default_config
 from .units import units
 from .emissions import emissions
+from .output import variables
 
 _lib = np.ctypeslib.load_library('libpyhector', pkg_resources.resource_filename(__name__, '..'))
 _lib.hector_open.restype = ctypes.c_int
@@ -128,16 +129,23 @@ rcp85 = read_hector_input(os.path.join(os.path.dirname(__file__),
     './emissions/RCP85_emissions.csv'))
 
 
-def run(scenario, config_options=None):
+def run(scenario, config_options=None,
+        outputs=['temperature.Tgav', 'simpleNbox.Ca', 'forcing.Ftot']):
     """
     TODO
     """
     with PyHector() as h:
         parameters = h.config(config_options)
         h.set_emissions(scenario)
-        h.add_observable("temperature", "Tgav")
+        for name in outputs:
+            h.add_observable(variables[name]["component"],
+                             variables[name]["variable"])
         h.run()
-        global_temp = h.get_observable("temperature", "Tgav")
+        results = {}
+        for name in outputs:
+            results[name] = h.get_observable(
+                variables[name]["component"], variables[name]["variable"])
+
         # In Hector 1.x RCP output value years are given as end of simulation
         # year, e.g. 1745-12-31 = 1746.0.
         # See https://github.com/JGCRI/hector/issues/177
@@ -145,4 +153,4 @@ def run(scenario, config_options=None):
         # End of range is non-inclusive in Python ranges.
         end = int(parameters["core"]["endDate"]) + 1
         index = np.arange(start, end)
-    return pd.Series(global_temp, index=index)
+    return pd.DataFrame(results, index=index)

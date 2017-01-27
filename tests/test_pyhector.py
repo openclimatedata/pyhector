@@ -41,7 +41,8 @@ def test_rcps():
             os.path.join(path, "./data/outputstream_{}.csv".format(name))
         )
         output = pyhector.run(scenario)
-        assert output.round(2).equals(original.Tgav.round(2))
+        assert output["temperature.Tgav"].round(2).equals(
+            original.Tgav.round(2))
 
 
 def test_default_options():
@@ -57,6 +58,13 @@ def test_changed_default_options():
     with PyHector() as h:
         parameters = h.config(config_options)
         assert parameters["core"]["endDate"] == "2100"
+
+
+def test_changing_default_options():
+    results = pyhector.run(rcp26, {"core": {"endDate": "2100"}})
+    assert results.index[-1] == 2100
+    results = pyhector.run(rcp26, {"core": {"endDate": "2300"}})
+    assert results.index[-1] == 2300
 
 
 def test_units():
