@@ -16,5 +16,5 @@ python:
   - "3.5"
   - "3.6"
 install:
-  - pip install --user .
+  - pip install .
 script: pytest
