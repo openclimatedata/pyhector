@@ -60,11 +60,11 @@ def test_changed_default_options():
         assert parameters["core"]["endDate"] == "2100"
 
 
-def test_changing_default_options():
+def test_default_options():
+    assert pyhector.default_config["core"]["endDate"] == "2300"
     results = pyhector.run(rcp26, {"core": {"endDate": "2100"}})
-    assert results.index[-1] == 2100
-    results = pyhector.run(rcp26, {"core": {"endDate": "2300"}})
-    assert results.index[-1] == 2300
+    assert pyhector.default_config["core"]["endDate"] == "2300"
+
 
 
 def test_units():
