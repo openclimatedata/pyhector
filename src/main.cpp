@@ -16,9 +16,9 @@ extern "C" {
 
 static std::string last_error;
 
-const char* get_last_error() { return last_error.c_str(); }
+const char* hector_get_last_error() { return last_error.c_str(); }
 
-int open(Hector::HectorWrapper** wrapper) {
+int hector_open(Hector::HectorWrapper** wrapper) {
     try {
         *wrapper = new Hector::HectorWrapper();
         return 0;
@@ -28,7 +28,7 @@ int open(Hector::HectorWrapper** wrapper) {
     }
 }
 
-int set_value(Hector::HectorWrapper* wrapper, const char* section, const char* variable, const char* value) {
+int hector_set_value(Hector::HectorWrapper* wrapper, const char* section, const char* variable, const char* value) {
     try {
         wrapper->set(section, variable, value);
         return 0;
@@ -38,7 +38,7 @@ int set_value(Hector::HectorWrapper* wrapper, const char* section, const char* v
     }
 }
 
-int set_array(Hector::HectorWrapper* wrapper, const char* component, const char* name, const int* years, const double* values, const size_t size) {
+int hector_set_array(Hector::HectorWrapper* wrapper, const char* component, const char* name, const int* years, const double* values, const size_t size) {
     try {
         wrapper->set(component, name, years, values, size);
         return 0;
@@ -48,7 +48,7 @@ int set_array(Hector::HectorWrapper* wrapper, const char* component, const char*
     }
 }
 
-int add_observable(Hector::HectorWrapper* wrapper, const char* component, const char* name) {
+int hector_add_observable(Hector::HectorWrapper* wrapper, const char* component, const char* name) {
     try {
         wrapper->output()->add_variable(component, name);
         return 0;
@@ -58,7 +58,7 @@ int add_observable(Hector::HectorWrapper* wrapper, const char* component, const 
     }
 }
 
-int get_observable(Hector::HectorWrapper* wrapper, const char* component, const char* name, double* output) {
+int hector_get_observable(Hector::HectorWrapper* wrapper, const char* component, const char* name, double* output) {
     try {
         const std::vector<double>& result = wrapper->output()->get_variable(component, name);
         memcpy(output, &result[0], wrapper->output()->run_size() * sizeof(double));
@@ -69,7 +69,7 @@ int get_observable(Hector::HectorWrapper* wrapper, const char* component, const 
     }
 }
 
-int run(Hector::HectorWrapper* wrapper) {
+int hector_run(Hector::HectorWrapper* wrapper) {
     try {
         wrapper->hcore()->prepareToRun();
         wrapper->hcore()->run();
@@ -80,7 +80,7 @@ int run(Hector::HectorWrapper* wrapper) {
     }
 }
 
-int close(Hector::HectorWrapper* wrapper) {
+int hector_close(Hector::HectorWrapper* wrapper) {
     try {
         delete wrapper;
         return 0;
