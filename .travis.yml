@@ -3,7 +3,7 @@ sudo: false
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+      - boost-latest
     packages:
       - libboost-system-dev
       - libboost-filesystem-dev
