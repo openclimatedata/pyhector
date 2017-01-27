@@ -35,6 +35,8 @@ setup(
         'Programming Language :: Python :: 3.6'
     ],
     keywords='',
+    package_data={'pyhector': ['rcp_default.ini', 'emissions/*']},
+    include_package_data=True,
     packages=['pyhector'],
     install_requires=['pandas', 'numpy', 'pytest'],
     ext_modules=[libpyhector]
