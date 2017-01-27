@@ -1,15 +1,12 @@
 language: python
 sudo: false
-env:
-  - CXX=g++-4.8
 addons:
   apt:
     sources:
-    - ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
     packages:
-    - g++-4.8
-    - libboost-system-dev
-    - libboost-filesystem-dev
+      - libboost-system-dev
+      - libboost-filesystem-dev
 python:
   - "2.6"
   - "2.7"
@@ -19,5 +16,5 @@ python:
   - "3.5"
   - "3.6"
 install:
-  - pip install .
+  - pip install --user .
 script: pytest
