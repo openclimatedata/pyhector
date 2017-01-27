@@ -7,6 +7,8 @@ import pkg_resources
 import numpy as np
 import pandas as pd
 
+from copy import deepcopy
+
 from .default_config import default_config
 from .units import units
 from .emissions import emissions
@@ -82,11 +84,12 @@ class PyHector():
         self.close()
 
     def config(self, config=None):
-        parameters = default_config.copy()
+        parameters = deepcopy(default_config)
         if config is not None:
             for key, data in config.items():
                 for option, value in data.items():
                     parameters[key][option] = value
+        print(parameters["core"]["endDate"])
         for section, data in parameters.items():
             for variable, value in data.items():
                 self._check(_lib.hector_set_value(self.__state, _conv(section), _conv(variable), _conv(value)))
