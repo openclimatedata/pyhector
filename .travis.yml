@@ -5,8 +5,8 @@ addons:
     sources:
       - boost-latest
     packages:
-      - libboost-system-dev
-      - libboost-filesystem-dev
+      - libboost-system1.55-dev
+      - libboost-filesystem1.55-dev
 python:
   - "2.6"
   - "2.7"
