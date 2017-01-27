@@ -20,7 +20,7 @@ libpyhector = Extension(
 
 setup(
     name='pyhector',
-    version='0.1.0',
+    version='0.1.1',
     description='Python-wrapper for the Hector model (https://github.com/JGCRI/hector)',
     url='https://github.com/swillner/pyhector',
     author='Sven Willner, Robert Gieseke',
