@@ -23,14 +23,13 @@ def read_hector_output(csv_file):
     Hector output data.
     """
     # Filter out spin-up values. In Hector 1.x RCP output streams years are
-    # written as end of simulation year. This will change in Hector 2.x.
+    # given as end of simulation year. This will change in Hector 2.x.
     # See https://github.com/JGCRI/hector/issues/177
     start_year = 1746
     output_stream = pd.read_csv(csv_file, skiprows=1)
 
     wide = output_stream[output_stream.year >= start_year].pivot_table(
         index="year", columns="variable", values="value")
-    wide.index = wide.index - 1  # Adjust index to year only
 
     return wide
 

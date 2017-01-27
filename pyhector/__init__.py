@@ -138,6 +138,11 @@ def run(scenario, config_options=None):
         h.add_observable("temperature", "Tgav")
         h.run()
         global_temp = h.get_observable("temperature", "Tgav")
-        start = int(parameters["core"]["startDate"])
-        end = int(parameters["core"]["endDate"])
-    return pd.Series(global_temp, index=np.arange(start, end))
+        # In Hector 1.x RCP output value years are given as end of simulation
+        # year, e.g. 1745-12-31 = 1746.0.
+        # See https://github.com/JGCRI/hector/issues/177
+        start = int(parameters["core"]["startDate"]) + 1
+        # End of range is non-inclusive in Python ranges.
+        end = int(parameters["core"]["endDate"]) + 1
+        index = np.arange(start, end)
+    return pd.Series(global_temp, index=index)
