@@ -25,6 +25,7 @@ setup(
     url='https://github.com/swillner/pyhector',
     author='Sven Willner, Robert Gieseke',
     author_email='sven.willner@pik-potsdam.de, robert.gieseke@pik-potsdam.de',
+    licence='GNU Affero General Public License v3',
     classifiers=[
         'Development Status :: 3 - Alpha',
         "Intended Audience :: Developers",
