@@ -1,3 +1,8 @@
+# Copyright (C) 2017 pyhector authors
+# Sven Willner <sven.willner@pik-potsdam.de>,
+# Robert Gieseke <robert.gieseke@pik-potsdam.de
+# Free software under GNU Affero General Public License v3, see LICENSE.md
+
 # -*- coding: utf-8 -*-
 
 import ctypes
