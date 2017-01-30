@@ -13,7 +13,7 @@ and install in a Virtualenv with pip.
 ```bash
 git clone https://github.com/swillner/pyhector.git --recursive
 cd pyhector
-python3 -v venv venv
+python3 -m venv venv
 ./venv/bin/pip install --editable .
 ```
 
