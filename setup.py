@@ -3,25 +3,26 @@ import glob
 
 libpyhector = Extension(
     'libpyhector',
-    include_dirs = [
+    include_dirs=[
         'hector-wrapper/include',
         'hector-wrapper/hector/headers'
     ],
-    libraries = ['m', 'boost_system', 'boost_filesystem'],
+    libraries=['m', 'boost_system', 'boost_filesystem'],
     extra_compile_args=['-std=c++0x'],
-    sources = [
+    sources=[
         'src/main.cpp',
         'hector-wrapper/src/HectorWrapper.cpp',
     ] + glob.glob('hector-wrapper/hector/source/core/*.cpp')
-    + glob.glob('hector-wrapper/hector/source/models/*.cpp')
-    + glob.glob('hector-wrapper/hector/source/components/*.cpp')
-    + glob.glob('hector-wrapper/hector/source/data/*.cpp')
+      + glob.glob('hector-wrapper/hector/source/models/*.cpp')
+      + glob.glob('hector-wrapper/hector/source/components/*.cpp')
+      + glob.glob('hector-wrapper/hector/source/data/*.cpp')
 )
 
 setup(
     name='pyhector',
     version='0.1.1',
-    description='Python-wrapper for the Hector model (https://github.com/JGCRI/hector)',
+    description='Python-wrapper for the Hector simple climate model',
+    long_description=open('README.md').read(),
     url='https://github.com/swillner/pyhector',
     author='Sven Willner, Robert Gieseke',
     author_email='sven.willner@pik-potsdam.de, robert.gieseke@pik-potsdam.de',

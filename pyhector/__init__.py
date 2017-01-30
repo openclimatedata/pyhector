@@ -15,11 +15,14 @@ import pandas as pd
 from copy import deepcopy
 
 from .default_config import default_config
-from .units import units
+from .units import units  # NOQA
 from .emissions import emissions
 from .output import variables
 
-_lib = np.ctypeslib.load_library('libpyhector', pkg_resources.resource_filename(__name__, '..'))
+_lib = np.ctypeslib.load_library(
+    'libpyhector',
+    pkg_resources.resource_filename(__name__, '..')
+)
 _lib.hector_open.restype = ctypes.c_int
 _lib.hector_open.argtypes = [ctypes.POINTER(ctypes.c_void_p)]
 _lib.hector_close.restype = ctypes.c_int
@@ -29,10 +32,17 @@ _lib.hector_run.argtypes = [ctypes.c_void_p]
 _lib.hector_get_last_error.restype = ctypes.c_char_p
 _lib.hector_get_last_error.argtypes = None
 _lib.hector_set_value.restype = ctypes.c_int
-_lib.hector_set_value.argtypes = [ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p]
+_lib.hector_set_value.argtypes = [
+    ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p
+]
 _lib.hector_set_array.restype = ctypes.c_int
 _lib.hector_set_array.argtypes = [
-    ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, np.ctypeslib.ndpointer(ctypes.c_int, flags='contiguous'), np.ctypeslib.ndpointer(ctypes.c_double, flags='contiguous'), ctypes.c_uint
+    ctypes.c_void_p,
+    ctypes.c_char_p,
+    ctypes.c_char_p,
+    np.ctypeslib.ndpointer(ctypes.c_int, flags='contiguous'),
+    np.ctypeslib.ndpointer(ctypes.c_double, flags='contiguous'),
+    ctypes.c_uint
 ]
 _lib.hector_add_observable.restype = ctypes.c_int
 _lib.hector_add_observable.argtypes = [
@@ -40,7 +50,10 @@ _lib.hector_add_observable.argtypes = [
 ]
 _lib.hector_get_observable.restype = ctypes.c_int
 _lib.hector_get_observable.argtypes = [
-    ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, np.ctypeslib.ndpointer(ctypes.c_double, flags='contiguous, writeable')
+    ctypes.c_void_p,
+    ctypes.c_char_p,
+    ctypes.c_char_p,
+    np.ctypeslib.ndpointer(ctypes.c_double, flags='contiguous, writeable')
 ]
 
 
@@ -50,6 +63,7 @@ class PyHectorException(Exception):
 
 def _conv(v):
     return v.encode(encoding='UTF-8')
+
 
 class PyHector():
 
@@ -74,11 +88,15 @@ class PyHector():
         self._check(self.__run_size)
 
     def add_observable(self, component, name):
-        self._check(_lib.hector_add_observable(self.__state, _conv(component), _conv(name)))
+        self._check(_lib.hector_add_observable(
+            self.__state, _conv(component), _conv(name))
+        )
 
     def get_observable(self, component, name):
         result = np.empty((self.__run_size,), dtype=np.float64)
-        self._check(_lib.hector_get_observable(self.__state, _conv(component), _conv(name), result))
+        self._check(_lib.hector_get_observable(
+            self.__state, _conv(component), _conv(name), result)
+        )
         return result
 
     def __enter__(self):
@@ -97,9 +115,11 @@ class PyHector():
         print(parameters["core"]["endDate"])
         for section, data in parameters.items():
             for variable, value in data.items():
-                self._check(_lib.hector_set_value(self.__state, _conv(section), _conv(variable), _conv(value)))
+                self._check(_lib.hector_set_value(
+                    self.__state, _conv(section), _conv(variable),
+                    _conv(value))
+                )
         return parameters
-
 
     def set_emissions(self, scenario):
         for section in emissions:
@@ -127,14 +147,18 @@ def read_hector_input(csv_file):
 
 
 # Default Scenarios:
-rcp26 = read_hector_input(os.path.join(os.path.dirname(__file__),
-    './emissions/RCP26_emissions.csv'))
-rcp45 = read_hector_input(os.path.join(os.path.dirname(__file__),
-    './emissions/RCP45_emissions.csv'))
-rcp60 = read_hector_input(os.path.join(os.path.dirname(__file__),
-    './emissions/RCP6_emissions.csv'))
-rcp85 = read_hector_input(os.path.join(os.path.dirname(__file__),
-    './emissions/RCP85_emissions.csv'))
+rcp26 = read_hector_input(
+    os.path.join(os.path.dirname(__file__), './emissions/RCP26_emissions.csv')
+)
+rcp45 = read_hector_input(
+    os.path.join(os.path.dirname(__file__), './emissions/RCP45_emissions.csv')
+)
+rcp60 = read_hector_input(
+    os.path.join(os.path.dirname(__file__), './emissions/RCP6_emissions.csv')
+)
+rcp85 = read_hector_input(
+    os.path.join(os.path.dirname(__file__), './emissions/RCP85_emissions.csv')
+)
 
 
 def run(scenario, config_options=None,
