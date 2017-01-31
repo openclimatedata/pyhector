@@ -10,7 +10,7 @@ carbon-cycle model [Hector](https://github.com/JGCRI/hector).
 
 [Hector](https://github.com/JGCRI/hector)
 requires [Boost](http://www.boost.org/), so to install and use
-`pyhector` you need to have the the filesystem and system modules
+`pyhector` you need to have the filesystem and system modules
 of *Boost version 1.5+* installed.
 
 E.g., on Ubuntu/Debian these can be installed by invoking
