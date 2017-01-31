@@ -112,7 +112,6 @@ class PyHector():
             for key, data in config.items():
                 for option, value in data.items():
                     parameters[key][option] = value
-        print(parameters["core"]["endDate"])
         for section, data in parameters.items():
             for variable, value in data.items():
                 self._check(_lib.hector_set_value(
