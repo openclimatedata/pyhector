@@ -5,7 +5,7 @@ import os
 import pandas as pd
 
 import pyhector
-from pyhector import PyHector, rcp26, rcp45, rcp60, rcp85
+from pyhector import PyHector, rcp26, rcp45, rcp60, rcp85, read_hector_input
 
 
 path = os.path.dirname(__file__)
@@ -32,6 +32,16 @@ def read_hector_output(csv_file):
         index="year", columns="variable", values="value")
 
     return wide
+
+
+def test_read_hector_input():
+    rcp26 = read_hector_input(
+        os.path.join(os.path.dirname(__file__),
+        '../pyhector/emissions/RCP26_emissions.csv')
+    )
+    assert isinstance(rcp26, pd.DataFrame)
+    assert rcp26.index[-1] == 2500
+    assert rcp26.name == "RCP26_emissions"
 
 
 def test_rcps():

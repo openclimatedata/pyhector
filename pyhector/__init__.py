@@ -142,7 +142,9 @@ def read_hector_input(csv_file):
     """
     Reads a Hector CSV file and returns a Pandas DataFrame.
     """
-    return pd.read_csv(csv_file, skiprows=3, index_col=0)
+    df = pd.read_csv(csv_file, skiprows=3, index_col=0)
+    df.name = os.path.splitext(os.path.basename(csv_file))[0]
+    return df
 
 
 # Default Scenarios:
