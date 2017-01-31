@@ -40,7 +40,7 @@ def test_rcps():
         original = read_hector_output(
             os.path.join(path, "./data/outputstream_{}.csv".format(name))
         )
-        output = pyhector.run(scenario)
+        output, _ = pyhector.run(scenario)
         assert output["temperature.Tgav"].round(2).equals(
             original.Tgav.round(2))
 

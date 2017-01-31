@@ -184,4 +184,4 @@ def run(scenario, config_options=None,
         # End of range is non-inclusive in Python ranges.
         end = int(parameters["core"]["endDate"]) + 1
         index = np.arange(start, end)
-    return pd.DataFrame(results, index=index)
+    return pd.DataFrame(results, index=index), parameters
