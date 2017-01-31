@@ -5,7 +5,7 @@ import os
 import pandas as pd
 
 import pyhector
-from pyhector import PyHector, rcp26, rcp45, rcp60, rcp85, read_hector_input
+from pyhector import Hector, rcp26, rcp45, rcp60, rcp85, read_hector_input
 
 
 path = os.path.dirname(__file__)
@@ -56,7 +56,7 @@ def test_rcps():
 
 
 def test_default_options():
-    with PyHector() as h:
+    with Hector() as h:
         parameters = h.config()
         assert parameters["core"]["endDate"] == "2300"
 
@@ -65,7 +65,7 @@ def test_changed_default_options():
     config_options = {
         "core": {"endDate": "2100"}
     }
-    with PyHector() as h:
+    with Hector() as h:
         parameters = h.config(config_options)
         assert parameters["core"]["endDate"] == "2100"
 

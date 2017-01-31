@@ -57,7 +57,7 @@ _lib.hector_get_observable.argtypes = [
 ]
 
 
-class PyHectorException(Exception):
+class HectorException(Exception):
     pass
 
 
@@ -65,7 +65,7 @@ def _conv(v):
     return v.encode(encoding='UTF-8')
 
 
-class PyHector():
+class Hector():
 
     def __del__(self):
         self.close()
@@ -81,7 +81,7 @@ class PyHector():
 
     def _check(self, v):
         if v < 0:
-            raise PyHectorException(_lib.hector_get_last_error())
+            raise HectorException(_lib.hector_get_last_error())
 
     def run(self):
         self.__run_size = _lib.hector_run(self.__state)
@@ -167,7 +167,7 @@ def run(scenario, config_options=None,
     """
     TODO
     """
-    with PyHector() as h:
+    with Hector() as h:
         parameters = h.config(config_options)
         h.set_emissions(scenario)
         for name in outputs:
