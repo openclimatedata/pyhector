@@ -1,5 +1,15 @@
 from setuptools import setup, Extension
+from setuptools.command.test import test as TestCommand
 import glob
+
+class PyTest(TestCommand):
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = []
+        self.test_suite = True
+    def run_tests(self):
+        import pytest
+        pytest.main(self.test_args)
 
 libpyhector = Extension(
     'libpyhector',
@@ -22,24 +32,26 @@ setup(
     name='pyhector',
     version='0.1.1',
     description='Python-wrapper for the Hector simple climate model',
-    long_description=open('README.md').read(),
+    #long_description=open('README.md').read(),
     url='https://github.com/swillner/pyhector',
     author='Sven Willner, Robert Gieseke',
     author_email='sven.willner@pik-potsdam.de, robert.gieseke@pik-potsdam.de',
-    licence='GNU Affero General Public License v3',
+    license='GNU Affero General Public License v3',
     classifiers=[
         'Development Status :: 3 - Alpha',
         "Intended Audience :: Developers",
         "Operating System :: OS Independent",
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5'
+        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6'
     ],
     keywords='',
     package_data={'pyhector': ['rcp_default.ini', 'emissions/*']},
     include_package_data=True,
     packages=['pyhector'],
-    install_requires=['pandas', 'numpy', 'pytest'],
+    install_requires=['pandas', 'numpy'],
+    tests_require=['pytest'],
+    cmdclass = {'test': PyTest},
     ext_modules=[libpyhector]
 )

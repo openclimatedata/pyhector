@@ -15,7 +15,6 @@ python:
 install:
   - pip install .
 script:
-  - cd tests
-  - python -m pytest
+  - python setup.py test
 notifications:
   slack: climate-models:kLhWus3hN9nXOI5VYYGORFEd
