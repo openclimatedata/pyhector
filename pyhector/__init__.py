@@ -62,7 +62,7 @@ class HectorException(Exception):
 
 
 def _conv(v):
-    return v.encode(encoding='UTF-8')
+    return str(v).encode(encoding='UTF-8')
 
 
 class Hector():
