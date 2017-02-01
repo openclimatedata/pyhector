@@ -48,9 +48,9 @@ int hector_set_array(Hector::HectorWrapper* wrapper, const char* component, cons
     }
 }
 
-int hector_add_observable(Hector::HectorWrapper* wrapper, const char* component, const char* name) {
+int hector_add_observable(Hector::HectorWrapper* wrapper, const char* component, const char* name, const bool needs_date) {
     try {
-        wrapper->output()->add_variable(component, name);
+        wrapper->output()->add_variable(component, name, needs_date);
         return 0;
     } catch (const std::exception& ex) {
         last_error = ex.what();
