@@ -1,3 +1,5 @@
+FROM andrewosh/binder-base
+
 MAINTAINER Robert Gieseke <robert.gieseke@pik-potsdam.de>
 
 USER root
