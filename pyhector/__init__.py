@@ -46,7 +46,7 @@ _lib.hector_set_array.argtypes = [
 ]
 _lib.hector_add_observable.restype = ctypes.c_int
 _lib.hector_add_observable.argtypes = [
-    ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p
+    ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_bool
 ]
 _lib.hector_get_observable.restype = ctypes.c_int
 _lib.hector_get_observable.argtypes = [
@@ -87,9 +87,9 @@ class Hector():
         self.__run_size = _lib.hector_run(self.__state)
         self._check(self.__run_size)
 
-    def add_observable(self, component, name):
+    def add_observable(self, component, name, needs_date=False):
         self._check(_lib.hector_add_observable(
-            self.__state, _conv(component), _conv(name))
+            self.__state, _conv(component), _conv(name), needs_date)
         )
 
     def get_observable(self, component, name):
@@ -163,7 +163,7 @@ rcp85 = read_hector_input(
 
 
 def run(scenario, config_options=None,
-        outputs=['temperature.Tgav', 'simpleNbox.Ca', 'forcing.Ftot']):
+        outputs=['temperature.Tgav', 'simpleNbox.Ca']):
     """
     TODO
     """
@@ -172,7 +172,8 @@ def run(scenario, config_options=None,
         h.set_emissions(scenario)
         for name in outputs:
             h.add_observable(variables[name]["component"],
-                             variables[name]["variable"])
+                             variables[name]["variable"],
+                             variables[name].get("needs_date", False))
         h.run()
         results = {}
         for name in outputs:
