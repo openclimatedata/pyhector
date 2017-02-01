@@ -12,4 +12,6 @@ USER main
 
 #RUN cd /home/main/pyhector && python setup.py develop --user && mv libpyhector.so /home/main/notebooks/ && cp /home/main/notebooks/examples/* .
 
-RUN git clone https://github.com/swillner/pyhector.git $HOME/notebooks --recursive && cd $HOME/notebooks && python setup.py develop --user
+RUN cd / && rm -r $HOME/notebooks && git clone https://github.com/swillner/pyhector.git $HOME/notebooks --recursive
+
+RUN cd $HOME/notebooks && python setup.py develop --user
