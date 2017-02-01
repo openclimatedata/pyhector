@@ -72,7 +72,7 @@ def test_changed_default_options():
 
 def test_default_options():
     assert pyhector.default_config["core"]["endDate"] == "2300"
-    results = pyhector.run(rcp26, {"core": {"endDate": "2100"}})
+    pyhector.run(rcp26, {"core": {"endDate": "2100"}})
     assert pyhector.default_config["core"]["endDate"] == "2300"
 
 
