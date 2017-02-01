@@ -12,4 +12,4 @@ USER main
 
 #RUN cd /home/main/pyhector && python setup.py develop --user && mv libpyhector.so /home/main/notebooks/ && cp /home/main/notebooks/examples/* .
 
-RUN cd $HOME/notebooks && python setup.py develop --user
+RUN cd $HOME/notebooks && git submodule update --init --recursive && python setup.py develop --user
