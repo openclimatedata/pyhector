@@ -1,3 +1,16 @@
+"""
+pyhector
+--------
+
+Python-wrapper for the `Hector simple climate model <https://github.com/JGCRI/hector>`_.
+
+**Install** using ::
+
+    pip install pyhector
+
+Find **usage** instructions in the `repository <https://github.com/swillner/pyhector>`_.
+
+"""
 from setuptools import setup, Extension
 from setuptools.command.test import test as TestCommand
 import glob
@@ -32,7 +45,7 @@ setup(
     name='pyhector',
     version='0.1.1',
     description='Python-wrapper for the Hector simple climate model',
-    #long_description=open('README.md').read(),
+    long_description=__doc__,
     url='https://github.com/swillner/pyhector',
     author='Sven Willner, Robert Gieseke',
     author_email='sven.willner@pik-potsdam.de, robert.gieseke@pik-potsdam.de',
