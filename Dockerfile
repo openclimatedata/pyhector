@@ -1,19 +1,20 @@
-#FROM andrewosh/binder-base
+FROM andrewosh/binder-base
 
 MAINTAINER Robert Gieseke <robert.gieseke@pik-potsdam.de>
 
 USER root
 
-RUN apt-get update && apt-get install -y libboost-filesystem-dev libboost-system-dev --no-install-recommends && apt-get clean
+RUN apt-get update && \
+    apt-get install -y libboost-filesystem-dev libboost-system-dev --no-install-recommends && \
+    apt-get clean
 
 USER main
 
-#RUN git clone https://github.com/swillner/pyhector.git /home/main/pyhector --recursive
+RUN cd / && \
+    rm -r $HOME/notebooks && \
+    git clone https://github.com/swillner/pyhector.git $HOME/notebooks --recursive && \
+    cd $HOME/notebooks && \
+    python setup.py develop --user && \
+    mv examples/pyhector.ipynb index.ipynb
 
-#RUN cd /home/main/pyhector && python setup.py develop --user && mv libpyhector.so /home/main/notebooks/ && cp /home/main/notebooks/examples/* .
-
-RUN cd / && rm -r $HOME/notebooks && git clone https://github.com/swillner/pyhector.git $HOME/notebooks --recursive
-
-RUN cd $HOME/notebooks && python setup.py develop --user
-
-RUN mv examples/pyhector.ipynb index.ipynb
+ENV LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH
