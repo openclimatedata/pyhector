@@ -15,3 +15,5 @@ USER main
 RUN cd / && rm -r $HOME/notebooks && git clone https://github.com/swillner/pyhector.git $HOME/notebooks --recursive
 
 RUN cd $HOME/notebooks && python setup.py develop --user
+
+RUN mv examples/pyhector.ipynb index.ipynb
