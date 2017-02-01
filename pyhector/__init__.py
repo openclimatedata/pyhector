@@ -175,7 +175,7 @@ rcp85 = read_hector_input(
 
 
 def run(scenario, config_options=None,
-        outputs=['temperature.Tgav', 'simpleNbox.Ca']):
+        outputs=['temperature.Tgav', 'simpleNbox.Ca', 'forcing.Ftot']):
     """
     TODO
     """
