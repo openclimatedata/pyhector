@@ -1,6 +1,7 @@
 # pyhector
 
 [![Build Status](https://img.shields.io/travis/swillner/pyhector.svg)](https://travis-ci.org/swillner/pyhector)
+[![Launch Binder](https://img.shields.io/badge/launch-binder-e66581.svg)](http://mybinder.org/repo/swillner/pyhector)
 
 `pyhector` is a Python wrapper for the simple global climate
 carbon-cycle model [Hector](https://github.com/JGCRI/hector).
