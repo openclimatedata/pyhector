@@ -1,8 +1,0 @@
-name: pyhector-environment
-dependencies:
-  - python=3.4
-  - numpy
-  - pandas
-  - matplotlib
-  - pip:
-    - git+https://github.com/swillner/pyhector.git@master
