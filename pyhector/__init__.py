@@ -175,13 +175,15 @@ rcp85 = read_hector_input(
 
 
 def run(scenario, config_options=None,
-        outputs=['temperature.Tgav', 'simpleNbox.Ca']):
+        outputs=['temperature.Tgav', 'simpleNbox.Ca', 'forcing.Ftot']):
     """
     TODO
     """
     with Hector() as h:
         parameters = h.config(config_options)
         h.set_emissions(scenario)
+        if outputs == "all":
+            outputs = variables.keys()
         for name in outputs:
             h.add_observable(variables[name]["component"],
                              variables[name]["variable"],

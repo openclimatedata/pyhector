@@ -76,8 +76,14 @@ def test_default_options():
     assert pyhector.default_config["core"]["endDate"] == "2300"
 
 
-
 def test_units():
     assert pyhector.units["anthroEmissions"] == 'GtC/yr'
     assert pyhector.units["lucEmissions"] == 'GtC/yr'
     assert pyhector.units["NOX_emissions"] == 'MtN/yr'
+
+
+def test_output_variables():
+    results, _ = pyhector.run(rcp26)
+    assert len(results.columns) == 3
+    results, _ = pyhector.run(rcp26, outputs="all")
+    assert len(results.columns) == len(pyhector.variables.keys())
