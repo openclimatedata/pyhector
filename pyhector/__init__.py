@@ -182,6 +182,8 @@ def run(scenario, config_options=None,
     with Hector() as h:
         parameters = h.config(config_options)
         h.set_emissions(scenario)
+        if outputs == "all":
+            outputs = variables.keys()
         for name in outputs:
             h.add_observable(variables[name]["component"],
                              variables[name]["variable"],
