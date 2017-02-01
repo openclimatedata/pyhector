@@ -12,4 +12,4 @@ RUN chown -R main:main /home/main/pyhector
 
 USER main
 
-RUN cd /home/main/pyhector && python setup.py install
+RUN cd /home/main/pyhector && pip install .
