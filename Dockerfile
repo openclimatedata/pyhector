@@ -1,4 +1,4 @@
-FROM andrewosh/binder-base
+#FROM andrewosh/binder-base
 
 MAINTAINER Robert Gieseke <robert.gieseke@pik-potsdam.de>
 
@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y libboost-filesystem-dev libboost-system
 
 USER main
 
-RUN git clone https://github.com/swillner/pyhector.git /home/main/pyhector --recursive
+#RUN git clone https://github.com/swillner/pyhector.git /home/main/pyhector --recursive
 
-RUN cd /home/main/pyhector && python setup.py develop --user && mv libpyhector.so /home/main/notebooks/ && cp /home/main/notebooks/examples/* .
+#RUN cd /home/main/pyhector && python setup.py develop --user && mv libpyhector.so /home/main/notebooks/ && cp /home/main/notebooks/examples/* .
+
+RUN cd $HOME/notebooks && python setup.py develop --user
