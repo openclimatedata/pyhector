@@ -10,4 +10,4 @@ USER main
 
 RUN git clone https://github.com/swillner/pyhector.git /home/main/pyhector --recursive
 
-RUN cd /home/main/pyhector && pip install .
+RUN cd /home/main/pyhector && python setup.py develop --user && mv libpyhector.so /home/main/notebooks/ && cp /home/main/notebooks/examples/* .
