@@ -5,6 +5,18 @@
 
 # -*- coding: utf-8 -*-
 
+"""
+pyhector
+--------
+
+`pyhector` is a Python wrapper for the simple global climate
+carbon-cycle model Hector (https://github.com/JGCRI/hector).
+
+See its README and repository for details:
+https://github.com/swillner/pyhector
+
+"""
+
 import ctypes
 import os
 import pkg_resources

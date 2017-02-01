@@ -1,0 +1,11 @@
+name: pyhector-environment
+channels:
+  - statiskit
+dependencies:
+  - python=2.7
+  - numpy
+  - pandas
+  - matplotlib
+  - libboost
+  - pip:
+    - git+https://github.com/swillner/pyhector.git@master
