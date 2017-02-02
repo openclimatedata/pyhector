@@ -16,9 +16,7 @@ from pyhector import rcp26, rcp45, rcp60, rcp85
 
 import matplotlib.pyplot as plt
 
-rcps = [rcp26, rcp45, rcp60, rcp85]
-
-for rcp in rcps:
+for rcp in [rcp26, rcp45, rcp60, rcp85]:
     output, params = pyhector.run(rcp, {"core": {"endDate": 2100}})
     temp = output["temperature.Tgav"]
     # Adjust to 1850 - 1900 reference period
