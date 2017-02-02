@@ -26,7 +26,7 @@ sudo apt-get install libboost-filesystem-dev libboost-system-dev
 
 ### Install using pip
 
-You can simply install **pyhector** from [PyPi](https://pypi.python.org/pypi/pyhector) by invoking
+You can simply install **pyhector** from [PyPI](https://pypi.python.org/pypi/pyhector) by invoking
 ```bash
 pip install pyhector
 ```
@@ -41,7 +41,7 @@ pip install pyhector
 
 ### 0.2.4
 
-- first PyPI Beta Release.
+- first PyPI beta release
 
 
 ## Development
