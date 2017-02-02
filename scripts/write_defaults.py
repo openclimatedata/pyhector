@@ -23,9 +23,10 @@ config.read(default_config)
 
 parameters = {}
 for section in config.sections():
-    parameters[section] = {}
-    for option in config.options(section):
-        parameters[section][option] = config.get(section, option)
+    if len(config.options(section)) > 0:
+        parameters[section] = {}
+        for option in config.options(section):
+            parameters[section][option] = config.get(section, option)
 
 output = "default_config = {\n    " + \
          pformat(parameters, indent=1, width=1)[1:-1].replace(
