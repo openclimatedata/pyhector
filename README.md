@@ -8,6 +8,29 @@
 **pyhector** is a Python wrapper for the simple global climate
 carbon-cycle model [Hector](https://github.com/JGCRI/hector).
 
+## Usage
+
+```python
+import matplotlib.pyplot as plt
+
+import pyhector
+from pyhector import rcp26, rcp45, rcp60, rcp85
+
+rcps = [rcp26, rcp45, rcp60, rcp85]
+
+for rcp in rcps:
+    output, params = pyhector.run(rcp, {"core": {"endDate": 2100}})
+    temp = output["temperature.Tgav"]
+    # Adjust to reference period
+    temp = temp.loc[1850:] - temp.loc[1850:1900].mean()
+    temp.plot(label=rcp.name.split("_")[0])
+plt.title("Global mean temperature")
+plt.ylabel("°C over pre-industrial (1850-1900 mean)")
+plt.legend(loc="best")
+```
+
+![](scripts/example-plot.png)
+
 
 ## Install
 
