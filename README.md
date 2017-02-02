@@ -10,6 +10,8 @@ carbon-cycle model [Hector](https://github.com/JGCRI/hector).
 
 ## Usage
 
+This repository also contains a jupyter notebook you can [try live](http://mybinder.org/repo/swillner/pyhector).
+
 ```python
 import pyhector
 from pyhector import rcp26, rcp45, rcp60, rcp85
