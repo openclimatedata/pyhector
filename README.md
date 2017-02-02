@@ -32,6 +32,18 @@ pip install pyhector
 ```
 
 
+## Changelog
+
+### Unreleased
+
+- default config object uses Python numbers where possible instead
+  of strings
+
+### 0.2.4
+
+- first PyPI Beta Release.
+
+
 ## Development
 
 For local development you can clone the repository, update the
