@@ -2,7 +2,7 @@
 pyhector
 --------
 
-Python-wrapper for the `Hector simple climate model <https://github.com/JGCRI/hector>`_.
+Python wrapper for the `Hector simple climate model <https://github.com/JGCRI/hector>`_.
 
 **Install** using ::
 
@@ -43,15 +43,16 @@ libpyhector = Extension(
 
 setup(
     name='pyhector',
-    version='0.1.1',
-    description='Python-wrapper for the Hector simple climate model',
+    version='0.2.0',
+    description='Python wrapper for the Hector simple climate model',
     long_description=__doc__,
     url='https://github.com/swillner/pyhector',
     author='Sven Willner, Robert Gieseke',
     author_email='sven.willner@pik-potsdam.de, robert.gieseke@pik-potsdam.de',
     license='GNU Affero General Public License v3',
+    platforms='any',
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         "Intended Audience :: Developers",
         "Operating System :: OS Independent",
         'Programming Language :: Python :: 2.7',
