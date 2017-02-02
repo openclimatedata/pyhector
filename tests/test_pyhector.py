@@ -87,3 +87,10 @@ def test_output_variables():
     assert len(results.columns) == 3
     results, _ = pyhector.run(rcp26, outputs="all")
     assert len(results.columns) == len(pyhector.variables.keys())
+
+
+def test_output_variables_needs_date():
+    # Some outputs require the "needs_date" flag to be set to True.
+    needing_date = ["CH4.CH4", "N2O.N2O", "OH.TAU_OH", "ozone.O3"]
+    results, _ = pyhector.run(rcp26, outputs=needing_date)
+    assert list(results.columns) == needing_date
