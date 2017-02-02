@@ -6,6 +6,7 @@
 # Run this script as
 #   ./write_defaults.py
 
+import ast
 import configparser
 import os
 
@@ -26,7 +27,15 @@ for section in config.sections():
     if len(config.options(section)) > 0:
         parameters[section] = {}
         for option in config.options(section):
-            parameters[section][option] = config.get(section, option)
+            value = config.get(section, option)
+            if option == 'run_name':
+                value = "pyhector-run"
+            # Convert floats and ints to Python numbers
+            elif "," not in value:
+                value = ast.literal_eval(value)
+            # Values containing a unit like "H0=35.0,pptv" are
+            # kept with its unit.
+            parameters[section][option] = value
 
 output = "default_config = {\n    " + \
          pformat(parameters, indent=1, width=1)[1:-1].replace(

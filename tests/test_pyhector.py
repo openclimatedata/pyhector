@@ -58,22 +58,22 @@ def test_rcps():
 def test_default_options():
     with Hector() as h:
         parameters = h.config()
-        assert parameters["core"]["endDate"] == "2300"
+    assert parameters["core"]["endDate"] == 2300
 
 
 def test_changed_default_options():
     config_options = {
-        "core": {"endDate": "2100"}
+        "core": {"endDate": 2100}
     }
     with Hector() as h:
         parameters = h.config(config_options)
-        assert parameters["core"]["endDate"] == "2100"
+    assert parameters["core"]["endDate"] == 2100
 
 
 def test_default_options():
-    assert pyhector.default_config["core"]["endDate"] == "2300"
-    pyhector.run(rcp26, {"core": {"endDate": "2100"}})
-    assert pyhector.default_config["core"]["endDate"] == "2300"
+    assert pyhector.default_config["core"]["endDate"] == 2300
+    pyhector.run(rcp26, {"core": {"endDate": 2100}})
+    assert pyhector.default_config["core"]["endDate"] == 2300
 
 
 def test_units():
