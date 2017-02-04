@@ -11,3 +11,4 @@ pyhector.egg-info
 *.so
 .cache
 venv/
+.eggs/
