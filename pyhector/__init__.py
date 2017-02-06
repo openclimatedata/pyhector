@@ -53,15 +53,18 @@ _lib.hector_set_value.argtypes = [
 ]
 _lib.hector_set_value_unit.restype = ctypes.c_int
 _lib.hector_set_value_unit.argtypes = [
-    ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_double, ctypes.c_char_p
+    ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_double,
+    ctypes.c_char_p
 ]
 _lib.hector_set_timed_value.restype = ctypes.c_int
 _lib.hector_set_timed_value.argtypes = [
-    ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_int, ctypes.c_double
+    ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_int,
+    ctypes.c_double
 ]
 _lib.hector_set_timed_value_unit.restype = ctypes.c_int
 _lib.hector_set_timed_value_unit.argtypes = [
-    ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_int, ctypes.c_double, ctypes.c_char_p
+    ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_int,
+    ctypes.c_double, ctypes.c_char_p
 ]
 _lib.hector_set_array.restype = ctypes.c_int
 _lib.hector_set_array.argtypes = [
@@ -135,18 +138,26 @@ class Hector():
         self.close()
 
     def set_value(self, section, variable, value):
-        if isinstance(value, list): # values with time
+        if isinstance(value, list):  # values with time
             for v in value:
-                if len(v)==3: # timed value with unit
-                    self._check(_lib.hector_set_value(self.__state, _conv(section), _conv(variable), v[0], v[1], v[2]))
-                else: # timed value without unit
-                    self._check(_lib.hector_set_timed_value(self.__state, _conv(section), _conv(variable), v[0], v[1]))
-        elif isinstance(value, tuple): # value with unit
-            self._check(_lib.hector_set_value_unit(self.__state, _conv(section), _conv(variable), value[0], _conv(value[1])))
-        elif isinstance(value, str): # value is string
-            self._check(_lib.hector_set_value_string(self.__state, _conv(section), _conv(variable), _conv(value)))
-        else: # value is only double
-            self._check(_lib.hector_set_value(self.__state, _conv(section), _conv(variable), value))
+                if len(v) == 3:  # timed value with unit
+                    self._check(_lib.hector_set_value(
+                        self.__state, _conv(section), _conv(variable), v[0],
+                        v[1], v[2]))
+                else:  # timed value without unit
+                    self._check(_lib.hector_set_timed_value(
+                        self.__state, _conv(section), _conv(variable),
+                        v[0], v[1]))
+        elif isinstance(value, tuple):  # value with unit
+            self._check(_lib.hector_set_value_unit(
+                        self.__state, _conv(section), _conv(variable),
+                        value[0], _conv(value[1])))
+        elif isinstance(value, str):  # value is string
+            self._check(_lib.hector_set_value_string(
+                self.__state, _conv(section), _conv(variable), _conv(value)))
+        else:  # value is only double
+            self._check(_lib.hector_set_value(self.__state, _conv(section),
+                                              _conv(variable), value))
 
     def config(self, config=None):
         parameters = deepcopy(default_config)
