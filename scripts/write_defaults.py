@@ -28,17 +28,34 @@ for section in config.sections():
         parameters[section] = {}
         for option in config.options(section):
             value = config.get(section, option)
-            if option == 'run_name':
-                value = "pyhector-run"
-            # Convert floats and ints to Python numbers
-            elif "," not in value:
-                value = ast.literal_eval(value)
-            # Values containing a unit like "H0=35.0,pptv" are
-            # kept with its unit.
-            parameters[section][option] = value
+            # Hector-specific ini property-value assignment with time index,
+            # like 'Ftalbedo[1750]' will be turned into a list of tuples.
+            if option.endswith("]"):
+                split = option.split("[")
+                name = split[0]
+                year = int(split[1][:-1])  # leave out closing "]"
+                if name not in parameters[section]:
+                    parameters[section][name] = []
+                parameters[section][name].append(
+                    (year, ast.literal_eval(value),)
+                )
+            else:
+                if option == 'run_name':
+                    value = "pyhector-run"
+                elif option in ["enabled", "do_spinup"]:
+                    value = True if 1 else False
+                # Values containing a unit like "H0=35.0,pptv" are split and
+                # turned into a tuple.
+                elif "," in value:
+                    number, unit = tuple(value.split(","))
+                    value = (ast.literal_eval(number), unit,)
+                # Convert floats and ints to Python numbers
+                else:
+                    value = ast.literal_eval(value)
+                parameters[section][option] = value
 
 output = "default_config = {\n    " + \
-         pformat(parameters, indent=1, width=1)[1:-1].replace(
+         pformat(parameters, indent=1, width=20)[1:-1].replace(
             "\n '", "\n    '").replace(
             "     '", "        '") + \
             "\n}\n"
