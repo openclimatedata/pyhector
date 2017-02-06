@@ -55,7 +55,7 @@ for section in config.sections():
                 parameters[section][option] = value
 
 output = "default_config = {\n    " + \
-         pformat(parameters, indent=1, width=20)[1:-1].replace(
+         pformat(parameters, indent=1, width=75)[1:-1].replace(
             "\n '", "\n    '").replace(
             "     '", "        '") + \
             "\n}\n"
