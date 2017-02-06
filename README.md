@@ -82,6 +82,8 @@ python3 -m venv venv
 To update **pyhector** and all submodules you can run
 ```bash
 git pull --recurse-submodules
+git submodule update --init --recursive
+./venv/bin/pip install --editable .
 ```
 
 Tests can be run locally with
