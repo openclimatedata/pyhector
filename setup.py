@@ -44,7 +44,7 @@ libpyhector = Extension(
 
 setup(
     name='pyhector',
-    version='0.2.4',
+    version='0.3.0',
     description='Python wrapper for the Hector simple climate model',
     long_description=__doc__,
     url='https://github.com/swillner/pyhector',
