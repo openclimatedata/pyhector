@@ -15,5 +15,4 @@ RUN cd / && \
     git clone https://github.com/swillner/pyhector.git $HOME/notebooks --recursive && \
     cd $HOME/notebooks && \
     python setup.py develop --user && \
-    mv examples/pyhector.ipynb index.ipynb && \
     ln -sf /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.20 /home/main/anaconda2/envs/python3/lib/libstdc++.so.6
