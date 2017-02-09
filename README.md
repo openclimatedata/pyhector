@@ -8,10 +8,10 @@
 **pyhector** is a Python wrapper for the simple global climate
 carbon-cycle model [Hector](https://github.com/JGCRI/hector).
 
-**pyhector** is developed by [Sven Willner](http://www.pik-potsdam.de/~willner/)
+The Python interface **pyhector** is developed by [Sven Willner](http://www.pik-potsdam.de/~willner/)
 and Robert Gieseke at the [Potsdam Institute for Climate Impact Research](https://www.pik-potsdam.de/).
 
-The **[Hector](https://github.com/JGCRI/hector)** model is developed at the [Pacific
+The C++-**[Hector](https://github.com/JGCRI/hector)** model is developed at the [Pacific
 Northwest National Laboratory](https://www.pnl.gov/) and described in
 
 > Hartin, C. A., Patel, P., Schwarber, A., Link, R. P., and Bond-Lamberty, B. P.: A simple object-oriented and open-source model for scientific and policy analyses of the global climate system – Hector v1.0, Geosci. Model Dev., 8, 939-955, [doi:10.5194/gmd-8-939-2015](https://dx.doi.org/10.5194/gmd-8-939-2015), 2015.
