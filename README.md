@@ -50,9 +50,14 @@ requires [Boost](http://www.boost.org/), so to install and use
 of *Boost* version 1.52 or later installed (see also the
 [Hector build instructions](https://github.com/JGCRI/hector/wiki/BuildHector)).
 
-E.g., on Ubuntu/Debian these can be installed by invoking
+On Ubuntu/Debian these can be installed by invoking
 ```bash
 sudo apt-get install libboost-filesystem-dev libboost-system-dev
+```
+
+On macOS *Boost* is available through the Homebrew package manager:
+```bash
+brew install boost
 ```
 
 ### Install using pip
