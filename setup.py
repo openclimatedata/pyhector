@@ -2,13 +2,15 @@
 pyhector
 --------
 
-Python wrapper for the `Hector simple climate model <https://github.com/JGCRI/hector>`_.
+Python wrapper for the `Hector simple climate model
+<https://github.com/JGCRI/hector>`_.
 
 **Install** using ::
 
     pip install pyhector
 
-Find **usage** instructions in the `repository <https://github.com/swillner/pyhector>`_.
+Find **usage** instructions in the `repository
+<https://github.com/swillner/pyhector>`_.
 
 """
 from setuptools import setup, Extension
@@ -22,13 +24,16 @@ cmdclass = versioneer.get_cmdclass()
 
 
 class PyTest(TestCommand):
+
     def finalize_options(self):
         TestCommand.finalize_options(self)
         self.test_args = []
         self.test_suite = True
+
     def run_tests(self):
         import pytest
         pytest.main(self.test_args)
+
 
 cmdclass.update({"test": PyTest})
 
@@ -40,14 +45,14 @@ libpyhector = Extension(
     ],
     libraries=['m', 'boost_system', 'boost_filesystem'],
     extra_compile_args=['-std=c++0x'],
-    sources=glob.glob('src/*.cpp')
-      + glob.glob('hector-wrapper/src/*.cpp')
-      + glob.glob('hector-wrapper/hector/source/core/*.cpp')
-      + glob.glob('hector-wrapper/hector/source/models/*.cpp')
-      + glob.glob('hector-wrapper/hector/source/components/*.cpp')
-      + glob.glob('hector-wrapper/hector/source/data/*.cpp'),
-    depends=glob.glob('hector-wrapper/include/*.h')
-      + glob.glob('hector-wrapper/hector/headers/**/*.hpp')
+    sources=(glob.glob('src/*.cpp') +
+             glob.glob('hector-wrapper/src/*.cpp') +
+             glob.glob('hector-wrapper/hector/source/core/*.cpp') +
+             glob.glob('hector-wrapper/hector/source/models/*.cpp') +
+             glob.glob('hector-wrapper/hector/source/components/*.cpp') +
+             glob.glob('hector-wrapper/hector/source/data/*.cpp')),
+    depends=(glob.glob('hector-wrapper/include/*.h') +
+             glob.glob('hector-wrapper/hector/headers/**/*.hpp'))
 )
 
 setup(
