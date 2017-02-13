@@ -5,3 +5,5 @@ recursive-include hector-wrapper/hector/headers *.hpp
 recursive-include tests/data *.csv
 recursive-include pyhector/emissions *.csv
 include pyhector/rcp_default.ini
+include versioneer.py
+include pyhector/_version.py

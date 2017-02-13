@@ -15,6 +15,9 @@ from setuptools import setup, Extension
 from setuptools.command.test import test as TestCommand
 import glob
 
+import versioneer
+
+
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
@@ -44,7 +47,8 @@ libpyhector = Extension(
 
 setup(
     name='pyhector',
-    version='0.3.0',
+    version=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
     description='Python wrapper for the Hector simple climate model',
     long_description=__doc__,
     url='https://github.com/swillner/pyhector',

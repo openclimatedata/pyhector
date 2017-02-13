@@ -31,6 +31,11 @@ from .units import units  # NOQA
 from .emissions import emissions
 from .output import variables
 
+from ._version import get_versions
+__version__ = get_versions()['version']
+del get_versions
+
+
 _lib = np.ctypeslib.load_library(
     'libpyhector',
     pkg_resources.resource_filename(__name__, '..')
