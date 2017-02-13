@@ -18,6 +18,9 @@ import glob
 import versioneer
 
 
+cmdclass = versioneer.get_cmdclass()
+
+
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
@@ -26,6 +29,8 @@ class PyTest(TestCommand):
     def run_tests(self):
         import pytest
         pytest.main(self.test_args)
+
+cmdclass.update({"test": PyTest})
 
 libpyhector = Extension(
     'libpyhector',
@@ -48,7 +53,7 @@ libpyhector = Extension(
 setup(
     name='pyhector',
     version=versioneer.get_version(),
-    cmdclass=versioneer.get_cmdclass(),
+    cmdclass=cmdclass,
     description='Python wrapper for the Hector simple climate model',
     long_description=__doc__,
     url='https://github.com/swillner/pyhector',
@@ -71,6 +76,5 @@ setup(
     packages=['pyhector'],
     install_requires=['pandas', 'numpy'],
     tests_require=['pytest'],
-    cmdclass = {'test': PyTest},
     ext_modules=[libpyhector]
 )
