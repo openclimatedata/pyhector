@@ -10,7 +10,7 @@ Python wrapper for the `Hector simple climate model
     pip install pyhector
 
 Find **usage** instructions in the `repository
-<https://github.com/swillner/pyhector>`_.
+<https://github.com/openclimatedata/pyhector>`_.
 
 """
 from setuptools import setup, Extension
@@ -61,7 +61,7 @@ setup(
     cmdclass=cmdclass,
     description='Python wrapper for the Hector simple climate model',
     long_description=__doc__,
-    url='https://github.com/swillner/pyhector',
+    url='https://github.com/openclimatedata/pyhector',
     author='Sven Willner, Robert Gieseke',
     author_email='sven.willner@pik-potsdam.de, robert.gieseke@pik-potsdam.de',
     license='GNU Affero General Public License v3',

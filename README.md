@@ -1,9 +1,9 @@
 # pyhector
 
-[![Build Status](https://img.shields.io/travis/swillner/pyhector.svg)](https://travis-ci.org/swillner/pyhector)
+[![Build Status](https://img.shields.io/travis/openclimatedata/pyhector.svg)](https://travis-ci.org/openclimatedata/pyhector)
 [![PyPI](https://img.shields.io/pypi/pyversions/pyhector.svg)](https://pypi.python.org/pypi/pyhector)
 [![PyPI](https://img.shields.io/pypi/v/pyhector.svg)](https://pypi.python.org/pypi/pyhector)
-[![Launch Binder](https://img.shields.io/badge/launch-binder-e66581.svg)](http://mybinder.org/repo/swillner/pyhector)
+[![Launch Binder](https://img.shields.io/badge/launch-binder-e66581.svg)](http://mybinder.org/repo/openclimatedata/pyhector)
 
 **pyhector** is a Python wrapper for the simple global climate
 carbon-cycle model [Hector](https://github.com/JGCRI/hector).
@@ -23,7 +23,7 @@ and Robert Gieseke at the [Potsdam Institute for Climate Impact Research](https:
 
 ## Usage
 
-This repository also contains a Jupyter Notebook you can [try live](http://mybinder.org/repo/swillner/pyhector).
+This repository also contains a Jupyter Notebook you can [try live](http://mybinder.org/repo/openclimatedata/pyhector).
 
 ```python
 import pyhector
