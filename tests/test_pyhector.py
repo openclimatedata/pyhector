@@ -3,6 +3,7 @@
 import os
 
 import pandas as pd
+from pandas.util.testing import assert_series_equal
 
 import pyhector
 from pyhector import (
@@ -36,8 +37,8 @@ def test_rcps():
             os.path.join(path, "./data/outputstream_{}.csv".format(name))
         )
         output, _ = pyhector.run(scenario)
-        assert output["temperature.Tgav"].round(2).equals(
-            original.Tgav.round(2))
+        assert_series_equal(
+            output["temperature.Tgav"], original.Tgav, check_names=False)
 
 
 def test_default_options():
