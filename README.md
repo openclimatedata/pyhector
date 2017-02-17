@@ -8,9 +8,14 @@
 **pyhector** is a Python wrapper for the simple global climate
 carbon-cycle model [Hector](https://github.com/JGCRI/hector).
 
-**[Hector](https://github.com/JGCRI/hector)** is written in C++ and developed at the [Pacific
-Northwest National Laboratory](https://www.pnl.gov/). The model description is
-published in
+**pyhector** makes the simple climate model Hector easily installable and usable
+from Python and can for example be used in the analysis of mitigation scenarios
+within integrated assessment models, complex climate model emulation, and
+uncertainty analyses.
+
+**[Hector](https://github.com/JGCRI/hector)** is written in C++ and developed at the
+[Pacific Northwest National Laboratory](https://www.pnl.gov/).
+The model description is published in
 
 > Hartin, C. A., Patel, P., Schwarber, A., Link, R. P., and Bond-Lamberty, B. P.: A simple object-oriented and open-source model for scientific and policy analyses of the global climate system – Hector v1.0, Geosci. Model Dev., 8, 939-955, [doi:10.5194/gmd-8-939-2015](https://dx.doi.org/10.5194/gmd-8-939-2015), 2015.
 
