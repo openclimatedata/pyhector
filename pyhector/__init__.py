@@ -202,6 +202,23 @@ def read_hector_input(csv_file):
     return df
 
 
+def read_hector_output(csv_file):
+    """
+    Reads a Hector output stream CSV file and returns a wide DataFrame with
+    Hector output data.
+    """
+    # Filter out spin-up values. In Hector 1.x RCP output streams years are
+    # given as end of simulation year.
+    # See https://github.com/JGCRI/hector/issues/177
+    start_year = 1746
+    output_stream = pd.read_csv(csv_file, skiprows=1)
+
+    wide = output_stream[output_stream.year >= start_year].pivot_table(
+        index="year", columns="variable", values="value")
+
+    return wide
+
+
 # Default Scenarios:
 rcp26 = read_hector_input(
     os.path.join(os.path.dirname(__file__), './emissions/RCP26_emissions.csv')

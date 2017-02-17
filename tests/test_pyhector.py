@@ -5,7 +5,9 @@ import os
 import pandas as pd
 
 import pyhector
-from pyhector import Hector, rcp26, rcp45, rcp60, rcp85, read_hector_input
+from pyhector import (
+    Hector, rcp26, rcp45, rcp60, rcp85, read_hector_input, read_hector_output
+)
 
 
 path = os.path.dirname(__file__)
@@ -15,23 +17,6 @@ rcps = {
     'rcp60': rcp60,
     'rcp85': rcp85
 }
-
-
-def read_hector_output(csv_file):
-    """
-    Reads a Hector output stream csv and returns a wide DataFrame with
-    Hector output data.
-    """
-    # Filter out spin-up values. In Hector 1.x RCP output streams years are
-    # given as end of simulation year. This will change in Hector 2.x.
-    # See https://github.com/JGCRI/hector/issues/177
-    start_year = 1746
-    output_stream = pd.read_csv(csv_file, skiprows=1)
-
-    wide = output_stream[output_stream.year >= start_year].pivot_table(
-        index="year", columns="variable", values="value")
-
-    return wide
 
 
 def test_read_hector_input():
