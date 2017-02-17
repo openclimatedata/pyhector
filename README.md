@@ -23,7 +23,8 @@ and Robert Gieseke at the [Potsdam Institute for Climate Impact Research](https:
 
 ## Usage
 
-This repository also contains a Jupyter Notebook you can [try live](http://mybinder.org/repo/openclimatedata/pyhector).
+This repository also contains a Jupyter Notebook you can [try live](http://mybinder.org/repo/openclimatedata/pyhector), courtesy of the
+[Binder](http://mybinder.org/) project ([Status](http://mybinder.org/status/)).
 
 ```python
 import pyhector
