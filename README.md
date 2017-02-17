@@ -28,6 +28,8 @@ and Robert Gieseke at the [Potsdam Institute for Climate Impact Research](https:
 It is currently based on a
 [slightly modified Hector version](https://github.com/swillner/hector/) and
 a [generic wrapper](https://github.com/swillner/hector-wrapper/) for Hector's API.
+See the included git submodules for the specific commits that are being used.
+
 
 ## Usage
 
