@@ -20,6 +20,9 @@ See the Hector [repository](https://github.com/JGCRI/hector) and
 The Python interface **pyhector** is developed by [Sven Willner](http://www.pik-potsdam.de/~willner/)
 and Robert Gieseke at the [Potsdam Institute for Climate Impact Research](https://www.pik-potsdam.de/).
 
+It is currently based on a
+[slightly modified Hector version](https://github.com/swillner/hector/) and
+a [generic wrapper](https://github.com/swillner/hector-wrapper/) for Hector's API.
 
 ## Usage
 
