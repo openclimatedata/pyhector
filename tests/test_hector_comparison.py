@@ -37,18 +37,15 @@ def compile_hector():
 
     ver=["awk", "/define.*BOOST_LIB_VERSION/ {print $3}",
          "/usr/include/boost/version.hpp"]
-    p = subprocess.run(ver, stdout=subprocess.PIPE)
-    version = p.stdout.decode()
-    p = subprocess.Popen(["git", "pull"], cwd=hector_path)
-    p.wait()
+    version = subprocess.check_output(ver).decode()
+    subprocess.check_call(["git", "pull"], cwd=hector_path)
     env = dict(**os.environ)
     env.update({
         "BOOSTLIB": "/usr/local/lib",
         "BOOSTVERSION": version,
         "BOOSTROOT": "/usr/include/boost"
     })
-    p = subprocess.Popen(["make", "hector"], cwd=hector_path, env=env)
-    p.wait()
+    subprocess.check_call(["make", "hector"], cwd=hector_path, env=env)
 
 
 @pytest.fixture
