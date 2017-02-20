@@ -41,12 +41,12 @@ def compile_hector():
     version = p.stdout.decode()
     p = subprocess.Popen(["git", "pull"], cwd=hector_path)
     p.wait()
-    env = {
-        **os.environ,
+    env = dict(**os.environ)
+    env.update({
         "BOOSTLIB": "/usr/local/lib",
         "BOOSTVERSION": version,
         "BOOSTROOT": "/usr/include/boost"
-    }
+    })
     p = subprocess.Popen(["make", "hector"], cwd=hector_path, env=env)
     p.wait()
 
