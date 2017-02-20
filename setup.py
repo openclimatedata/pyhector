@@ -16,11 +16,8 @@ Find **usage** instructions in the `repository
 from setuptools import setup, Extension
 from setuptools.command.test import test as TestCommand
 import glob
-
+import sys
 import versioneer
-
-
-cmdclass = versioneer.get_cmdclass()
 
 
 class PyTest(TestCommand):
@@ -32,9 +29,10 @@ class PyTest(TestCommand):
 
     def run_tests(self):
         import pytest
-        pytest.main(self.test_args)
+        sys.exit(pytest.main(self.test_args))
 
 
+cmdclass = versioneer.get_cmdclass()
 cmdclass.update({"test": PyTest})
 
 libpyhector = Extension(
