@@ -79,5 +79,6 @@ setup(
     packages=['pyhector'],
     install_requires=['pandas', 'numpy'],
     tests_require=['pytest'],
+    setup_requires=['pytest-runner'],
     ext_modules=[libpyhector]
 )

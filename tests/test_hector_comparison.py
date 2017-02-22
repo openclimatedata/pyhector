@@ -14,6 +14,9 @@ from pyhector import (
 )
 
 
+slowtest = pytest.mark.slowtest
+
+
 path = os.path.dirname(__file__)
 rcps = {
     'rcp26': rcp26,
@@ -59,10 +62,12 @@ def run_rcps(compile_hector):
         assert os.path.exists(output_stream)
 
 
+@slowtest
 def test_hector_binary_exists(compile_hector):
     assert os.path.exists(os.path.join(hector_path, "source/hector"))
 
 
+@slowtest
 def test_rcps(run_rcps):
     # Compare output of Pyhector with Hector's output streams for RCPs.
     for name, scenario in rcps.items():
