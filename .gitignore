@@ -12,4 +12,3 @@ pyhector.egg-info
 .cache
 venv/
 .eggs/
-tests/hector

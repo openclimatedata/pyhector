@@ -1,3 +1,6 @@
 [submodule "hector-wrapper"]
 	path = hector-wrapper
 	url = https://github.com/swillner/hector-wrapper.git
+[submodule "tests/hector"]
+	path = tests/hector
+	url = ./hector-wrapper/hector/

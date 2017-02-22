@@ -29,16 +29,12 @@ output_path = os.path.join(hector_path, "output")
 
 @pytest.fixture
 def compile_hector():
-    if not os.path.exists(hector_path):
-        p = subprocess.Popen(
-            ["git", "clone", "https://github.com/JGCRI/hector.git",
-             "--depth", "1"], cwd=path)
-        p.wait()
+    subprocess.check_call(["git", "submodule", "init"], cwd=hector_path)
+    subprocess.check_call(["git", "submodule", "update"], cwd=hector_path)
 
     ver = ["awk", "/define.*BOOST_LIB_VERSION/ {print $3}",
            "/usr/include/boost/version.hpp"]
     version = subprocess.check_output(ver).decode()
-    subprocess.check_call(["git", "pull"], cwd=hector_path)
     env = dict(**os.environ)
     env.update({
         "BOOSTLIB": "/usr/local/lib",
