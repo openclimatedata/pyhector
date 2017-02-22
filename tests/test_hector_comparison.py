@@ -35,8 +35,8 @@ def compile_hector():
              "--depth", "1"], cwd=path)
         p.wait()
 
-    ver=["awk", "/define.*BOOST_LIB_VERSION/ {print $3}",
-         "/usr/include/boost/version.hpp"]
+    ver = ["awk", "/define.*BOOST_LIB_VERSION/ {print $3}",
+           "/usr/include/boost/version.hpp"]
     version = subprocess.check_output(ver).decode()
     subprocess.check_call(["git", "pull"], cwd=hector_path)
     env = dict(**os.environ)
