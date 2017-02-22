@@ -104,7 +104,7 @@ For local development you can clone the repository, update the
 dependencies and install in a virtual environment with `pip`.
 
 ```bash
-git clone https://github.com/swillner/pyhector.git --recursive
+git clone https://github.com/openclimatedata/pyhector.git --recursive
 cd pyhector
 python3 -m venv venv
 ./venv/bin/pip install --editable .
