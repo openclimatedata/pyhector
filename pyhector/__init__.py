@@ -26,7 +26,7 @@ import pandas as pd
 
 from copy import deepcopy
 
-from .default_config import default_config
+from .default_config import default_config as _default_config
 from .units import units  # NOQA
 from .emissions import emissions
 from .output import variables
@@ -164,16 +164,10 @@ class Hector():
             self._check(_lib.hector_set_value(self.__state, _conv(section),
                                               _conv(variable), value))
 
-    def config(self, config=None):
-        parameters = deepcopy(default_config)
-        if config is not None:
-            for key, data in config.items():
-                for option, value in data.items():
-                    parameters[key][option] = value
-        for section, data in parameters.items():
+    def config(self, config):
+        for section, data in config.items():
             for variable, value in data.items():
                 self.set_value(section, variable, value)
-        return parameters
 
     def set_emissions(self, scenario):
         for section in emissions:
@@ -234,13 +228,43 @@ rcp85 = read_hector_input(
 )
 
 
-def run(scenario, config_options=None,
-        outputs=['temperature.Tgav', 'simpleNbox.Ca', 'forcing.Ftot']):
+def run(scenario, config=None, base_config=None,
+        outputs=['temperature.Tgav', 'simpleNbox.Ca', 'forcing.Ftot'],
+        return_config=False):
     """
-    TODO
+    Runs a scenario through the Hector climate model.
+
+    Parameters
+    ----------
+    scenario: Pandas DataFrame with emissions. See ``pyhector.rcp26`` for an
+        example and pyhector.units for units of emissions values.
+    config: Dictionary of additional config options that overwrite the base
+        config. default None
+    base_config: Dictionary of base config to use. If None uses Hector's
+        default config. Values in config override values in base_config.
+        default None
+    outputs: List of requested output variables as strings.  if set to "all"
+        returns all available variables. Defaults to global temperature,  CO2
+        concentration and forcing. A full list is in ``pyhector.variables``.
+    return_config: Additionaly return the full config used from adding
+        ``config`` values to ``base_config``. default False
+
+    Returns
+    -------
+    results: Pandas DataFrame with requested columns.
+    parameters: When ``return_config`` is set to True ``results`` and
+        ``parameters`` are returned as a tuple.
     """
+    if base_config is None:
+        parameters = deepcopy(_default_config)
+    else:
+        parameters = deepcopy(base_config)
+    if config:
+        for key, data in config.items():
+            for option, value in data.items():
+                parameters[key][option] = value
     with Hector() as h:
-        parameters = h.config(config_options)
+        h.config(parameters)
         h.set_emissions(scenario)
         if outputs == "all":
             outputs = variables.keys()
@@ -261,4 +285,9 @@ def run(scenario, config_options=None,
         # End of range is non-inclusive in Python ranges.
         end = int(parameters["core"]["endDate"]) + 1
         index = np.arange(start, end)
-    return pd.DataFrame(results, index=index), parameters
+        results = pd.DataFrame(results, index=index)
+    if return_config:
+        return results, parameters
+    else:
+        return results
+

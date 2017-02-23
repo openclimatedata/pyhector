@@ -33,17 +33,28 @@ See the included git submodules for the specific commits that are being used.
 
 ## Usage
 
-This repository also contains a Jupyter Notebook you can [try live](http://mybinder.org/repo/openclimatedata/pyhector), courtesy of the
+This repository also contains a [Jupyter Notebook](index.ipynb) you can
+[run live](http://mybinder.org/repo/openclimatedata/pyhector) and experiment
+with, courtesy of the
 [Binder](http://mybinder.org/) project ([Status](http://mybinder.org/status/)).
 
+### Minimal example
+
 ```python
+import pyhector
+
+output = pyhector.run(pyhector.rcp26)
+```
+
+### Advanced example
+```
 import pyhector
 from pyhector import rcp26, rcp45, rcp60, rcp85
 
 import matplotlib.pyplot as plt
 
 for rcp in [rcp26, rcp45, rcp60, rcp85]:
-    output, params = pyhector.run(rcp, {"core": {"endDate": 2100}})
+    output = pyhector.run(rcp, {"core": {"endDate": 2100}})
     temp = output["temperature.Tgav"]
     # Adjust to 1850 - 1900 reference period
     temp = temp.loc[1850:] - temp.loc[1850:1900].mean()
@@ -85,6 +96,11 @@ pip install pyhector
 
 
 ## Changelog
+
+### Master (unreleased)
+
+- return `parameters` only when requested in `run` function
+- allow different configuration objects to be used
 
 ### 0.3.0
 
