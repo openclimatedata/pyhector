@@ -19,3 +19,11 @@ script:
   - python setup.py test --addopts '-v -m "not slowtest"'
 notifications:
   slack: climate-models:kLhWus3hN9nXOI5VYYGORFEd
+deploy:
+  password:
+    provider: pypi
+    user: rgieseke
+    password:
+      secure: Oa02zFY2VQ02FKX3dCs617siYalFn3pFA0VtABW9yYs3zaokMWhd5fKmTI6pdoySKxLngYtti57e9k6aGKsasOSvovRvG7HohXPG67Hgi1Dmih8FsPMwipCZ4wWxyWKEa2ZJcwg66TWGdHalQorQ124gkJ3vKW/v7mjvAYQWi/7jbOmg3hguSbP6dNE8Pi5cIvR6VNZqCus6/iU5Q9csgLOooegCYe78j15hIWUnIb1VzJWgjefJea26hMwRtRbszQGW8PRnleKjSRPXyD8z0ibB7I1wnzehzUD/Zcy8NEVHGKQEBD1szLy8itKmk/gK6ERMpjaJaov/XfDxtHr/MFo5S9zU3zD3AW/rtxJxInI3rhLkEq3yvwucFhC9s+Sw+Uq27N4JyCfwyy2CwV22TLr0ypi6c8y9snub5waN8nacFERAxEf1sRmw0ctR/DvHVfPltmyOXMW6gpaIqMaF3Axwq1nrvkat6XBEDxxXd9S7lKgX4fQ99YawH+ABfrKJlnK2FhPMPY3TJyrnBVTB4672wTs4hM0JOt0L9pIpY37MNOljEpdnMMNN8QtEbTX8Hy6Obsa9O9Ctv2CGBoN+RtnD58ayt7AfybdQq9CPxTX7vr7lEa2bnIzfBgSYFZTQpxeKVy8Plrh4KQtUjE/ff1wq3cdkNLNZJQ1yxvGiKzA=
+    on:
+      tags: true
