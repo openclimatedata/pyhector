@@ -36,7 +36,7 @@ def test_rcps():
         original = read_hector_output(
             os.path.join(path, "./data/outputstream_{}.csv".format(name))
         )
-        output, _ = pyhector.run(scenario)
+        output = pyhector.run(scenario)
         assert_series_equal(
             output["temperature.Tgav"], original.Tgav, check_names=False)
 
@@ -47,19 +47,10 @@ def test_default_options():
     assert parameters["core"]["endDate"] == 2300
 
 
-def test_changed_default_options():
-    config_options = {
-        "core": {"endDate": 2100}
-    }
-    with Hector() as h:
-        parameters = h.config(config_options)
-    assert parameters["core"]["endDate"] == 2100
-
-
 def test_default_options():
-    assert pyhector.default_config["core"]["endDate"] == 2300
+    assert pyhector._default_config["core"]["endDate"] == 2300
     pyhector.run(rcp26, {"core": {"endDate": 2100}})
-    assert pyhector.default_config["core"]["endDate"] == 2300
+    assert pyhector._default_config["core"]["endDate"] == 2300
 
 
 def test_units():
@@ -69,14 +60,20 @@ def test_units():
 
 
 def test_output_variables():
-    results, _ = pyhector.run(rcp26)
+    results = pyhector.run(rcp26)
     assert len(results.columns) == 3
-    results, _ = pyhector.run(rcp26, outputs="all")
+    results = pyhector.run(rcp26, outputs="all")
     assert len(results.columns) == len(pyhector.variables.keys())
 
 
 def test_output_variables_needs_date():
     # Some outputs require the "needs_date" flag to be set to True.
     needing_date = ["CH4.CH4", "N2O.N2O", "OH.TAU_OH", "ozone.O3"]
-    results, _ = pyhector.run(rcp26, outputs=needing_date)
+    results = pyhector.run(rcp26, outputs=needing_date)
     assert list(results.columns) == needing_date
+
+
+def test_use_base_config():
+    results, params = pyhector.run(
+        rcp26,  base_config=pyhector._default_config, return_config=True)
+    assert params == pyhector._default_config
