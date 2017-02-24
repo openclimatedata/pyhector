@@ -13,11 +13,25 @@ changes.
 
 ## Registering on PyPI
 
+Assuming a `.pypirc` is set with "pypi".
+
+    [pypi]
+    repository=https://pypi.python.org/pypi
+
 The first time one needs to register on PyPI with
 
     python setup.py register -r pypi
 
-
 ## Release on PyPI
 
     python setup.py sdist upload -r pypi
+
+## Testing
+
+Check if `pyhector` can be installed from PyPI:
+
+    pip install pyhector --upgrade
+
+Make sure the Jupyter Notebook is up-to date with the latest version. The
+notebook can be re-compiled at
+<http://mybinder.org/status/openclimatedata/pyhector>.
