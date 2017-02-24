@@ -94,7 +94,7 @@ def test_year_changes():
 @pytest.mark.skip(reason="no way of currently testing this")
 def test_turn_off_spinup():
     results = pyhector.run(rcp45, {"core": {"do_spinup": False}})
-    # Spin-up output seems to be not available in pyhector
+    # Spin-up output not yet available in pyhector yet (# 15)
 
 # Turn on the constraint settings one by one and run the model
 # CO2
@@ -103,12 +103,13 @@ def test_contraint_setting():
     lawdome_co2 = pd.read_csv(lawdome_co2_csv,
         skiprows=[0, 1, 3], index_col=0, comment=";")
     lawdome_co2.index = lawdome_co2.index.astype(int)
-    values = list(zip(lawdome_co2.index, lawdome_co2.Ca_constrain,))
     output = pyhector.run(rcp45,
-        {"simpleNbox": {"Ca_constrain": values}})
+        {"simpleNbox": {"Ca_constrain": lawdome_co2.Ca_constrain}})
     # Simplifying the overlapping date-range (later lawdome values are yearly.)
     assert_series_equal(
         output["simpleNbox.Ca"].loc[1750:1960:5],
         lawdome_co2.Ca_constrain.loc[1750:1960], check_names=False)
 
+# Temperature
 
+# Radiative forcing

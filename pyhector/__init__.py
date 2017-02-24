@@ -143,7 +143,13 @@ class Hector():
         self.close()
 
     def set_value(self, section, variable, value):
-        if isinstance(value, list):  # values with time
+        if isinstance(value, pd.Series):  # values with time as Series
+            values = list(zip(value.index, value))
+            for v in values:
+                self._check(_lib.hector_set_timed_value(
+                    self.__state, _conv(section), _conv(variable),
+                    v[0], v[1]))
+        elif isinstance(value, list):  # values with time
             for v in value:
                 if len(v) == 3:  # timed value with unit
                     self._check(_lib.hector_set_value(
@@ -290,4 +296,3 @@ def run(scenario, config=None, base_config=None,
         return results, parameters
     else:
         return results
-
