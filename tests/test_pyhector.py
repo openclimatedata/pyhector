@@ -9,7 +9,10 @@ from pandas.util.testing import assert_series_equal
 
 import pyhector
 from pyhector import (
-    Hector, rcp26, rcp45, rcp60, rcp85, read_hector_input, read_hector_output
+    Hector, rcp26, rcp45, rcp60, rcp85,
+    read_hector_input,
+    read_hector_output,
+    read_hector_constraint
 )
 
 
@@ -81,6 +84,13 @@ def test_use_base_config():
     assert params == pyhector._default_config
 
 
+def test_reading_constraint_file():
+    lawdome_co2_csv = os.path.join(path, "data/lawdome_co2.csv")
+    lawdome = read_hector_constraint(lawdome_co2_csv)
+    assert lawdome.loc[1010] == 279.5
+    assert lawdome.ix[2008] == 385.34
+
+
 # Tests following Hector's `test_hector.sh` script
 # Make sure the model handles year changes
 def test_year_changes():
@@ -90,25 +100,28 @@ def test_year_changes():
     results = pyhector.run(rcp45, {"core": {"endDate": 2250}})
     assert results.index[-1] == 2250
 
+
 # Turn off spinup
 @pytest.mark.skip(reason="no way of currently testing this")
 def test_turn_off_spinup():
     results = pyhector.run(rcp45, {"core": {"do_spinup": False}})
     # Spin-up output not yet available in pyhector yet (# 15)
 
+
 # Turn on the constraint settings one by one and run the model
 # CO2
 def test_contraint_setting():
     lawdome_co2_csv = os.path.join(path, "data/lawdome_co2.csv")
-    lawdome_co2 = pd.read_csv(lawdome_co2_csv,
-        skiprows=[0, 1, 3], index_col=0, comment=";")
-    lawdome_co2.index = lawdome_co2.index.astype(int)
+    lawdome_co2 = read_hector_constraint(lawdome_co2_csv)
+    #pd.read_csv(lawdome_co2_csv,
+        #skiprows=[0, 1, 3], index_col=0, comment=";")
+    #lawdome_co2.index = lawdome_co2.index.astype(int)
     output = pyhector.run(rcp45,
-        {"simpleNbox": {"Ca_constrain": lawdome_co2.Ca_constrain}})
+        {"simpleNbox": {"Ca_constrain": lawdome_co2}})
     # Simplifying the overlapping date-range (later lawdome values are yearly.)
     assert_series_equal(
         output["simpleNbox.Ca"].loc[1750:1960:5],
-        lawdome_co2.Ca_constrain.loc[1750:1960], check_names=False)
+        lawdome_co2.loc[1750:1960], check_names=False)
 
 # Temperature
 

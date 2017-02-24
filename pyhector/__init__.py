@@ -202,6 +202,16 @@ def read_hector_input(csv_file):
     return df
 
 
+def read_hector_constraint(constraint_file):
+    """
+    Reads a Hector contraint CSV file and returns a Pandas Series
+    """
+    df = pd.read_csv(constraint_file,
+        skiprows=[0, 1, 3], index_col=0, comment=";")
+    df.index = df.index.astype(int)
+    return df.ix[:,0]
+
+
 def read_hector_output(csv_file):
     """
     Reads a Hector output stream CSV file and returns a wide DataFrame with
