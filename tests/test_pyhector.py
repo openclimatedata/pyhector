@@ -110,7 +110,7 @@ def test_turn_off_spinup():
 
 # Turn on the constraint settings one by one and run the model
 # CO2
-def test_contraint_setting():
+def test_constraint_setting():
     lawdome_co2_csv = os.path.join(path, "data/lawdome_co2.csv")
     lawdome_co2 = read_hector_constraint(lawdome_co2_csv)
     #pd.read_csv(lawdome_co2_csv,
