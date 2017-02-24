@@ -2,6 +2,9 @@
 
 ### Master (unreleased)
 
+- config dictionary can also take a Pandas series instead of list of tuples for
+  time series
+
 ### 0.4.0
 
 - return `parameters` only when requested in `run` function
