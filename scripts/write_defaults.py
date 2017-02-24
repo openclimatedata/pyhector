@@ -54,7 +54,7 @@ for section in config.sections():
                     value = ast.literal_eval(value)
                 parameters[section][option] = value
 
-output = "default_config = {\n    " + \
+output = "_default_config = {\n    " + \
          pformat(parameters, indent=1, width=75)[1:-1].replace(
             "\n '", "\n    '").replace(
             "     '", "        '") + \

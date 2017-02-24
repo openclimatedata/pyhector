@@ -26,7 +26,7 @@ import pandas as pd
 
 from copy import deepcopy
 
-from .default_config import default_config as _default_config
+from .default_config import _default_config
 from .units import units  # NOQA
 from .emissions import emissions
 from .output import variables

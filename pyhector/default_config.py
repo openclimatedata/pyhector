@@ -1,4 +1,4 @@
-default_config = {
+_default_config = {
     'C2F6_halocarbon': {'molarMass': 138.01, 'rho': 0.00026, 'tau': 10000.0},
     'CCl4_halocarbon': {'molarMass': 153.8, 'rho': 0.00013, 'tau': 26.0},
     'CF4_halocarbon': {'H0': (35.0, 'pptv'),
