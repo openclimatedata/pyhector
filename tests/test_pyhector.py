@@ -3,6 +3,8 @@
 import os
 
 import pandas as pd
+import pytest
+
 from pandas.util.testing import assert_series_equal
 
 import pyhector
@@ -77,3 +79,36 @@ def test_use_base_config():
     results, params = pyhector.run(
         rcp26,  base_config=pyhector._default_config, return_config=True)
     assert params == pyhector._default_config
+
+
+# Tests following Hector's `test_hector.sh` script
+# Make sure the model handles year changes
+def test_year_changes():
+    results = pyhector.run(rcp45, {"core": {"startDate": 1745}})
+    # Output dates are reported as end of simulation year (1745-12-31 = 1746.0)
+    assert results.index[0] == 1746
+    results = pyhector.run(rcp45, {"core": {"endDate": 2250}})
+    assert results.index[-1] == 2250
+
+# Turn off spinup
+@pytest.mark.skip(reason="no way of currently testing this")
+def test_turn_off_spinup():
+    results = pyhector.run(rcp45, {"core": {"do_spinup": False}})
+    # Spin-up output seems to be not available in pyhector
+
+# Turn on the constraint settings one by one and run the model
+# CO2
+def test_contraint_setting():
+    lawdome_co2_csv = os.path.join(path, "data/lawdome_co2.csv")
+    lawdome_co2 = pd.read_csv(lawdome_co2_csv,
+        skiprows=[0, 1, 3], index_col=0, comment=";")
+    lawdome_co2.index = lawdome_co2.index.astype(int)
+    values = list(zip(lawdome_co2.index, lawdome_co2.Ca_constrain,))
+    output = pyhector.run(rcp45,
+        {"simpleNbox": {"Ca_constrain": values}})
+    # Simplifying the overlapping date-range (later lawdome values are yearly.)
+    assert_series_equal(
+        output["simpleNbox.Ca"].loc[1750:1960:5],
+        lawdome_co2.Ca_constrain.loc[1750:1960], check_names=False)
+
+
