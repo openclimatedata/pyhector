@@ -2,6 +2,8 @@
 
 ### Master (unreleased)
 
+### 0.4.0
+
 - return `parameters` only when requested in `run` function
 - allow different configuration objects to be used
 
