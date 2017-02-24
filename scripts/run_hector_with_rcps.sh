@@ -5,9 +5,9 @@
 
 scriptdir=$(dirname -- "$(readlink -e -- "$BASH_SOURCE")")
 cd $scriptdir
-cd ../tests/hector
+cd hector
 
 for RF in 26 45 60 85; do
   ./source/hector input/hector_rcp$RF.ini
-  cp output/outputstream_rcp$RF.csv ../data
+  cp output/outputstream_rcp$RF.csv ../tests/data
 done
