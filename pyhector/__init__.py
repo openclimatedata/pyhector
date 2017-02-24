@@ -207,7 +207,8 @@ def read_hector_constraint(constraint_file):
     Reads a Hector contraint CSV file and returns a Pandas Series
     """
     df = pd.read_csv(constraint_file,
-        skiprows=[0, 1, 3], index_col=0, comment=";")
+        index_col=0, comment=";")
+    df = df[df.applymap(lambda x: isinstance(x, (int, float)))]
     df.index = df.index.astype(int)
     return df.ix[:,0]
 
