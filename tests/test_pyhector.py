@@ -110,7 +110,7 @@ def test_turn_off_spinup():
 
 # Turn on the constraint settings one by one and run the model
 # CO2
-def test_constraint_setting():
+def test_constraint_co2():
     lawdome_co2_csv = os.path.join(path, "data/lawdome_co2.csv")
     lawdome_co2 = read_hector_constraint(lawdome_co2_csv)
     output = pyhector.run(rcp45,
@@ -120,7 +120,9 @@ def test_constraint_setting():
         output["simpleNbox.Ca"].loc[1750:1960:5],
         lawdome_co2.loc[1750:1960], check_names=False)
 
+
 # Temperature
+def test_constraint_temperature():
     temperature_csv = os.path.join(path, "data/tgav_historical.csv")
     tgav = read_hector_constraint(temperature_csv)
     output = pyhector.run(rcp45,
@@ -131,3 +133,13 @@ def test_constraint_setting():
         tgav.loc[1850:2013], check_names=False)
 
 # Radiative forcing
+def test_constraint_forcing():
+    forcing_csv = os.path.join(path, "data/MAGICC_RF_4.5.csv")
+    forcing = read_hector_constraint(forcing_csv)
+    output = pyhector.run(rcp45,
+        {"temperature": {"tgav_constrain": forcing}})
+    # Simplifying the overlapping date-range (later lawdome values are yearly.)
+    assert_series_equal(
+        output["temperature.Tgav"].loc[1765:2300],
+        forcing.loc[1765:2300], check_names=False)
+
