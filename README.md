@@ -5,7 +5,7 @@
 [![PyPI](https://img.shields.io/pypi/v/pyhector.svg)](https://pypi.python.org/pypi/pyhector)
 [![Launch Binder](https://img.shields.io/badge/launch-binder-e66581.svg)](http://mybinder.org/repo/openclimatedata/pyhector)
 
-**pyhector** is a Python wrapper for the simple global climate
+**pyhector** is a Python interface for the simple global climate
 carbon-cycle model [Hector](https://github.com/JGCRI/hector).
 
 **pyhector** makes the simple climate model Hector easily installable and usable
@@ -23,13 +23,15 @@ See the Hector [repository](https://github.com/JGCRI/hector) and
 [wiki](https://github.com/JGCRI/hector/wiki) for further information.
 
 The Python interface **pyhector** is developed by [Sven Willner](http://www.pik-potsdam.de/~willner/)
-and Robert Gieseke at the [Potsdam Institute for Climate Impact Research](https://www.pik-potsdam.de/).
+and [Robert Gieseke](https://www.pik-potsdam.de/members/gieseke) at the
+[Potsdam Institute for Climate Impact Research](https://www.pik-potsdam.de/).
 
 It is currently based on a
 [slightly modified Hector version](https://github.com/swillner/hector/) and
 a [generic wrapper](https://github.com/swillner/hector-wrapper/) for Hector's API.
 See the included git submodules for the specific commits that are being used.
 
+See also the [Changelog](CHANGELOG.md) and [contribution guidelines](CONTRIBUTING.md).
 
 ## Usage
 
