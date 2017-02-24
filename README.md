@@ -47,7 +47,8 @@ output = pyhector.run(pyhector.rcp26)
 ```
 
 ### Advanced example
-```
+
+```python
 import pyhector
 from pyhector import rcp26, rcp45, rcp60, rcp85
 
