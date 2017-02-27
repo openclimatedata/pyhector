@@ -9,8 +9,8 @@
 carbon-cycle model [Hector](https://github.com/JGCRI/hector).
 
 **pyhector** makes the simple climate model Hector easily installable and usable
-from Python and can for example be used in the analysis of mitigation scenarios
-within integrated assessment models, complex climate model emulation, and
+from Python and can for example be used in the analysis of mitigation scenarios,
+in integrated assessment models, complex climate model emulation, and
 uncertainty analyses.
 
 **[Hector](https://github.com/JGCRI/hector)** is written in C++ and developed at the
@@ -40,7 +40,7 @@ This repository also contains a [Jupyter Notebook](index.ipynb) you can
 with, courtesy of the
 [Binder](http://mybinder.org/) project ([Status](http://mybinder.org/status/)).
 
-### Minimal example
+### Basic example
 
 ```python
 import pyhector
