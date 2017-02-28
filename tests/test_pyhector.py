@@ -28,7 +28,7 @@ rcps = {
 def test_read_hector_input():
     rcp26 = read_hector_input(
         os.path.join(os.path.dirname(__file__),
-        '../pyhector/emissions/RCP26_emissions.csv')
+                     '../pyhector/emissions/RCP26_emissions.csv')
     )
     assert isinstance(rcp26, pd.DataFrame)
     assert rcp26.index[-1] == 2500
@@ -46,7 +46,7 @@ def test_rcps():
             output["temperature.Tgav"], original.Tgav, check_names=False)
 
 
-def test_default_options():
+def test_default_options_in_core():
     with Hector() as h:
         parameters = h.config()
     assert parameters["core"]["endDate"] == 2300
@@ -105,6 +105,7 @@ def test_year_changes():
 @pytest.mark.skip(reason="no way of currently testing this")
 def test_turn_off_spinup():
     results = pyhector.run(rcp45, {"core": {"do_spinup": False}})
+    assert results
     # Spin-up output not yet available in pyhector yet (# 15)
 
 
@@ -113,8 +114,7 @@ def test_turn_off_spinup():
 def test_constraint_co2():
     lawdome_co2_csv = os.path.join(path, "data/lawdome_co2.csv")
     lawdome_co2 = read_hector_constraint(lawdome_co2_csv)
-    output = pyhector.run(rcp45,
-        {"simpleNbox": {"Ca_constrain": lawdome_co2}})
+    output = pyhector.run(rcp45, {"simpleNbox": {"Ca_constrain": lawdome_co2}})
     # Simplifying the overlapping date-range (later CO2 values are yearly.)
     assert_series_equal(
         output["simpleNbox.Ca"].loc[1750:1960:5],
@@ -125,21 +125,19 @@ def test_constraint_co2():
 def test_constraint_temperature():
     temperature_csv = os.path.join(path, "data/tgav_historical.csv")
     tgav = read_hector_constraint(temperature_csv)
-    output = pyhector.run(rcp45,
-        {"temperature": {"tgav_constrain": tgav}})
+    output = pyhector.run(rcp45, {"temperature": {"tgav_constrain": tgav}})
     # Simplifying the overlapping date-range (later lawdome values are yearly.)
     assert_series_equal(
         output["temperature.Tgav"].loc[1850:2013],
         tgav.loc[1850:2013], check_names=False)
 
+
 # Radiative forcing
 def test_constraint_forcing():
     forcing_csv = os.path.join(path, "data/MAGICC_RF_4.5.csv")
     forcing = read_hector_constraint(forcing_csv)
-    output = pyhector.run(rcp45,
-        {"temperature": {"tgav_constrain": forcing}})
+    output = pyhector.run(rcp45, {"temperature": {"tgav_constrain": forcing}})
     # Simplifying the overlapping date-range (later lawdome values are yearly.)
     assert_series_equal(
         output["temperature.Tgav"].loc[1765:2300],
         forcing.loc[1765:2300], check_names=False)
-
