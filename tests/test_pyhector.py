@@ -99,7 +99,7 @@ def test_year_changes():
 @pytest.mark.skip(reason="no way of currently testing this")
 def test_turn_off_spinup():
     results = pyhector.run(rcp45, {"core": {"do_spinup": False}})
-    assert results
+    assert isinstance(results, pd.DataFrame)
     # Spin-up output not yet available in pyhector yet (# 15)
 
 
