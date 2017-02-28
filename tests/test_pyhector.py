@@ -46,12 +46,6 @@ def test_rcps():
             output["temperature.Tgav"], original.Tgav, check_names=False)
 
 
-def test_default_options_in_core():
-    with Hector() as h:
-        parameters = h.config()
-    assert parameters["core"]["endDate"] == 2300
-
-
 def test_default_options():
     assert pyhector._default_config["core"]["endDate"] == 2300
     pyhector.run(rcp26, {"core": {"endDate": 2100}})
