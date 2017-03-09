@@ -3,15 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. include:: ./../README.rst
+.. include:: ../README.rst
     :end-before: image-start
 
 .. image:: example-plot.png
     :alt: Temperature Plot of RCP scenarios
 
-.. include:: ./../README.rst
+.. include:: ../README.rst
     :start-after: image-end
 
+.. include:: ../CHANGELOG.rst
 
 API docs
 --------
