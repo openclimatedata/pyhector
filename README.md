@@ -67,7 +67,7 @@ plt.ylabel("°C over pre-industrial (1850-1900 mean)")
 plt.legend(loc="best")
 ```
 
-![](scripts/example-plot.png)
+![](docs/example-plot.png)
 
 
 ## Installation

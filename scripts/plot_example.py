@@ -10,7 +10,7 @@ import pyhector
 from pyhector import rcp26, rcp45, rcp60, rcp85
 
 path = os.path.join(os.path.dirname(__file__),
-                    './example-plot.png')
+                    '../docs/example-plot.png')
 
 for rcp in [rcp26, rcp45, rcp60, rcp85]:
     output = pyhector.run(rcp, {"core": {"endDate": 2100}})

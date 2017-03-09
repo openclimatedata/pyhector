@@ -22,6 +22,8 @@ config = configparser.ConfigParser(inline_comment_prefixes=(';'))
 config.optionxform = str
 config.read(default_config)
 
+output = '"""Dictionary with default config."""\n\n'
+
 parameters = {}
 for section in config.sections():
     if len(config.options(section)) > 0:
@@ -54,7 +56,7 @@ for section in config.sections():
                     value = ast.literal_eval(value)
                 parameters[section][option] = value
 
-output = "_default_config = {\n    " + \
+output += "_default_config = {\n    " + \
          pformat(parameters, indent=1, width=75)[1:-1].replace(
             "\n '", "\n    '").replace(
             "     '", "        '") + \
@@ -72,6 +74,9 @@ units = pd.read_csv(
 units = units.loc[:1, 1:].T.set_index(1).to_dict()[0]
 with open(os.path.join(os.path.dirname(__file__),
           "../pyhector/units.py"), "w") as f:
+    f.write('"""')
+    f.write('Dictionary of emissions and their expected units in Hector.')
+    f.write('"""\n\n')
     f.write("units = {\n ")
     f.write(pformat(units, indent=4)[1:-1])
     f.write("\n}\n")

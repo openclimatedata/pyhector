@@ -1,3 +1,5 @@
+"""Dictionary of emissions and their expected units in Hector."""
+
 units = {
     'BC_emissions': 'Mt/yr',
     'C2F6_emissions': 'kt/yr',

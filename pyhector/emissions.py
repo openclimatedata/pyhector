@@ -1,4 +1,6 @@
-# Emissions mapping for configuration.
+"""
+Emissions mapping for configuration.
+"""
 
 emissions = {
     "simpleNbox": ["anthroEmissions", "lucEmissions"],

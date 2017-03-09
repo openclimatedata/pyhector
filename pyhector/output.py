@@ -1,3 +1,5 @@
+"""Hector output variables."""
+
 variables = {
     'C2F6_halocarbon.hc_concentration': {
         'component': 'C2F6_halocarbon',

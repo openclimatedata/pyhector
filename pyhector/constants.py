@@ -1,3 +1,8 @@
+"""
+Internal mapping of Hector components and variables.
+Auto-generated from Hector headers.
+"""
+
 components = {
     "CORE": "core",
     "CCS": "carbon-cycle-solver",
@@ -43,6 +48,7 @@ components = {
     "OZONE": "ozone",
     "DUMMY": "dummy-component",
 }
+
 variables = {
     "RUN_NAME": "run_name",
     "START_DATE": "startDate",
