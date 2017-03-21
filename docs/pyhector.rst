@@ -1,54 +1,44 @@
-pyhector package
-================
+.. automodule:: pyhector
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
-Submodules
-----------
-
-pyhector.constants module
--------------------------
+pyhector.constants
+------------------
 
 .. automodule:: pyhector.constants
     :members:
     :undoc-members:
     :show-inheritance:
 
-pyhector.default_config module
-------------------------------
+pyhector.default_config
+-----------------------
 
 .. automodule:: pyhector.default_config
     :members:
     :undoc-members:
     :show-inheritance:
 
-pyhector.emissions module
--------------------------
+pyhector.emissions
+------------------
 
 .. automodule:: pyhector.emissions
     :members:
     :undoc-members:
     :show-inheritance:
 
-pyhector.output module
-----------------------
+pyhector.output
+---------------
 
 .. automodule:: pyhector.output
     :members:
     :undoc-members:
     :show-inheritance:
 
-pyhector.units module
----------------------
+pyhector.units
+--------------
 
 .. automodule:: pyhector.units
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: pyhector
     :members:
     :undoc-members:
     :show-inheritance:
