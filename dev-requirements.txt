@@ -1,0 +1,6 @@
+pytest
+notebook
+matplotlib
+sphinx
+sphinx-autobuild
+numpydoc
