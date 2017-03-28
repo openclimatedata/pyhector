@@ -54,10 +54,13 @@ for mod_name in MOCK_MODULES:
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx.ext.doctest',
+    'sphinx.ext.autosummary',
     'sphinx.ext.todo',
     'numpydoc'
 ]
+
+# Suppress warnings for embedded badges for Travis, PyPI status etc.
+suppress_warnings = ['image.nonlocal_uri']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
