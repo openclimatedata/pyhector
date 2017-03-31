@@ -233,6 +233,51 @@ def read_hector_input(csv_file):
     return df
 
 
+def write_hector_input(scenario, path=None):
+    """
+    Writes a scenario DataFrame to a CSV emissions file as used in Hector.
+
+    Parameters:
+    -----------
+    scenario: DataFrame
+        DataFrame with emissions.
+    path: file-like object or path
+
+    Returns:
+    --------
+    out: str
+        If no path is given a String of the output is returned.
+    """
+
+    # Output header format:
+    # ; Scenario name
+    # ; Generated with pyhector
+    # ;UNITS: 	GtC/yr 	GtC/yr [...]
+    # Date 	anthroEmissions 	lucEmissions [...]
+
+    out = ""
+    try:
+        name = "; " + scenario.name + "\n"
+    except AttributeError:
+        name = "; Hector Scenario\n"
+    out += name
+
+    out += "; Written with pyhector\n"
+    unit_names = [units[source] for source in scenario.columns]
+    out += ";UNITS:," + ",".join(unit_names) + "\n"
+    out += scenario.to_csv()
+
+    if isinstance(path, str):
+        f = open(path, "w")
+    elif path == None:
+        return(out)
+    else:
+        f = path
+    f.write(out)
+    if hasattr(f, 'close'):
+        f.close()
+
+
 def read_hector_constraint(constraint_file):
     """
     Reads a Hector contraint CSV file and returns it as a Pandas Series

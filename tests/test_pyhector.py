@@ -5,12 +5,13 @@ import os
 import pandas as pd
 import pytest
 
-from pandas.util.testing import assert_series_equal
+from pandas.util.testing import assert_series_equal, assert_frame_equal
 
 import pyhector
 from pyhector import (
     Hector, rcp26, rcp45, rcp60, rcp85,
     read_hector_input,
+    write_hector_input,
     read_hector_output,
     read_hector_constraint
 )
@@ -33,6 +34,14 @@ def test_read_hector_input():
     assert isinstance(rcp26, pd.DataFrame)
     assert rcp26.index[-1] == 2500
     assert rcp26.name == "RCP26_emissions"
+
+
+def test_write_hector_input(tmpdir):
+    testfile = tmpdir.join('test.csv')
+    write_hector_input(rcp26, testfile)
+    print(testfile.read())
+    scen_rcp26 = read_hector_input(str(testfile))
+    assert_frame_equal(rcp26, scen_rcp26)
 
 
 def test_rcps():
