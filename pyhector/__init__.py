@@ -237,14 +237,14 @@ def write_hector_input(scenario, path=None):
     """
     Writes a scenario DataFrame to a CSV emissions file as used in Hector.
 
-    Parameters:
-    -----------
+    Parameters
+    ----------
     scenario: DataFrame
         DataFrame with emissions.
     path: file-like object or path
 
-    Returns:
-    --------
+    Returns
+    -------
     out: str
         If no path is given a String of the output is returned.
     """
