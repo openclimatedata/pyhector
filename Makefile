@@ -19,6 +19,7 @@ venv: dev-requirements.txt
 	[ -d ./venv ] || python3 -m venv venv
 	./venv/bin/pip install --upgrade pip
 	./venv/bin/pip install -Ur dev-requirements.txt
+	./venv/bin/pip install -Ur docs/requirements.txt
 
 .PHONY: watchdocs write_defaults write_constants plot_example
 
