@@ -6,6 +6,7 @@ Master (unreleased)
 
 -  config dictionary can also take a Pandas series instead of list of
    tuples for time series
+-  add function to export scenarios as CSV files (in Hector format)
 
 0.4.0
 ~~~~~
