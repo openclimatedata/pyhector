@@ -12,7 +12,7 @@ pyhector
 `pyhector` is a Python wrapper for the simple global climate
 carbon-cycle model Hector (https://github.com/JGCRI/hector).
 
-See README.md and repository for details:
+See README.rst and repository for details:
 https://github.com/openclimatedata/pyhector
 
 """
