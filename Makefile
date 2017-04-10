@@ -21,5 +21,13 @@ venv: dev-requirements.txt
 	./venv/bin/pip install -Ur dev-requirements.txt
 	./venv/bin/pip install -Ur docs/requirements.txt
 
-.PHONY: watchdocs write_defaults write_constants plot_example
+test-pypi-install:
+	$(eval TEMPVENV := $(shell mktemp -d))
+	python3 -m venv $(TEMPVENV)
+	$(TEMPVENV)/bin/pip install pip --upgrade
+	$(TEMPVENV)/bin/pip install pyhector
+	$(TEMPVENV)/bin/python -c "import sys; sys.path.remove(''); import pyhector; print(pyhector.__version__)"
+
+
+.PHONY: watchdocs write_defaults write_constants plot_example test-pypi-install
 
