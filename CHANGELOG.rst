@@ -1,7 +1,7 @@
 Changelog
 ---------
 
-Master (unreleased)
+0.5.2
 ~~~~~~~~~~~~~~~~~~~
 
 -  config dictionary can also take a Pandas series instead of list of
