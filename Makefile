@@ -21,6 +21,10 @@ venv: dev-requirements.txt
 	./venv/bin/pip install -Ur dev-requirements.txt
 	./venv/bin/pip install -Ur docs/requirements.txt
 
+publish-on-pypi:
+	python setup.py register -r https://pypi.python.org/pypi
+	python setup.py sdist upload -r https://pypi.python.org/pypi
+
 test-pypi-install:
 	$(eval TEMPVENV := $(shell mktemp -d))
 	python3 -m venv $(TEMPVENV)
@@ -28,6 +32,22 @@ test-pypi-install:
 	$(TEMPVENV)/bin/pip install pyhector
 	$(TEMPVENV)/bin/python -c "import sys; sys.path.remove(''); import pyhector; print(pyhector.__version__)"
 
+publish-on-testpypi:
+	python setup.py register -r https://testpypi.python.org/pypi
+	python setup.py sdist upload -r https://testpypi.python.org/pypi
 
-.PHONY: watchdocs write_defaults write_constants plot_example test-pypi-install
+test-testpypi-install:
+	$(eval TEMPVENV := $(shell mktemp -d))
+	python3 -m venv $(TEMPVENV)
+	$(TEMPVENV)/bin/pip install pip --upgrade
+	# Install dependencies not on testpypi registry
+	$(TEMPVENV)/bin/pip install pandas
+	# Install pyhector without dependencies.
+	$(TEMPVENV)/bin/pip install \
+		-i https://testpypi.python.org/pypi pyhector \
+		--no-dependencies
+	# Remove local directory from path to get actual installed version.
+	$(TEMPVENV)/bin/python -c "import sys; sys.path.remove(''); import pyhector; print(pyhector.__version__)"
+
+.PHONY: watchdocs write_defaults write_constants plot_example publish-on-pypi test-pypi-install publish-on-testpypi test-testpypi-install
 
