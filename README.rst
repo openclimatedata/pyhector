@@ -40,10 +40,11 @@ being used.
 Usage
 -----
 
-This repository also contains a `Jupyter Notebook <index.ipynb>`__ you
+This repository also contains a `Jupyter Notebook <https://jupyter.readthedocs.io/en/latest/index.html>`__ you
 can `run live <http://mybinder.org/repo/openclimatedata/pyhector>`__ and
 experiment with, courtesy of the `Binder <http://mybinder.org/>`__
-project (`Status <http://mybinder.org/status/>`__).
+project (`Status <http://mybinder.org/status/>`__). The notebook can be viewed
+as a `static version <http://nbviewer.jupyter.org/github/openclimatedata/pyhector/blob/master/index.ipynb>`__ using nbviewer.
 
 Basic example
 ~~~~~~~~~~~~~
