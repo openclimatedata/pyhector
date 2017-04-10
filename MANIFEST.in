@@ -1,4 +1,3 @@
-include README.md
 include LICENSE
 recursive-include hector-wrapper/include *.h
 recursive-include hector-wrapper/hector/headers *.hpp
