@@ -105,6 +105,9 @@ On macOS *Boost* is available through the Homebrew package manager:
 
     brew install boost
 
+Windows is (as Hector) in principle supported but not yet tested for **pyhector**.
+Pull request with installation notes for Windows are welcome.
+
 Install using pip
 ~~~~~~~~~~~~~~~~~
 
