@@ -1,0 +1,38 @@
+{
+  "@context": "https://raw.githubusercontent.com/mbjones/codemeta/master/codemeta.jsonld",
+  "@type": "Code",
+  "author": [
+    {
+      "@id": "0000-0001-6798-6247",
+      "@type": "Person",
+      "email": "sven.willner@pik-potsdam.de",
+      "name": "Sven N. Willner",
+      "affiliation": "Potsdam Institute for Climate Impact Research, Potsdam, Germany; University of Potsdam, Potsdam, Germany"
+    },
+    {
+      "@id": "0000-0003-1834-6539",
+      "@type": "Person",
+      "email": "corinne.hartin@pnnl.gov",
+      "name": "Corinne Hartin",
+      "affiliation": "Joint Global Change Research Institute, College Park, MD,
+USA"
+    }
+    {
+      "@id": "0000-0002-1236-5109",
+      "@type": "Person",
+      "email": "robert.gieseke@pik-potsdam.de",
+      "name": "Robert Gieseke",
+      "affiliation": "Potsdam Institute for Climate Impact Research, Potsdam, Germany"
+    }
+  ],
+  "identifier": "",
+  "codeRepository": "https://github.com/openclimatedata/pyhector",
+  "datePublished": "2017-04-19",
+  "dateModified": "2017-04-19",
+  "dateCreated": "2017-02-23",
+  "description": "pyhector is a Python interface for the simple global climate carbon-cycle model Hector (https://github.com/JGCRI/hector). It makes the simple climate model Hector easily installable and usable from Python and can for example be used in the analysis of mitigation scenarios within integrated assessment models, complex climate model emulation, and uncertainty analyses.",
+  "keywords": "climate",
+  "license": "AGPL-3.0",
+  "title": "pyhector",
+  "version": "0.5.0"
+}

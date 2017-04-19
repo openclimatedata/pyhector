@@ -14,3 +14,4 @@ venv/
 .eggs/
 scripts/hector
 docs/_build
+*.pdf
