@@ -42,7 +42,7 @@ libpyhector = Extension(
         'hector-wrapper/hector/headers'
     ],
     libraries=['m', 'boost_system', 'boost_filesystem'],
-    extra_compile_args=['-std=c++0x'],
+    extra_compile_args=['-std=c++11'],
     sources=(glob.glob('src/*.cpp') +
              glob.glob('hector-wrapper/src/*.cpp') +
              glob.glob('hector-wrapper/hector/source/core/*.cpp') +
