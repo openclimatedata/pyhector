@@ -34,12 +34,12 @@ Hector is an open-source, object oriented, simple global climate carbon cycle mo
 
 The model input is time series of greenhouse gas emissions; as example scenarios for these the Pyhector package contains the Representative Concentration Pathways (RCPs).
 These were developed to cover the range of baseline and mitigation emissions scenarios and are widely used in climate change research and model intercomparison projects.
-Using DataFrames from the Python library Pandas (<http://pandas.pydata.org/>) as a data structure for the scenarios simplifies generating and adapting scenarios.
+Using DataFrames from the Python library Pandas^[<http://pandas.pydata.org/>] as a data structure for the scenarios simplifies generating and adapting scenarios.
 Other parameters of the Hector model can easily be modified when running the model.
 
-Pyhector can be installed using `pip` from the Python Package Index (<https://pypi.python.org/pypi/pyhector>).
-Source code and issue tracker are available in Pyhector's GitHub repository (<https://github.com/openclimatedata/pyhector>).
-Documentation is provided through Readthedocs (<http://pyhector.readthedocs.io/en/latest/>).
-Usage examples are also contained in the repository as a Jupyter Notebook [@Perez2007; @Kluyver2016]. Courtesy of the Mybinder project (<http://mybinder.org/>), the example Notebook can also be executed and modified without installing pyhector locally.
+Pyhector can be installed using `pip` from the Python Package Index ^[<https://pypi.python.org/pypi/pyhector>].
+Source code and issue tracker are available in Pyhector's GitHub repository^[<https://github.com/openclimatedata/pyhector>].
+Documentation is provided through Readthedocs^[<http://pyhector.readthedocs.io/en/latest/>].
+Usage examples are also contained in the repository as a Jupyter Notebook [@Perez2007; @Kluyver2016]. Courtesy of the Mybinder project^[<http://mybinder.org/>], the example Notebook can also be executed and modified without installing pyhector locally.
 
 # References
