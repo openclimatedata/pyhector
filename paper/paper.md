@@ -49,6 +49,6 @@ repository^[<https://github.com/openclimatedata/pyhector>].
 Documentation is provided through
 Readthedocs^[<http://pyhector.readthedocs.io/en/latest/>].
 Usage examples are also contained in the repository as a Jupyter Notebook [@Perez2007; @Kluyver2016]. Courtesy of the Mybinder project^[<http://mybinder.org/>], the example
-Notebook can also be executed and modified without installing pyhector locally.
+Notebook can also be executed and modified without installing Pyhector locally.
 
 # References
