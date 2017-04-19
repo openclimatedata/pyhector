@@ -32,7 +32,7 @@ Pyhector is a Python interface for the simple climate model Hector [@Hartin2015]
 GCAM^[<http://jgcri.github.io/gcam-doc/hector.html>],
 in the emulation of complex climate models, and in uncertainty analyses.
 
-Hector is an open-source, object oriented, simple global climate carbon cycle model. Its carbon cycle consists of a one pool atmosphere, three terrestrial pools which can be broken down into finer biomes or regions, and four carbon pools in the ocean component. The terrestrial carbon cycle includes primary production and respiration fluxes. The ocean carbon cycle circulates carbon via a simplified thermohaline circulation, calculating air-sea fluxes along with the marine carbonate system [@Hartin2016].
+Hector is an open-source, object oriented, simple global climate carbon cycle model. Its carbon cycle consists of a one pool atmosphere, three terrestrial pools which can be broken down into finer biomes or regions, and four carbon pools in the ocean component. The terrestrial carbon cycle includes primary production and respiration fluxes. The ocean carbon cycle circulates carbon via a simplified thermohaline circulation, calculating air-sea fluxes as well as the marine carbonate system [@Hartin2016].
 
 The model input is time series of greenhouse gas emissions; as example scenarios for
 these the Pyhector package contains the Representative Concentration Pathways
