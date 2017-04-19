@@ -28,17 +28,17 @@ output: pdf_document
 
 # Summary
 
-pyhector is a Python interface for the simple climate model Hector [@Hartin2015] developed in C++. Simple climate models like Hector can, for instance, be used in the analysis of scenarios within integrated assessment models, in the emulation of complex climate models, and in uncertainty analyses.
+Pyhector is a Python interface for the simple climate model Hector [@Hartin2015] developed in C++. Simple climate models like Hector can, for instance, be used in the analysis of scenarios within integrated assessment models, in the emulation of complex climate models, and in uncertainty analyses.
 
 Hector is an open-source, object oriented, simple global climate carbon cycle model. Its carbon cycle consists of a one pool atmosphere, three terrestrial pools which can be broken down into finer biomes or regions, and four carbon pools in the ocean component. The terrestrial carbon cycle includes primary production and respiration fluxes. The ocean carbon cycle circulates carbon via a simplified thermohaline circulation, calculating air-sea fluxes along with the marine carbonate system [@Hartin2016].
 
-The model input is time series of greenhouse gas emissions; as example scenarios for these the pyhector package contains the Representative Concentration Pathways (RCPs).
+The model input is time series of greenhouse gas emissions; as example scenarios for these the Pyhector package contains the Representative Concentration Pathways (RCPs).
 These were developed to cover the range of baseline and mitigation emissions scenarios and are widely used in climate change research and model intercomparison projects.
 Using DataFrames from the Python library Pandas (<http://pandas.pydata.org/>) as a data structure for the scenarios simplifies generating and adapting scenarios.
 Other parameters of the Hector model can easily be modified when running the model.
 
-pyhector can be installed using `pip` from the Python Package Index (<https://pypi.python.org/pypi/pyhector>).
-Source code and issue tracker are available in pyhector's GitHub repository (<https://github.com/openclimatedata/pyhector>).
+Pyhector can be installed using `pip` from the Python Package Index (<https://pypi.python.org/pypi/pyhector>).
+Source code and issue tracker are available in Pyhector's GitHub repository (<https://github.com/openclimatedata/pyhector>).
 Documentation is provided through Readthedocs (<http://pyhector.readthedocs.io/en/latest/>).
 Usage examples are also contained in the repository as a Jupyter Notebook [@Perez2007; @Kluyver2016]. Courtesy of the Mybinder project (<http://mybinder.org/>), the example Notebook can also be executed and modified without installing pyhector locally.
 
