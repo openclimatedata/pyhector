@@ -11,7 +11,7 @@ authors:
  - name: Corinne Hartin
    orcid: 0000-0003-1834-6539
    affiliation: 3
- - name: Robert J Gieseke
+ - name: Robert Gieseke
    orcid: 0000-0002-1236-5109
    affiliation: 1
 affiliations:
