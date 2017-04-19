@@ -29,7 +29,7 @@
   "datePublished": "2017-04-19",
   "dateModified": "2017-04-19",
   "dateCreated": "2017-02-23",
-  "description": "pyhector is a Python interface for the simple global climate carbon-cycle model Hector (https://github.com/JGCRI/hector). It makes the simple climate model Hector easily installable and usable from Python and can for example be used in the analysis of mitigation scenarios within integrated assessment models, complex climate model emulation, and uncertainty analyses.",
+  "description": "pyhector is a Python interface for the simple global climate carbon-cycle model Hector (https://github.com/JGCRI/hector). It makes the simple climate model Hector easily installable and usable from Python and can for example be used in the analysis of scenarios within integrated assessment models, complex climate model emulation, and uncertainty analyses.",
   "keywords": "climate",
   "license": "AGPL-3.0",
   "title": "pyhector",
