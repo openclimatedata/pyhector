@@ -98,9 +98,18 @@ int hector_set_array_unit(Hector::HectorWrapper* wrapper, const char* component,
     }
 }
 
-int hector_add_observable(Hector::HectorWrapper* wrapper, const char* component, const char* name, const bool needs_date) {
+int hector_get_spinup_size(Hector::HectorWrapper* wrapper) {
     try {
-        wrapper->output()->add_variable(component, name, needs_date);
+        return wrapper->output()->spinup_size();
+    } catch (const std::exception& ex) {
+        last_error = ex.what();
+        return -1;
+    }
+}
+
+int hector_add_observable(Hector::HectorWrapper* wrapper, const char* component, const char* name, const bool needs_date, const bool in_spinup) {
+    try {
+        wrapper->output()->add_variable(component, name, needs_date, in_spinup);
         return 0;
     } catch (const std::exception& ex) {
         last_error = ex.what();
@@ -108,10 +117,14 @@ int hector_add_observable(Hector::HectorWrapper* wrapper, const char* component,
     }
 }
 
-int hector_get_observable(Hector::HectorWrapper* wrapper, const char* component, const char* name, double* output) {
+int hector_get_observable(Hector::HectorWrapper* wrapper, const char* component, const char* name, double* output, const bool in_spinup) {
     try {
-        const std::vector<double>& result = wrapper->output()->get_variable(component, name);
-        memcpy(output, &result[0], wrapper->output()->run_size() * sizeof(double));
+        const std::vector<double>& result = wrapper->output()->get_variable(component, name, in_spinup);
+        if (in_spinup) {
+            memcpy(output, &result[0], wrapper->output()->spinup_size() * sizeof(double));
+        } else {
+            memcpy(output, &result[0], wrapper->output()->run_size() * sizeof(double));
+        }
         return 0;
     } catch (const std::exception& ex) {
         last_error = ex.what();

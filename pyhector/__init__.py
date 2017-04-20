@@ -89,8 +89,11 @@ _lib.hector_get_observable.argtypes = [
     ctypes.c_void_p,
     ctypes.c_char_p,
     ctypes.c_char_p,
-    np.ctypeslib.ndpointer(ctypes.c_double, flags='contiguous, writeable')
+    np.ctypeslib.ndpointer(ctypes.c_double, flags='contiguous, writeable'),
+    ctypes.c_bool
 ]
+_lib.hector_get_spinup_size.restype = ctypes.c_int
+_lib.hector_get_spinup_size.argtypes = [ctypes.c_void_p]
 
 
 class HectorException(Exception):
@@ -112,10 +115,12 @@ class Hector():
         """Initialise a Hector instance."""
         self.__state = ctypes.c_void_p()
         self._check(_lib.hector_open(self.__state))
+        self.__run_size = 0
 
     def close(self):
         """Close Hector instance."""
         if self.__state is not None:
+            self.__run_size = 0
             _lib.hector_close(self.__state)
             self.__state = None
 
@@ -128,23 +133,37 @@ class Hector():
         self.__run_size = _lib.hector_run(self.__state)
         self._check(self.__run_size)
 
-    def add_observable(self, component, name, needs_date=False):
+    @property
+    def spinup_size(self):
+        """Returns number of spinup steps run"""
+        res = _lib.hector_get_spinup_size(self.__state)
+        self._check(res)
+        return res
+
+    def add_observable(self, component, name, needs_date=False, in_spinup=False):
         """
         Add variable that can be read later.
         See :mod:`pyhector.output` for available variables.
         """
         self._check(_lib.hector_add_observable(
-            self.__state, _conv(component), _conv(name), needs_date)
+            self.__state, _conv(component), _conv(name), needs_date, in_spinup)
         )
 
-    def get_observable(self, component, name):
+    def get_observable(self, component, name, in_spinup=False):
         """
         Returns output variable.
         See :mod:`pyhector.output` for available variables.
         """
-        result = np.empty((self.__run_size,), dtype=np.float64)
+        if self.__run_size == 0:
+            raise HectorException("Hector has not run yet")
+        if in_spinup:
+            size = _lib.hector_get_spinup_size(self.__state)
+            self._check(size)
+        else:
+            size = self.__run_size
+        result = np.empty((size,), dtype=np.float64)
         self._check(_lib.hector_get_observable(
-            self.__state, _conv(component), _conv(name), result)
+            self.__state, _conv(component), _conv(name), result, in_spinup)
         )
         return result
 
@@ -170,7 +189,6 @@ class Hector():
             Pandas Series, list of tuple values with time, list of tuple values
             with time and unit, single tuple, float or string as in ini config
             file.
-
         """
         if isinstance(value, pd.Series):  # values with time as Series
             values = list(zip(value.index, value))
