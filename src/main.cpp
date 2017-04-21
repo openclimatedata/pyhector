@@ -134,8 +134,7 @@ int hector_get_observable(Hector::HectorWrapper* wrapper, const char* component,
 
 int hector_run(Hector::HectorWrapper* wrapper) {
     try {
-        wrapper->hcore()->prepareToRun();
-        wrapper->hcore()->run();
+        wrapper->run();
         return wrapper->output()->run_size();
     } catch (const std::exception& ex) {
         last_error = ex.what();
