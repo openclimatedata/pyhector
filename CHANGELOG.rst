@@ -1,8 +1,14 @@
 Changelog
 ---------
 
+0.6.0
+~~~~~
+
+-  explicitly state C++11 in ``setup.py``
+-  enable spinup output to be readable
+
 0.5.2
-~~~~~~~~~~~~~~~~~~~
+~~~~~
 
 -  config dictionary can also take a Pandas series instead of list of
    tuples for time series

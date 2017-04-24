@@ -2,7 +2,7 @@
 
 ## Changelog
 
-Make sure the [changelog](CHANGELOG.md) is updated with the latest note-worthy
+Make sure the [changelog](CHANGELOG.rst) is updated with the latest note-worthy
 changes.
 
 ## Tag a Release
