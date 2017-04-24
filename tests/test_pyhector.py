@@ -5,6 +5,7 @@ import os
 import pandas as pd
 import pytest
 
+from copy import deepcopy
 from pandas.util.testing import assert_series_equal, assert_frame_equal
 
 import pyhector
@@ -105,11 +106,19 @@ def test_year_changes():
 
 
 # Turn off spinup
-@pytest.mark.skip(reason="no way of currently testing this")
 def test_turn_off_spinup():
-    results = pyhector.run(rcp45, {"core": {"do_spinup": False}})
-    assert isinstance(results, pd.DataFrame)
-    # Spin-up output not yet available in pyhector yet (# 15)
+    parameters = deepcopy(pyhector._default_config)
+    with Hector() as h:
+        h.config(parameters)
+        h.set_emissions(rcp45)
+        h.run()
+        assert(h.spinup_size > 0)
+    with Hector() as h:
+        parameters["core"]["do_spinup"] = False
+        h.config(parameters)
+        h.set_emissions(rcp45)
+        h.run()
+        assert(h.spinup_size == 0)
 
 
 # Turn on the constraint settings one by one and run the model
