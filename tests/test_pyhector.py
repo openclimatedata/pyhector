@@ -16,6 +16,7 @@ from pyhector import (
     read_hector_output,
     read_hector_constraint
 )
+from pyhector.output import variables
 
 
 path = os.path.dirname(__file__)
@@ -103,6 +104,28 @@ def test_year_changes():
     assert results.index[0] == 1746
     results = pyhector.run(rcp45, {"core": {"endDate": 2250}})
     assert results.index[-1] == 2250
+
+
+# Spinup output
+def test_spinup_output():
+    parameters = deepcopy(pyhector._default_config)
+    with Hector() as h:
+        h.config(parameters)
+        h.set_emissions(rcp45)
+        name = "simpleNbox.Ca"
+        h.add_observable(
+            variables[name]["component"],
+            variables[name]["variable"],
+            variables[name].get("needs_date", False),
+            in_spinup=True
+        )
+        h.run()
+        results = h.get_observable(
+            variables[name]["component"],
+            variables[name]["variable"],
+            in_spinup=True
+        )
+        assert(h.spinup_size == len(results))
 
 
 # Turn off spinup
