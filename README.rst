@@ -100,7 +100,8 @@ On Ubuntu/Debian these can be installed by invoking
 
     sudo apt-get install libboost-filesystem-dev libboost-system-dev
 
-On macOS *Boost* is available through the Homebrew package manager:
+On macOS *Boost* is available through the Homebrew package manager, it might be
+advisable to use a Homebrew installed Python for installing **pyhector**:
 
 .. code:: bash
 
