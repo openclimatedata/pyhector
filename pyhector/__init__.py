@@ -143,8 +143,19 @@ class Hector():
     def add_observable(self, component, name, needs_date=False,
                        in_spinup=False):
         """
-        Add variable that can be read later.
-        See :mod:`pyhector.output` for available variables.
+        Set a variable that can be read later.
+        See :mod:`pyhector.output` for available components and variables.
+
+        Parameters
+        ----------
+        component : str
+            Name of Hector component
+        name : string
+            Name of variable in component
+        needs_date : bool, default ``False``
+            Whether variable needs a date
+        in_spinup : bool, default ``False``
+            True to return from spinup phase, else from run phase
         """
         self._check(_lib.hector_add_observable(
             self.__state, _conv(component), _conv(name), needs_date, in_spinup)
@@ -154,6 +165,16 @@ class Hector():
         """
         Returns output variable.
         See :mod:`pyhector.output` for available variables.
+
+        Parameters
+        ----------
+        component : str
+            Name of Hector component
+        name : string
+            Name of variable in component
+        in_spinup : bool, default ``False``
+            True to return from spinup phase, else from run phase. Must have
+            been set in :py:meth:`add_observable` accordingly
         """
         if self.__run_size == 0:
             raise HectorException("Hector has not run yet")
@@ -182,11 +203,11 @@ class Hector():
 
         Parameters
         ----------
-        section: str
+        section : str
             Component in Hector config.
-        variable: str
+        variable : str
             Name of emissions variable.
-        value: pandas.Series, list, tuple, float, or str
+        value : pandas.Series, list, tuple, float, or str
             Pandas Series, list of tuple values with time, list of tuple values
             with time and unit, single tuple, float or string as in ini config
             file.
@@ -258,13 +279,13 @@ def write_hector_input(scenario, path=None):
 
     Parameters
     ----------
-    scenario: DataFrame
+    scenario : DataFrame
         DataFrame with emissions.
     path: file-like object or path
 
     Returns
     -------
-    out: str
+    out : str
         If no path is given a String of the output is returned.
     """
 
@@ -347,21 +368,21 @@ def run(scenario, config=None, base_config=None,
 
     Parameters
     ----------
-    scenario: DataFrame
+    scenario : DataFrame
         DataFrame with emissions. See ``pyhector.rcp26`` for an
-        example and pyhector.units for units of emissions values.
-    config: dictionary
+        example and :mod:`pyhector.units` for units of emissions values.
+    config : dictionary, default ``None``
         Additional config options that overwrite the base
-        config. default None
-    base_config: dictionary
+        config.
+    base_config : dictionary
         Base config to use. If None uses Hector's
         default config. Values in config override values in base_config.
         default None
-    outputs: array_like
+    outputs : array_like
         List of requested output variables as strings.  if set to "all"
         returns all available variables. Defaults to global temperature,  CO2
-        concentration and forcing. A full list is in ``pyhector.variables``.
-    return_config: boolean
+        concentration and forcing. A full list is in :py:data:`variables`.
+    return_config : boolean
         Additionaly return the full config used from adding
         ``config`` values to ``base_config``. default False
 
