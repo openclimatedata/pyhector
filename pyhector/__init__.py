@@ -140,7 +140,8 @@ class Hector():
         self._check(res)
         return res
 
-    def add_observable(self, component, name, needs_date=False, in_spinup=False):
+    def add_observable(self, component, name, needs_date=False,
+                       in_spinup=False):
         """
         Add variable that can be read later.
         See :mod:`pyhector.output` for available variables.
@@ -287,7 +288,7 @@ def write_hector_input(scenario, path=None):
 
     if isinstance(path, str):
         f = open(path, "w")
-    elif path == None:
+    elif path is None:
         return(out)
     else:
         f = path
