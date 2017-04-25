@@ -113,6 +113,7 @@ Advanced example
     plt.title("Global mean temperature")
     plt.ylabel("°C over pre-industrial (1850-1900 mean)")
     plt.legend(loc="best")
+    plt.show()
 
 .. image-start
 
