@@ -37,6 +37,45 @@ wrapper <https://github.com/swillner/hector-wrapper/>`__ for Hector's
 API. See the included git submodules for the specific commits that are
 being used.
 
+Installation
+------------
+
+Prerequisites
+~~~~~~~~~~~~~
+
+`Hector <https://github.com/JGCRI/hector>`__ requires
+`Boost <http://www.boost.org/>`__, so to install and use **pyhector**
+you need to have the filesystem and system modules of *Boost* version
+1.52 or later installed (see also the `Hector build
+instructions <https://github.com/JGCRI/hector/wiki/BuildHector>`__).
+
+On Ubuntu/Debian these can be installed by invoking
+
+.. code:: bash
+
+    sudo apt-get install libboost-filesystem-dev libboost-system-dev
+
+On macOS *Boost* is available through the Homebrew package manager, it might be
+advisable to use a Homebrew installed Python for installing **pyhector**:
+
+.. code:: bash
+
+    brew install boost
+
+Windows is (as Hector) in principle supported but not yet tested for **pyhector**.
+Pull request with installation notes for Windows are welcome.
+
+Install using pip
+~~~~~~~~~~~~~~~~~
+
+You can simply install **pyhector** from
+`PyPI <https://pypi.python.org/pypi/pyhector>`__ by invoking
+
+.. code:: bash
+
+    pip install pyhector
+
+
 Usage
 -----
 
@@ -81,44 +120,6 @@ Advanced example
     :alt: Temperature Plot of RCP scenarios
 
 .. image-end
-
-Installation
-------------
-
-Prerequisites
-~~~~~~~~~~~~~
-
-`Hector <https://github.com/JGCRI/hector>`__ requires
-`Boost <http://www.boost.org/>`__, so to install and use **pyhector**
-you need to have the filesystem and system modules of *Boost* version
-1.52 or later installed (see also the `Hector build
-instructions <https://github.com/JGCRI/hector/wiki/BuildHector>`__).
-
-On Ubuntu/Debian these can be installed by invoking
-
-.. code:: bash
-
-    sudo apt-get install libboost-filesystem-dev libboost-system-dev
-
-On macOS *Boost* is available through the Homebrew package manager, it might be
-advisable to use a Homebrew installed Python for installing **pyhector**:
-
-.. code:: bash
-
-    brew install boost
-
-Windows is (as Hector) in principle supported but not yet tested for **pyhector**.
-Pull request with installation notes for Windows are welcome.
-
-Install using pip
-~~~~~~~~~~~~~~~~~
-
-You can simply install **pyhector** from
-`PyPI <https://pypi.python.org/pypi/pyhector>`__ by invoking
-
-.. code:: bash
-
-    pip install pyhector
 
 Development
 -----------
