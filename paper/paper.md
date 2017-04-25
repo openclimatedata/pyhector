@@ -39,7 +39,7 @@ these the Pyhector package contains the Representative Concentration Pathways
 (RCPs)^[<http://tntcat.iiasa.ac.at:8787/RcpDb/dsd?Action=htmlpage&page=welcome>].
 These were developed to cover the range of baseline and mitigation emissions scenarios
 and are widely used in climate change research and model intercomparison projects.
-Using DataFrames from the Python library Pandas^[<http://pandas.pydata.org/>] as a data
+Using DataFrames from the Python library Pandas [@McKinney2010] as a data
 structure for the scenarios simplifies generating and adapting scenarios.
 Other parameters of the Hector model can easily be modified when running the model.
 
