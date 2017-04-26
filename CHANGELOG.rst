@@ -1,6 +1,12 @@
 Changelog
 ---------
 
+0.7.0
+~~~~~
+
+-  overhauled docs to include tables for configuration dicts
+-  fixed start_date bug when not setting observables
+
 0.6.0
 ~~~~~
 
