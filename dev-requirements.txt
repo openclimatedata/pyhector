@@ -4,3 +4,4 @@ matplotlib
 sphinx
 sphinx-autobuild
 numpydoc
+tabulate

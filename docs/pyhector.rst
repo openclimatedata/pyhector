@@ -25,14 +25,17 @@ the respective component.
 
 .. exec::
     from pyhector import emissions
-    sorted_emissions = sorted(emissions.items())
-    for item in sorted_emissions:
-        print("- ``{}``: {}".format(item[0], item[1]))
+    from tabulate import tabulate
+    print(tabulate(map(lambda item: ("``%s``" % item[0],
+                                     ", ".join(map(lambda i: "``%s``" % i, item[1]))),
+                       sorted(emissions.items())),
+                   ["component", "emissions"],
+                   tablefmt="grid"))
 
 pyhector.output
 ---------------
 
-A dictionary with Hector's available output variables
+A dictionary with Hector's available output variables::
 
     output = {
         'C2F6_halocarbon.hc_concentration': {
@@ -43,20 +46,18 @@ A dictionary with Hector's available output variables
         },
         [...]
 
-Full list below, sorted by dictionary key "component.variable", showing
-description and the associated unit:
-
 .. exec::
     from pyhector import output
-    template = "- ``{}.{}``, {}, {}"
+    from tabulate import tabulate
     sorted_output = sorted(output.items(),
                               key=output.get("component"))
-    for item in sorted_output:
-        print(template.format(
-            item[1]["component"],
-            item[1]["variable"],
-            item[1]["description"],
-            item[1]["unit"]))
+    print(tabulate(map(lambda item: ("``%s``" % item[1]["component"],
+                                     "``%s``" % item[1]["variable"],
+                                     item[1]["description"],
+                                     "``%s``" % item[1]["unit"]),
+                       sorted_output),
+                   ["component", "variable", "description", "unit"],
+                   tablefmt="grid"))
 
 pyhector.units
 --------------
@@ -65,5 +66,9 @@ A dictionary with emissions categories and their associated units.
 
 .. exec::
     from pyhector import units
-    for key, value in sorted(units.items()):
-        print("- ``{}``:  {}\n".format(key, value))
+    from tabulate import tabulate
+    print(tabulate(map(lambda item: ("``%s``" % item[0],
+                                     "``%s``" % item[1]),
+                       sorted(units.items())),
+                   ["emissions", "unit"],
+                   tablefmt="grid"))
