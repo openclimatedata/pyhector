@@ -28,6 +28,7 @@ the respective component.
     sorted_emissions = sorted(emissions.items())
     for item in sorted_emissions:
         print("- ``{}``: {}".format(item[0], item[1]))
+
 pyhector.output
 ---------------
 
@@ -46,11 +47,11 @@ Full list below, sorted by dictionary key "component.variable", showing
 description and the associated unit:
 
 .. exec::
-    from pyhector import variables
+    from pyhector import output
     template = "- ``{}.{}``, {}, {}"
-    sorted_variables = sorted(variables.items(),
-                              key=variables.get("component"))
-    for item in sorted_variables:
+    sorted_output = sorted(output.items(),
+                              key=output.get("component"))
+    for item in sorted_output:
         print(template.format(
             item[1]["component"],
             item[1]["variable"],
