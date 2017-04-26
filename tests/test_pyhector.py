@@ -16,7 +16,7 @@ from pyhector import (
     read_hector_output,
     read_hector_constraint
 )
-from pyhector.output import variables
+from pyhector.output import output
 
 
 path = os.path.dirname(__file__)
@@ -73,7 +73,7 @@ def test_output_variables():
     results = pyhector.run(rcp26)
     assert len(results.columns) == 3
     results = pyhector.run(rcp26, outputs="all")
-    assert len(results.columns) == len(pyhector.variables.keys())
+    assert len(results.columns) == len(pyhector.output.keys())
 
 
 def test_output_variables_needs_date():
@@ -114,15 +114,15 @@ def test_spinup_output():
         h.set_emissions(rcp45)
         name = "simpleNbox.Ca"
         h.add_observable(
-            variables[name]["component"],
-            variables[name]["variable"],
-            variables[name].get("needs_date", False),
+            output[name]["component"],
+            output[name]["variable"],
+            output[name].get("needs_date", False),
             in_spinup=True
         )
         h.run()
         results = h.get_observable(
-            variables[name]["component"],
-            variables[name]["variable"],
+            output[name]["component"],
+            output[name]["variable"],
             in_spinup=True
         )
         assert(h.spinup_size == len(results))
