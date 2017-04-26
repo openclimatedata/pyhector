@@ -29,7 +29,7 @@ from copy import deepcopy
 from .default_config import _default_config
 from .units import units  # NOQA
 from .emissions import emissions
-from .output import variables
+from .output import output
 
 from ._version import get_versions
 __version__ = get_versions()['version']
@@ -406,16 +406,16 @@ def run(scenario, config=None, base_config=None,
         h.config(parameters)
         h.set_emissions(scenario)
         if outputs == "all":
-            outputs = variables.keys()
+            outputs = output.keys()
         for name in outputs:
-            h.add_observable(variables[name]["component"],
-                             variables[name]["variable"],
-                             variables[name].get("needs_date", False))
+            h.add_observable(output[name]["component"],
+                             output[name]["variable"],
+                             output[name].get("needs_date", False))
         h.run()
         results = {}
         for name in outputs:
             results[name] = h.get_observable(
-                variables[name]["component"], variables[name]["variable"])
+                output[name]["component"], output[name]["variable"])
 
         # In Hector 1.x output value years are given as end of simulation
         # year, e.g. 1745-12-31 = 1746.0.
