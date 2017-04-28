@@ -1,7 +1,7 @@
 pyhector
 ========
 
-|Build Status| |PyPI Python Versions| |PyPI Version| |Docs| |Launch Binder|
+|Build Status| |PyPI Python Versions| |PyPI Version| |Docs| |Launch Binder| |JOSS|
 
 **pyhector** is a Python interface for the simple global climate
 carbon-cycle model `Hector <https://github.com/JGCRI/hector>`__.
@@ -160,3 +160,5 @@ Tests can be run locally with
    :target: http://pyhector.readthedocs.io/en/latest/
 .. |Launch Binder| image:: https://img.shields.io/badge/launch-binder-e66581.svg
    :target: http://mybinder.org/repo/openclimatedata/pyhector
+.. |JOSS| image:: https://img.shields.io/badge/JOSS-10.21105%2Fjoss.00248-brightgreen.svg
+   :target: http://dx.doi.org/10.21105/joss.00248
