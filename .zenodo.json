@@ -1,0 +1,43 @@
+{
+  "description": "<p>Pyhector is a Python interface for the simple global climate carbon-cycle model Hector.</p>\n\n<p>Pyhector makes the simple climate model Hector easily installable and usable from Python and can for example be used in the analysis of mitigation scenarios, in integrated assessment models, complex climate model emulation, and uncertainty analyses.</p>\n\n<p>Source: https://github.com/openclimatedata/pyhector</p>",
+  "license": {
+    "id": "AGPL-3.0"
+  },
+  "title": "pyhector",
+  "keywords": [
+    "climate model",
+    "climate change",
+    "python"
+  ],
+  "upload_type": "software",
+  "creators": [
+    {
+      "affiliation": "Potsdam Institute for Climate Impact Research",
+      "name": "Willner, Sven",
+      "orcid": "0000-0001-6798-6247"
+    },
+    {
+      "affiliation": "Potsdam Institute for Climate Impact Research",
+      "name": "Gieseke, Robert",
+      "orcid": "0000-0002-1236-5109"
+    }
+  ],
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "10.5194/gmd-8-939-2015",
+      "relation": "references",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.21105/joss.00248",
+      "relation": "isSupplementTo",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "https://github.com/openclimatedata/pyhector/tree/v0.7.0",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
