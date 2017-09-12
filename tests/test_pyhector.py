@@ -3,7 +3,6 @@
 import os
 
 import pandas as pd
-import pytest
 
 from copy import deepcopy
 from pandas.util.testing import assert_series_equal, assert_frame_equal
