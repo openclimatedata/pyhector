@@ -14,11 +14,15 @@ python:
   - "3.4"
   - "3.5"
   - "3.6"
+before_install:
+  - pip install --upgrade pip
+  - pip install pytest pytest-cov
+  - pip install codecov
 install:
   - export CXX="g++-4.8" CC="gcc-4.8"
-  - pip install --upgrade pip
   - pip install .
-script:
-  - python setup.py test
+script: pytest --cov
+after_success:
+  - codecov
 notifications:
   slack: climate-models:kLhWus3hN9nXOI5VYYGORFEd
