@@ -1,9 +1,10 @@
 pyhector
 ========
 
-|Build Status| |Codecov|
-|PyPI Python Versions| |PyPI Version|
+|Build Status| |Codecov| |PyPI Version| |PyPI Python Versions|
+
 |Docs| |Launch Binder|
+
 |JOSS| |Zenodo|
 
 **pyhector** is a Python interface for the simple global climate
