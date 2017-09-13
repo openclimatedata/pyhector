@@ -20,7 +20,7 @@ before_install:
   - pip install codecov
 install:
   - export CXX="g++-4.8" CC="gcc-4.8"
-  - pip install .
+  - pip install . --verbose
 script: pytest --cov
 after_success:
   - codecov
