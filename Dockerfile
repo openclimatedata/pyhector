@@ -1,4 +1,4 @@
-FROM andrewosh/binder-base
+FROM jupyter/scipy-notebook:ae885c0a6226
 
 MAINTAINER Robert Gieseke <robert.gieseke@pik-potsdam.de>
 
@@ -8,7 +8,7 @@ RUN apt-get update && \
     apt-get install -y libboost-filesystem-dev libboost-system-dev --no-install-recommends && \
     apt-get clean
 
-USER main
+USER jovyan
 
 RUN cd / && \
     rm -r $HOME/notebooks && \
