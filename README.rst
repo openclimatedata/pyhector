@@ -1,11 +1,15 @@
 pyhector
 ========
 
-|Build Status| |Codecov| |PyPI Version| |PyPI Python Versions|
-
-|Docs| |Launch Binder|
-
-|JOSS| |Zenodo|
++----------------+------------------------+
+| |Build Status| | |Codecov|              |
++----------------+------------------------+
+| |PyPI Version| | |PyPI Python Versions| |
++----------------+------------------------+
+| |Docs|         | |Launch Binder|        |
++----------------+------------------------+
+| |JOSS|         | |Zenodo|               |
++----------------+------------------------+
 
 **pyhector** is a Python interface for the simple global climate
 carbon-cycle model `Hector <https://github.com/JGCRI/hector>`__.
