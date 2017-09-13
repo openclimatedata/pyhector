@@ -9,7 +9,6 @@ addons:
       - libboost-system1.55-dev
       - libboost-filesystem1.55-dev
       - g++-4.8
-      - tree
 python:
   - "2.7"
   - "3.4"
@@ -21,9 +20,9 @@ before_install:
   - pip install codecov
 install:
   - export CXX="g++-4.8" CC="gcc-4.8"
-  - pip install . --verbose
-  - tree
-script: pytest --cov
+  - pip install -e .
+script:
+  - pytest --cov
 after_success:
   - codecov
 notifications:
