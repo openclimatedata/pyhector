@@ -1,7 +1,10 @@
 pyhector
 ========
 
-|Build Status| |Codecov| |PyPI Python Versions| |PyPI Version| |Docs| |Launch Binder| |JOSS|
+|Build Status| |Codecov|
+|PyPI Python Versions| |PyPI Version|
+|Docs| |Launch Binder|
+|JOSS| |Zenodo|
 
 **pyhector** is a Python interface for the simple global climate
 carbon-cycle model `Hector <https://github.com/JGCRI/hector>`__.
@@ -164,3 +167,5 @@ Tests can be run locally with
    :target: http://dx.doi.org/10.21105/joss.00248
 .. |Codecov| image:: https://img.shields.io/codecov/c/github/openclimatedata/pyhector.svg
    :target: https://codecov.io/gh/openclimatedata/pyhector
+   |Zenodo| image:: https://zenodo.org/badge/DOI/10.5281/zenodo.569492.svg
+   :target: https://zenodo.org/record/569492
