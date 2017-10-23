@@ -10,7 +10,7 @@ RUN apt-get update && \
 
 RUN pip install pyhector
 
-COPY . ${HOME}
+COPY ./index.ipynb ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
