@@ -167,7 +167,7 @@ Tests can be run locally with
 .. |Docs| image:: https://img.shields.io/badge/docs-latest-brightgreen.svg?style=flat
    :target: http://pyhector.readthedocs.io/en/latest/
 .. |Launch Binder| image:: https://img.shields.io/badge/launch-binder-e66581.svg
-   :target: https://beta.mybinder.org/v2/gh/openclimatedata/pyhector/master?filepath=notebooks/index.ipynb
+   :target: https://mybinder.org/v2/gh/openclimatedata/pyhector/master?filepath=notebooks/index.ipynb
 .. |JOSS| image:: https://img.shields.io/badge/JOSS-10.21105%2Fjoss.00248-brightgreen.svg
    :target: http://dx.doi.org/10.21105/joss.00248
 .. |Codecov| image:: https://img.shields.io/codecov/c/github/openclimatedata/pyhector.svg
