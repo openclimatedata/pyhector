@@ -22,8 +22,14 @@ venv: dev-requirements.txt
 	./venv/bin/pip install -Ur dev-requirements.txt
 
 publish-on-pypi:
-	python setup.py register -r https://pypi.python.org/pypi
-	python setup.py sdist upload -r https://pypi.python.org/pypi
+	-rm -rf build dist
+	@status=$$(git status --porcelain); \
+	if test "x$${status}" = x; then \
+		./venv/bin/python setup.py bdist_wheel --universal; \
+		./venv/bin/twine upload dist/*; \
+	else \
+		echo Working directory is dirty >&2; \
+	fi;
 
 test-pypi-install:
 	$(eval TEMPVENV := $(shell mktemp -d))
@@ -33,8 +39,14 @@ test-pypi-install:
 	$(TEMPVENV)/bin/python -c "import sys; sys.path.remove(''); import pyhector; print(pyhector.__version__)"
 
 publish-on-testpypi:
-	python setup.py register -r https://testpypi.python.org/pypi
-	python setup.py sdist upload -r https://testpypi.python.org/pypi
+	-rm -rf build dist
+	@status=$$(git status --porcelain); \
+	if test "x$${status}" = x; then \
+		./venv/bin/python setup.py bdist_wheel --universal; \
+		./venv/bin/twine upload -r testpypi dist/*; \
+	else \
+		echo Working directory is dirty >&2; \
+	fi;
 
 test-testpypi-install:
 	$(eval TEMPVENV := $(shell mktemp -d))

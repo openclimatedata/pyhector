@@ -6,3 +6,5 @@ sphinx
 sphinx-autobuild
 numpydoc
 tabulate
+twine
+wheel
