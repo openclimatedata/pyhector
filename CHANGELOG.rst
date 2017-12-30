@@ -1,6 +1,12 @@
 Changelog
 ---------
 
+0.8.0
+~~~~~
+
+-  updated underlying Hector version to include the fix for
+   halo carbon double counting (https://github.com/JGCRI/hector/pull/201)
+
 0.7.0
 ~~~~~
 
