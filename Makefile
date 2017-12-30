@@ -25,7 +25,7 @@ publish-on-pypi:
 	-rm -rf build dist
 	@status=$$(git status --porcelain); \
 	if test "x$${status}" = x; then \
-		./venv/bin/python setup.py bdist_wheel --universal; \
+		./venv/bin/python setup.py sdist; \
 		./venv/bin/twine upload dist/*; \
 	else \
 		echo Working directory is dirty >&2; \
@@ -42,7 +42,7 @@ publish-on-testpypi:
 	-rm -rf build dist
 	@status=$$(git status --porcelain); \
 	if test "x$${status}" = x; then \
-		./venv/bin/python setup.py bdist_wheel --universal; \
+		./venv/bin/python setup.py sdist; \
 		./venv/bin/twine upload -r testpypi dist/*; \
 	else \
 		echo Working directory is dirty >&2; \
