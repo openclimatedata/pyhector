@@ -1,7 +1,7 @@
 Changelog
 ---------
 
-0.8.0
+0.8.1
 ~~~~~
 
 -  updated underlying Hector version to include the fix for
