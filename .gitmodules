@@ -1,3 +1,4 @@
 [submodule "hector-wrapper"]
 	path = hector-wrapper
 	url = https://github.com/openclimatedata/hector-wrapper.git
+	shallow = true
