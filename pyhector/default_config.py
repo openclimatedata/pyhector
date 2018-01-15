@@ -61,16 +61,12 @@ _default_config = {
     'halon1301_halocarbon': {'molarMass': 148.9, 'rho': 0.00032, 'tau': 65.0},
     'halon2402_halocarbon': {'molarMass': 259.8, 'rho': 0.00033, 'tau': 20.0},
     'ocean': {'enabled': True,
-              'k_max': 0.3,
-              'k_min': 0.1,
-              'slope': 1.0,
               'spinup_chem': 0,
-              't_mid': 2.75,
               'tid': 200000000,
               'tt': 72000000,
               'tu': 49000000,
               'twi': 12500000},
-    'onelineocean': {'enabled': True, 'ocean_c': 38000},
+    'onelineocean': {'enabled': False, 'ocean_c': 38000},
     'ozone': {'PO3': 30.0},
     'simpleNbox': {'Ftalbedo': [(1750, 0.0), (1950, -0.2)],
                    'atmos_c': 588.071,
@@ -86,5 +82,5 @@ _default_config = {
                    'soil_c': 1782,
                    'veg_c': 550},
     'so2': {'S0': 53841.2, 'SN': 42000},
-    'temperature': {'S': 3.0}
+    'temperature': {'S': 3.0, 'alpha': 1.0, 'diff': 2.3, 'enabled': True}
 }

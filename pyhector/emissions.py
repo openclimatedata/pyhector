@@ -3,7 +3,7 @@ Emissions mapping for configuration.
 """
 
 emissions = {
-    "simpleNbox": ["anthroEmissions", "lucEmissions"],
+    "simpleNbox": ["ffi_emissions", "luc_emissions"],
     "so2": ["SO2_emissions"],
     "CH4": ["CH4_emissions"],
     "OH": ["NOX_emissions", "CO_emissions", "NMVOC_emissions"],

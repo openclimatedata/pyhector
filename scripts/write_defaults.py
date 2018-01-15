@@ -45,7 +45,7 @@ for section in config.sections():
                 if option == 'run_name':
                     value = "pyhector-run"
                 elif option in ["enabled", "do_spinup"]:
-                    value = True if 1 else False
+                    value = True if int(value) == 1 else False
                 # Values containing a unit like "H0=35.0,pptv" are split and
                 # turned into a tuple.
                 elif "," in value:
