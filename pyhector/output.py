@@ -326,18 +326,6 @@ output = {
         'unit': 'Pg C',
         'variable': 'carbon_LL'
     },
-    'ocean.heatflux': {
-        'component': 'ocean',
-        'description': 'ocean heat flux',
-        'unit': 'W/m2',
-        'variable': 'heatflux'
-    },
-    'ocean.kappa': {
-        'component': 'ocean',
-        'description': 'ocean heat uptake efficiency',
-        'unit': 'W/m2/K',
-        'variable': 'kappa'
-    },
     'ocean.ocean_c': {
         'component': 'ocean',
         'description': 'total ocean carbon pool',
