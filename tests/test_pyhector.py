@@ -160,7 +160,6 @@ def test_constraint_temperature():
     temperature_csv = os.path.join(path, "data/tgav_historical.csv")
     tgav = read_hector_constraint(temperature_csv)
     output = pyhector.run(rcp45, {"temperature": {"tgav_constrain": tgav}})
-    # Simplifying the overlapping date-range (later lawdome values are yearly.)
     assert_series_equal(
         output["temperature.Tgav"].loc[1850:2013],
         tgav.loc[1850:2013], check_names=False)
