@@ -155,16 +155,6 @@ def test_constraint_co2():
         lawdome_co2.loc[1750:1960], check_names=False)
 
 
-# Temperature
-def test_constraint_temperature():
-    temperature_csv = os.path.join(path, "data/tgav_historical.csv")
-    tgav = read_hector_constraint(temperature_csv)
-    output = pyhector.run(rcp45, {"temperature": {"tgav_constrain": tgav}})
-    assert_series_equal(
-        output["temperature.Tgav"].loc[1850:2013],
-        tgav.loc[1850:2013], check_names=False)
-
-
 # Radiative forcing
 def test_constraint_forcing():
     forcing_csv = os.path.join(path, "data/MAGICC_RF_4.5.csv")
