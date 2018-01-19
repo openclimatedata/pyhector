@@ -162,17 +162,239 @@ output = {
         'unit': 'pptv',
         'variable': 'hc_concentration'
     },
+    'forcing.Ftot': {
+        'component': 'forcing',
+        'description': 'total global radiative forcing',
+        'unit': 'W/m2',
+        'variable': 'Ftot'
+    },
+    'forcing.FBC': {
+        'component': 'forcing',
+        'description': 'radiative forcing from BC',
+        'unit': 'W/m2',
+        'variable': 'FBC'
+    },
+    'forcing.FC2F6': {
+        'component': 'forcing',
+        'description': 'radiative forcing from C2F6',
+        'unit': 'W/m2',
+        'variable': 'FC2F6'
+    },
+    'forcing.FCCl4': {
+        'component': 'forcing',
+        'description': 'radiative forcing from CCl4',
+        'unit': 'W/m2',
+        'variable': 'FCCl4'
+    },
+    'forcing.FCF4': {
+        'component': 'forcing',
+        'description': 'radiative forcing from CF4',
+        'unit': 'W/m2',
+        'variable': 'FCF4'
+    },
+    'forcing.FCFC11': {
+        'component': 'forcing',
+        'description': 'radiative forcing from CFC11',
+        'unit': 'W/m2',
+        'variable': 'FCFC11'
+    },
+    'forcing.FCFC113': {
+        'component': 'forcing',
+        'description': 'radiative forcing from CFC113',
+        'unit': 'W/m2',
+        'variable': 'FCFC113'
+    },
+    'forcing.FCFC114': {
+        'component': 'forcing',
+        'description': 'radiative forcing from CFC114',
+        'unit': 'W/m2',
+        'variable': 'FCFC114'
+    },
+    'forcing.FCFC115': {
+        'component': 'forcing',
+        'description': 'radiative forcing from CFC115',
+        'unit': 'W/m2',
+        'variable': 'FCFC115'
+    },
+    'forcing.FCFC12': {
+        'component': 'forcing',
+        'description': 'radiative forcing from CFC12',
+        'unit': 'W/m2',
+        'variable': 'FCFC12'
+    },
+    'forcing.FCH3Br': {
+        'component': 'forcing',
+        'description': 'radiative forcing from CH3Br',
+        'unit': 'W/m2',
+        'variable': 'FCH3Br'
+    },
+    'forcing.FCH3CCl3': {
+        'component': 'forcing',
+        'description': 'radiative forcing from CH3CCl3',
+        'unit': 'W/m2',
+        'variable': 'FCH3CCl3'
+    },
+    'forcing.FCH3Cl': {
+        'component': 'forcing',
+        'description': 'radiative forcing from CH3Cl',
+        'unit': 'W/m2',
+        'variable': 'FCH3Cl'
+    },
+    'forcing.FCH4': {
+        'component': 'forcing',
+        'description': 'radiative forcing from CH4',
+        'unit': 'W/m2',
+        'variable': 'FCH4'
+    },
     'forcing.FCO2': {
         'component': 'forcing',
         'description': 'radiative forcing from CO2',
         'unit': 'W/m2',
         'variable': 'FCO2'
     },
-    'forcing.Ftot': {
+    'forcing.FH2O': {
         'component': 'forcing',
-        'description': 'total global radiative forcing',
+        'description': 'radiative forcing from H2O',
         'unit': 'W/m2',
-        'variable': 'Ftot'
+        'variable': 'FH2O'
+    },
+    'forcing.FHCF141b': {
+        'component': 'forcing',
+        'description': 'radiative forcing from HCF141b',
+        'unit': 'W/m2',
+        'variable': 'FHCF141b'
+    },
+    'forcing.FHCF142b': {
+        'component': 'forcing',
+        'description': 'radiative forcing from HCF142b',
+        'unit': 'W/m2',
+        'variable': 'FHCF142b'
+    },
+    'forcing.FHCF22': {
+        'component': 'forcing',
+        'description': 'radiative forcing from HCF22',
+        'unit': 'W/m2',
+        'variable': 'FHCF22'
+    },
+    'forcing.FHFC125': {
+        'component': 'forcing',
+        'description': 'radiative forcing from HFC125',
+        'unit': 'W/m2',
+        'variable': 'FHFC125'
+    },
+    'forcing.FHFC134a': {
+        'component': 'forcing',
+        'description': 'radiative forcing from HFC134a',
+        'unit': 'W/m2',
+        'variable': 'FHFC134a'
+    },
+    'forcing.FHFC143a': {
+        'component': 'forcing',
+        'description': 'radiative forcing from HFC143a',
+        'unit': 'W/m2',
+        'variable': 'FHFC143a'
+    },
+    'forcing.FHFC227ea': {
+        'component': 'forcing',
+        'description': 'radiative forcing from HFC227ea',
+        'unit': 'W/m2',
+        'variable': 'FHFC227ea'
+    },
+    'forcing.FHFC23': {
+        'component': 'forcing',
+        'description': 'radiative forcing from HFC23',
+        'unit': 'W/m2',
+        'variable': 'FHFC23'
+    },
+    'forcing.FHFC245fa': {
+        'component': 'forcing',
+        'description': 'radiative forcing from HFC245fa',
+        'unit': 'W/m2',
+        'variable': 'FHFC245fa'
+    },
+    'forcing.FHFC32': {
+        'component': 'forcing',
+        'description': 'radiative forcing from HFC32',
+        'unit': 'W/m2',
+        'variable': 'FHFC32'
+    },
+    'forcing.FHFC4310': {
+        'component': 'forcing',
+        'description': 'radiative forcing from HFC4310',
+        'unit': 'W/m2',
+        'variable': 'FHFC4310'
+    },
+    'forcing.FN2O': {
+        'component': 'forcing',
+        'description': 'radiative forcing from N2O',
+        'unit': 'W/m2',
+        'variable': 'FN2O'
+    },
+    'forcing.FO3': {
+        'component': 'forcing',
+        'description': 'radiative forcing from O3',
+        'unit': 'W/m2',
+        'variable': 'FO3'
+    },
+    'forcing.FOC': {
+        'component': 'forcing',
+        'description': 'radiative forcing from OC',
+        'unit': 'W/m2',
+        'variable': 'FOC'
+    },
+    'forcing.FSF6': {
+        'component': 'forcing',
+        'description': 'radiative forcing from SF6',
+        'unit': 'W/m2',
+        'variable': 'FSF6'
+    },
+    'forcing.FSO2': {
+        'component': 'forcing',
+        'description': 'radiative forcing from SO2',
+        'unit': 'W/m2',
+        'variable': 'FSO2'
+    },
+    'forcing.FSO2d': {
+        'component': 'forcing',
+        'description': 'radiative forcing from SO2d',
+        'unit': 'W/m2',
+        'variable': 'FSO2d'
+    },
+    'forcing.FSO2i': {
+        'component': 'forcing',
+        'description': 'radiative forcing from SO2i',
+        'unit': 'W/m2',
+        'variable': 'FSO2i'
+    },
+    'forcing.Fhalon1211': {
+        'component': 'forcing',
+        'description': 'radiative forcing from halon1211',
+        'unit': 'W/m2',
+        'variable': 'Fhalon1211'
+    },
+    'forcing.Fhalon1301': {
+        'component': 'forcing',
+        'description': 'radiative forcing from halon1301',
+        'unit': 'W/m2',
+        'variable': 'Fhalon1301'
+    },
+    'forcing.Fhalon2402': {
+        'component': 'forcing',
+        'description': 'radiative forcing from halon2402',
+        'unit': 'W/m2',
+        'variable': 'Fhalon2402'
+    },
+    'forcing.Ftalbedo': {
+        'component': 'forcing',
+        'description': 'radiative forcing from terrestrial albedo forcing',
+        'unit': 'W/m2',
+        'variable': 'Ftalbedo'
+    },
+    'forcing.Fvol': {
+        'component': 'forcing',
+        'description': 'volcanic radiative forcing',
+        'unit': 'W/m2',
+        'variable': 'Fvol'
     },
     'halon1211_halocarbon.hc_concentration': {
         'component': 'halon1211_halocarbon',
