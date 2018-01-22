@@ -172,5 +172,5 @@ Tests can be run locally with
    :target: http://dx.doi.org/10.21105/joss.00248
 .. |Codecov| image:: https://img.shields.io/codecov/c/github/openclimatedata/pyhector.svg
    :target: https://codecov.io/gh/openclimatedata/pyhector
-.. |Zenodo| image:: https://zenodo.org/badge/DOI/10.5281/zenodo.569492.svg
-   :target: https://zenodo.org/record/569492
+.. |Zenodo| image:: https://zenodo.org/badge/DOI/10.5281/zenodo.798350.svg
+   :target: https://zenodo.org/record/798350
