@@ -4,7 +4,7 @@ Changelog
 0.9.0
 ~~~~~
 
-- include list of forcings as output variables
+- include more forcings as output variables
 
 0.8.1
 ~~~~~
