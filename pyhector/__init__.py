@@ -293,7 +293,7 @@ def write_hector_input(scenario, path=None):
     # ; Scenario name
     # ; Generated with pyhector
     # ;UNITS: 	GtC/yr 	GtC/yr [...]
-    # Date 	anthroEmissions 	lucEmissions [...]
+    # Date 	ffi_emissions 	luc_emissions [...]
 
     out = ""
     try:

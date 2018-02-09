@@ -32,9 +32,9 @@ units = {
     'OC_emissions': 'Mt/yr',
     'SF6_emissions': 'kt/yr',
     'SO2_emissions': 'Gg/yr',
-    'anthroEmissions': 'GtC/yr',
+    'ffi_emissions': 'GtC/yr',
     'halon1211_emissions': 'kt/yr',
     'halon1301_emissions': 'kt/yr',
     'halon2402_emissions': 'kt/yr',
-    'lucEmissions': 'GtC/yr'
+    'luc_emissions': 'GtC/yr'
 }

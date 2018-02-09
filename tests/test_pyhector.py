@@ -63,8 +63,8 @@ def test_default_options():
 
 
 def test_units():
-    assert pyhector.units["anthroEmissions"] == 'GtC/yr'
-    assert pyhector.units["lucEmissions"] == 'GtC/yr'
+    assert pyhector.units["ffi_emissions"] == 'GtC/yr'
+    assert pyhector.units["luc_emissions"] == 'GtC/yr'
     assert pyhector.units["NOX_emissions"] == 'MtN/yr'
 
 
@@ -155,23 +155,11 @@ def test_constraint_co2():
         lawdome_co2.loc[1750:1960], check_names=False)
 
 
-# Temperature
-def test_constraint_temperature():
-    temperature_csv = os.path.join(path, "data/tgav_historical.csv")
-    tgav = read_hector_constraint(temperature_csv)
-    output = pyhector.run(rcp45, {"temperature": {"tgav_constrain": tgav}})
-    # Simplifying the overlapping date-range (later lawdome values are yearly.)
-    assert_series_equal(
-        output["temperature.Tgav"].loc[1850:2013],
-        tgav.loc[1850:2013], check_names=False)
-
-
 # Radiative forcing
 def test_constraint_forcing():
     forcing_csv = os.path.join(path, "data/MAGICC_RF_4.5.csv")
     forcing = read_hector_constraint(forcing_csv)
-    output = pyhector.run(rcp45, {"temperature": {"tgav_constrain": forcing}})
-    # Simplifying the overlapping date-range (later lawdome values are yearly.)
+    output = pyhector.run(rcp45, {"forcing": {"Ftot_constrain": forcing}})
     assert_series_equal(
-        output["temperature.Tgav"].loc[1765:2300],
+        output["forcing.Ftot"].loc[1765:2300],
         forcing.loc[1765:2300], check_names=False)
