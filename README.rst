@@ -39,11 +39,9 @@ Willner <http://www.pik-potsdam.de/~willner/>`__ and `Robert
 Gieseke <https://www.pik-potsdam.de/members/gieseke>`__ at the `Potsdam
 Institute for Climate Impact Research <https://www.pik-potsdam.de/>`__.
 
-It is currently based on a `slightly modified Hector
-version <https://github.com/swillner/hector/>`__ and a `generic
-wrapper <https://github.com/swillner/hector-wrapper/>`__ for Hector's
-API. See the included git submodules for the specific commits that are
-being used.
+It is based a `generic wrapper <https://github.com/swillner/hector-wrapper/>`__
+for Hector's API. See the included git submodules for the specific commits that
+are being used.
 
 Installation
 ------------

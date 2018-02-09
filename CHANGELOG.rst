@@ -1,6 +1,12 @@
 Changelog
 ---------
 
+Unreleased
+~~~~~~~~~~
+
+- updated to Hector rc2.0.0
+- directly works with Hector, no fork needed anymore
+
 0.9.0
 ~~~~~
 
