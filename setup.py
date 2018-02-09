@@ -45,9 +45,6 @@ libpyhector = Extension(
     extra_compile_args=['-std=c++11'],
     sources=(glob.glob('src/*.cpp') +
              glob.glob('hector-wrapper/src/*.cpp') +
-             glob.glob('hector-wrapper/LICENSE') +
-             glob.glob('hector-wrapper/README.md') +
-             glob.glob('hector-wrapper/hector/*.md') +
              glob.glob('hector-wrapper/hector/source/core/*.cpp') +
              glob.glob('hector-wrapper/hector/source/models/*.cpp') +
              glob.glob('hector-wrapper/hector/source/components/*.cpp') +

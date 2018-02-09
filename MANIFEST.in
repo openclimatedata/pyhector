@@ -1,6 +1,9 @@
 include LICENSE
 recursive-include hector-wrapper/include *.h
+include hector-wrapper/LICENSE
+include hector-wrapper/README.md
 recursive-include hector-wrapper/hector/headers *.hpp
+include hector-wrapper/hector/*.md
 recursive-include tests/data *.csv
 recursive-include pyhector/emissions *.csv
 include pyhector/rcp_default.ini
