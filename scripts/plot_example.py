@@ -12,7 +12,7 @@ from pyhector import rcp26, rcp45, rcp60, rcp85
 path = os.path.join(os.path.dirname(__file__),
                     '../docs/example-plot.png')
 
-for rcp in [rcp26, rcp45, rcp60, rcp85]:
+for rcp in [rcp85, rcp60, rcp45, rcp26]:
     output = pyhector.run(rcp, {"core": {"endDate": 2100}})
     temp = output["temperature.Tgav"]
     temp = temp.loc[1850:] - temp.loc[1850:1900].mean()
