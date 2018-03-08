@@ -4,8 +4,9 @@ Changelog
 Unreleased
 ~~~~~~~~~~
 
-- updated to Hector rc2.0.0
+- updated to Hector 2.0.0
 - directly works with Hector, no fork needed anymore
+- see the Hector changelog for details (https://github.com/JGCRI/hector/releases)
 
 0.9.0
 ~~~~~
