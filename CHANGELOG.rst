@@ -1,8 +1,12 @@
 Changelog
 ---------
 
-Unreleased
-~~~~~~~~~~
+2.0.1
+~~~~~
+- updated to Hector 2.0.1 (license clarification)
+
+2.0.0
+~~~~~
 
 - updated to Hector 2.0.0
 - directly works with Hector, no fork needed anymore
