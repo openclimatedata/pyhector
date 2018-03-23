@@ -40,7 +40,7 @@ Gieseke <https://www.pik-potsdam.de/members/gieseke>`__ at the `Potsdam
 Institute for Climate Impact Research <https://www.pik-potsdam.de/>`__.
 
 It is based a `generic wrapper <https://github.com/swillner/hector-wrapper/>`__
-for Hector's API. It currently wraps Hector 2.0.0.
+for Hector's API. It currently wraps Hector 2.0.1.
 
 Installation
 ------------
