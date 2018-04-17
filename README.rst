@@ -158,9 +158,9 @@ Tests can be run locally with
 .. |Build Status| image:: https://img.shields.io/travis/openclimatedata/pyhector.svg
    :target: https://travis-ci.org/openclimatedata/pyhector
 .. |PyPI Python Versions| image:: https://img.shields.io/pypi/pyversions/pyhector.svg
-   :target: https://pypi.python.org/pypi/pyhector
+   :target: https://pypi.org/project/pyhector/
 .. |PyPI Version| image:: https://img.shields.io/pypi/v/pyhector.svg
-   :target: https://pypi.python.org/pypi/pyhector
+   :target: https://pypi.org/project/pyhector/
 .. |Docs| image:: https://img.shields.io/badge/docs-latest-brightgreen.svg?style=flat
    :target: http://pyhector.readthedocs.io/en/latest/
 .. |Launch Binder| image:: https://img.shields.io/badge/launch-binder-e66581.svg
