@@ -8,6 +8,7 @@
 #include "Hector.h"
 #include "Observable.h"
 #include "h_exception.hpp"
+#include "h_util.hpp"
 
 namespace py = pybind11;
 
@@ -84,6 +85,8 @@ PYBIND11_MODULE(model, m) {
              (void (Hector::*)(const std::string&, const std::string&, const std::vector<int>&, const std::vector<double>&, const std::string&)) & Hector::set,
              "Set Parameters.")
         .def("run", &Hector::run, "Run Hector.");
+
+    m.attr("__hector_version__") = MODEL_VERSION;
 }
 
 }  // namespace pyhector
