@@ -1,154 +1,89 @@
-#include <exception>
-#include <vector>
-#include <string>
-#include <string.h>
-#include "HectorWrapper.h"
-#include "core/core.hpp"
-#include "core/logger.hpp"
-#include "data/message_data.hpp"
-#include "components/component_data.hpp"
-#include "data/unitval.hpp"
+/*
+ * Copyright (c) 2018 Sven Willner <sven.willner@pik-potsdam.de>
+ * Free software under GNU Affero General Public License v3, see LICENSE
+ */
+
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+#include "Hector.h"
+#include "Observable.h"
 #include "h_exception.hpp"
-#include "visitors/avisitor.hpp"
-#include "components/imodel_component.hpp"
 
-extern "C" {
+namespace py = pybind11;
 
-static std::string last_error;
+namespace pyhector {
 
-const char* hector_get_last_error() { return last_error.c_str(); }
+PYBIND11_MODULE(model, m) {
+    m.doc() = R"pbdoc(
+        pyhector.model
+        --------------
 
-int hector_open(Hector::HectorWrapper** wrapper) {
-    try {
-        *wrapper = new Hector::HectorWrapper();
-        return 0;
-    } catch (const std::exception& ex) {
-        last_error = ex.what();
-        return -1;
-    }
-}
+        `pyhector` is a Python wrapper for the simple global climate
+        carbon-cycle model Hector (https://github.com/JGCRI/hector).
 
-int hector_set_value_string(Hector::HectorWrapper* wrapper, const char* section, const char* variable, const char* value) {
-    try {
-        wrapper->set(section, variable, value);
-        return 0;
-    } catch (const std::exception& ex) {
-        last_error = ex.what();
-        return -1;
-    }
-}
+        See README.rst and repository for details:
+        https://github.com/openclimatedata/pyhector
+    )pbdoc";
 
-int hector_set_array(Hector::HectorWrapper* wrapper, const char* component, const char* name, const int* years, const double* values, const size_t size) {
-    try {
-        wrapper->set(component, name, years, values, size);
-        return 0;
-    } catch (const std::exception& ex) {
-        last_error = ex.what();
-        return -1;
-    }
-}
-
-int hector_set_value(Hector::HectorWrapper* wrapper, const char* section, const char* variable, const double value) {
-    try {
-        wrapper->set(section, variable, value);
-        return 0;
-    } catch (const std::exception& ex) {
-        last_error = ex.what();
-        return -1;
-    }
-}
-
-int hector_set_value_unit(Hector::HectorWrapper* wrapper, const char* section, const char* variable, const double value, const char* unit) {
-    try {
-        wrapper->set(section, variable, value, unit);
-        return 0;
-    } catch (const std::exception& ex) {
-        last_error = ex.what();
-        return -1;
-    }
-}
-
-int hector_set_timed_value(Hector::HectorWrapper* wrapper, const char* section, const char* variable, const int year, const double value) {
-    try {
-        wrapper->set(section, variable, year, value);
-        return 0;
-    } catch (const std::exception& ex) {
-        last_error = ex.what();
-        return -1;
-    }
-}
-
-int hector_set_timed_value_unit(Hector::HectorWrapper* wrapper, const char* section, const char* variable, const int year, const double value, const char* unit) {
-    try {
-        wrapper->set(section, variable, year, value, unit);
-        return 0;
-    } catch (const std::exception& ex) {
-        last_error = ex.what();
-        return -1;
-    }
-}
-
-int hector_set_array_unit(Hector::HectorWrapper* wrapper, const char* component, const char* name, const int* years, const double* values, const size_t size, const char* unit) {
-    try {
-        wrapper->set(component, name, years, values, size, unit);
-        return 0;
-    } catch (const std::exception& ex) {
-        last_error = ex.what();
-        return -1;
-    }
-}
-
-int hector_get_spinup_size(Hector::HectorWrapper* wrapper) {
-    try {
-        return wrapper->output()->spinup_size();
-    } catch (const std::exception& ex) {
-        last_error = ex.what();
-        return -1;
-    }
-}
-
-int hector_add_observable(Hector::HectorWrapper* wrapper, const char* component, const char* name, const bool needs_date, const bool in_spinup) {
-    try {
-        wrapper->output()->add_variable(component, name, needs_date, in_spinup);
-        return 0;
-    } catch (const std::exception& ex) {
-        last_error = ex.what();
-        return -1;
-    }
-}
-
-int hector_get_observable(Hector::HectorWrapper* wrapper, const char* component, const char* name, double* output, const bool in_spinup) {
-    try {
-        const std::vector<double>& result = wrapper->output()->get_variable(component, name, in_spinup);
-        if (in_spinup) {
-            memcpy(output, &result[0], wrapper->output()->spinup_size() * sizeof(double));
-        } else {
-            memcpy(output, &result[0], wrapper->output()->run_size() * sizeof(double));
+    static py::exception<h_exception> hector_exception(m, "HectorException");
+    py::register_exception_translator([](std::exception_ptr p) {
+        try {
+            if (p) {
+                std::rethrow_exception(p);
+            }
+        } catch (const h_exception& e) {
+            hector_exception(e.what());
         }
-        return 0;
-    } catch (const std::exception& ex) {
-        last_error = ex.what();
-        return -1;
-    }
+    });
+
+    py::class_<Hector>(m, "Hector", "Class providing an interface to Hector")
+        .def(py::init())
+        .def_property_readonly("run_size", &Hector::spinup_size, "Number of steps to run")
+        .def_property_readonly("spinup_size", &Hector::spinup_size, "Number of spinup steps run")
+        .def("add_observable", &Hector::add_observable,
+             R"doc(
+                   Set a variable that can be read later.
+                   See :mod:`pyhector.output` for available components and variables.
+
+                   Parameters
+                   ----------
+                   component : str
+                       Name of Hector component
+                   name : string
+                       Name of variable in component
+                   needs_date : bool, default ``False``
+                       Whether variable needs a date
+                   in_spinup : bool, default ``False``
+                       True to return from spinup phase, else from run phase
+            )doc",
+             py::arg("component"), py::arg("name"), py::arg("needs_date") = false, py::arg("in_spinup") = false)
+        .def("get_observable", &Hector::get_observable,
+             R"doc(
+                   Returns output variable.
+                   See :mod:`pyhector.output` for available variables.
+
+                   Parameters
+                   ----------
+                   component : str
+                       Name of Hector component
+                   name : string
+                       Name of variable in component
+                   in_spinup : bool, default ``False``
+                       True to return from spinup phase, else from run phase. Must have
+                       been set in :py:meth:`add_observable` accordingly
+             )doc",
+             py::arg("component"), py::arg("name"), py::arg("in_spinup") = false)
+        .def("_set", (void (Hector::*)(const std::string&, const std::string&, const std::string&)) & Hector::set, "Set Parameters.")
+        .def("_set", (void (Hector::*)(const std::string&, const std::string&, double)) & Hector::set, "Set Parameters.")
+        .def("_set", (void (Hector::*)(const std::string&, const std::string&, double, const std::string&)) & Hector::set, "Set Parameters.")
+        .def("_set", (void (Hector::*)(const std::string&, const std::string&, int, double)) & Hector::set, "Set Parameters.")
+        .def("_set", (void (Hector::*)(const std::string&, const std::string&, int, double, const std::string&)) & Hector::set, "Set Parameters.")
+        .def("_set", (void (Hector::*)(const std::string&, const std::string&, const std::vector<int>&, const std::vector<double>&)) & Hector::set,
+             "Set Parameters.")
+        .def("_set",
+             (void (Hector::*)(const std::string&, const std::string&, const std::vector<int>&, const std::vector<double>&, const std::string&)) & Hector::set,
+             "Set Parameters.")
+        .def("run", &Hector::run, "Run Hector.");
 }
 
-int hector_run(Hector::HectorWrapper* wrapper) {
-    try {
-        wrapper->run();
-        return wrapper->output()->run_size();
-    } catch (const std::exception& ex) {
-        last_error = ex.what();
-        return -1;
-    }
-}
-
-int hector_close(Hector::HectorWrapper* wrapper) {
-    try {
-        delete wrapper;
-        return 0;
-    } catch (const std::exception& ex) {
-        last_error = ex.what();
-        return -1;
-    }
-}
-}
+}  // namespace pyhector

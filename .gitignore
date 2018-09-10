@@ -16,3 +16,4 @@ scripts/hector
 docs/_build
 *.pdf
 .coverage
+.pytest_cache
