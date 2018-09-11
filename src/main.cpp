@@ -78,7 +78,7 @@ PYBIND11_MODULE(_binding, m) {
              py::arg("component"), py::arg("name"), py::arg("in_spinup") = false)
         .def("clear_observables", &Hector::clear_observables, "Clear observables registered so far.")
         .def("reset", &Hector::reset, "Reset Hector.")
-        .def("run", &Hector::run, "Run Hector.", py::arg("until") = -1)
+        .def("run", &Hector::run, "Run Hector.", py::arg("until") = py::none())
         .def("shutdown", &Hector::shutdown, "Shutdown Hector.")
         .def("_set_string", (void (Hector::*)(const std::string&, const std::string&, const std::string&)) & Hector::set, "Set Parameters.")
         .def("_set_double", (void (Hector::*)(const std::string&, const std::string&, double)) & Hector::set, "Set Parameters.")
