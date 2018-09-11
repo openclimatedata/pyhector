@@ -92,7 +92,7 @@ def test_reading_constraint_file():
     lawdome_co2_csv = os.path.join(path, "data/lawdome_co2.csv")
     lawdome = read_hector_constraint(lawdome_co2_csv)
     assert lawdome.loc[1010] == 279.5
-    assert lawdome.ix[2008] == 385.34
+    assert lawdome.loc[2008] == 385.34
 
 
 # Tests following Hector's `test_hector.sh` script
