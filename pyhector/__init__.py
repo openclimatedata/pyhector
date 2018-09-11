@@ -42,13 +42,12 @@ del get_versions
 class Hector(_Hector):
     """Class providing an interface to Hector."""
 
-    # TODO: depracte?
     def __enter__(self):
+        self.reset()
         return self
 
-    # TODO: depracte?
     def __exit__(self, type, value, traceback):
-        pass
+        self.shutdown()
 
     def set_value(self, section, variable, value):
         """
@@ -69,19 +68,19 @@ class Hector(_Hector):
         if isinstance(value, pd.Series):  # values with time as Series
             values = list(zip(value.index, value))
             for v in values:
-                self._set(section, variable, v[0], v[1])
+                self._set_timed_double(section, variable, v[0], v[1])
         elif isinstance(value, list):  # values with time
             for v in value:
                 if len(v) == 3:  # timed value with unit
-                    self._set(section, variable, v[0], v[1], v[2])
+                    self._set_timed_double_unit(section, variable, v[0], v[1], v[2])
                 else:  # timed value without unit
-                    self._set(section, variable, v[0], v[1])
+                    self._set_timed_double(section, variable, v[0], v[1])
         elif isinstance(value, tuple):  # value with unit
-            self._set(section, variable, value[0], value[1])
+            self._set_double_unit(section, variable, value[0], value[1])
         elif isinstance(value, str):  # value is string
-            self._set(section, variable, value)
+            self._set_string(section, variable, value)
         else:  # value is only double
-            self._set(section, variable, value)
+            self._set_double(section, variable, value)
 
     def config(self, config):
         """Set config values from config dictionary."""
@@ -95,7 +94,7 @@ class Hector(_Hector):
             for source in emissions[section]:
                 if source not in scenario.columns:
                     continue
-                self._set(section, source, list(scenario.index), list(scenario[source]))
+                self._set_timed_array(section, source, list(scenario.index), list(scenario[source]))
 
 
 def read_hector_input(csv_file):

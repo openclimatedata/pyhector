@@ -10,8 +10,11 @@
 #include <memory>
 #include <string>
 #include <vector>
-#include "components/imodel_component.hpp"
-#include "core/core.hpp"
+
+namespace Hector {
+class IModelComponent;
+class Core;
+}  // namespace Hector
 
 namespace hector = Hector;
 namespace py = pybind11;
@@ -23,26 +26,19 @@ class Observable {
     mutable std::unique_ptr<py::array_t<double>> array;
 
   protected:
-    hector::IModelComponent* component;
+    std::string component_name;
     std::string name;
-    std::unique_ptr<double[]> values;
-    std::size_t size;
-    std::size_t reserved_size;
     bool needs_date;
     bool in_spinup;
-    const std::size_t MIN_SPINUP_SIZE_RESERVED = 8;
-
-    void resize(std::size_t new_size);
+    std::size_t expected_run_size;
+    hector::IModelComponent* component;
+    std::vector<double> values;
 
   public:
-    Observable(hector::Core* hcore, const std::string& component_name, std::string name_p, bool needs_date_p, bool in_spinup_p, int expected_run_size);
-    bool matches(const std::string& component_name_p, const std::string& name_p, bool in_spinup_p) const {
-        return in_spinup == in_spinup_p
-               && ((component == nullptr && component_name_p == CORE_COMPONENT_NAME)
-                   || (component != nullptr && component_name_p == component->getComponentName()))
-               && name == name_p;
-    }
-    void read_data(hector::Core* hcore, double current_date, int time_index, int spinup_index);
+    Observable(hector::Core* hcore, std::string component_name_p, std::string name_p, bool needs_date_p, bool in_spinup_p, std::size_t expected_run_size_p);
+    bool matches(const std::string& component_name_p, const std::string& name_p, bool in_spinup_p) const;
+    void read_data(hector::Core* hcore, double current_date, std::size_t time_index, std::size_t spinup_index);
+    void reset(hector::Core* hcore);
     py::array_t<double> get_array() const;
 };
 
