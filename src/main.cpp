@@ -39,8 +39,10 @@ PYBIND11_MODULE(model, m) {
 
     py::class_<Hector>(m, "Hector", "Class providing an interface to Hector")
         .def(py::init())
-        .def_property_readonly("run_size", &Hector::spinup_size, "Number of steps to run")
+        .def_property_readonly("run_size", &Hector::run_size, "Number of steps to run")
         .def_property_readonly("spinup_size", &Hector::spinup_size, "Number of spinup steps run")
+        .def_property_readonly("start_date", &Hector::start_date, "Start date")
+        .def_property_readonly("end_date", &Hector::end_date, "End date")
         .def("add_observable", &Hector::add_observable,
              R"doc(
                    Set a variable that can be read later.
@@ -74,17 +76,23 @@ PYBIND11_MODULE(model, m) {
                        been set in :py:meth:`add_observable` accordingly
              )doc",
              py::arg("component"), py::arg("name"), py::arg("in_spinup") = false)
-        .def("_set", (void (Hector::*)(const std::string&, const std::string&, const std::string&)) & Hector::set, "Set Parameters.")
-        .def("_set", (void (Hector::*)(const std::string&, const std::string&, double)) & Hector::set, "Set Parameters.")
-        .def("_set", (void (Hector::*)(const std::string&, const std::string&, double, const std::string&)) & Hector::set, "Set Parameters.")
-        .def("_set", (void (Hector::*)(const std::string&, const std::string&, int, double)) & Hector::set, "Set Parameters.")
-        .def("_set", (void (Hector::*)(const std::string&, const std::string&, int, double, const std::string&)) & Hector::set, "Set Parameters.")
-        .def("_set", (void (Hector::*)(const std::string&, const std::string&, const std::vector<int>&, const std::vector<double>&)) & Hector::set,
+        .def("clear_observables", &Hector::clear_observables, "Clear observables registered so far.")
+        .def("reset", &Hector::reset, "Reset Hector.")
+        .def("run", &Hector::run, "Run Hector.", py::arg("until") = -1)
+        .def("shutdown", &Hector::shutdown, "Shutdown Hector.")
+        .def("_set_string", (void (Hector::*)(const std::string&, const std::string&, const std::string&)) & Hector::set, "Set Parameters.")
+        .def("_set_double", (void (Hector::*)(const std::string&, const std::string&, double)) & Hector::set, "Set Parameters.")
+        .def("_set_double_unit", (void (Hector::*)(const std::string&, const std::string&, double, const std::string&)) & Hector::set, "Set Parameters.")
+        .def("_set_timed_double", (void (Hector::*)(const std::string&, const std::string&, std::size_t, double)) & Hector::set, "Set Parameters.")
+        .def("_set_timed_double_unit", (void (Hector::*)(const std::string&, const std::string&, std::size_t, double, const std::string&)) & Hector::set,
              "Set Parameters.")
-        .def("_set",
-             (void (Hector::*)(const std::string&, const std::string&, const std::vector<int>&, const std::vector<double>&, const std::string&)) & Hector::set,
+        .def("_set_timed_array",
+             (void (Hector::*)(const std::string&, const std::string&, const std::vector<std::size_t>&, const std::vector<double>&)) & Hector::set,
              "Set Parameters.")
-        .def("run", &Hector::run, "Run Hector.");
+        .def("_set_timed_array_unit",
+             (void (Hector::*)(const std::string&, const std::string&, const std::vector<std::size_t>&, const std::vector<double>&, const std::string&))
+                 & Hector::set,
+             "Set Parameters.");
 
     m.attr("__hector_version__") = MODEL_VERSION;
 }
