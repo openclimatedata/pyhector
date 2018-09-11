@@ -51,7 +51,7 @@ cmdclass = versioneer.get_cmdclass()
 cmdclass.update({"test": PyTest})
 
 libpyhector = Extension(
-    "pyhector.model",
+    "pyhector._binding",
     language="c++",
     include_dirs=["include", "hector/headers", get_pybind_include(), get_pybind_include(user=True)],
     libraries=["m", "boost_system", "boost_filesystem"],

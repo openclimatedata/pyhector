@@ -14,10 +14,10 @@ namespace py = pybind11;
 
 namespace pyhector {
 
-PYBIND11_MODULE(model, m) {
+PYBIND11_MODULE(_binding, m) {
     m.doc() = R"pbdoc(
-        pyhector.model
-        --------------
+        pyhector._binding
+        -----------------
 
         `pyhector` is a Python wrapper for the simple global climate
         carbon-cycle model Hector (https://github.com/JGCRI/hector).
@@ -37,7 +37,7 @@ PYBIND11_MODULE(model, m) {
         }
     });
 
-    py::class_<Hector>(m, "Hector", "Class providing an interface to Hector")
+    py::class_<Hector>(m, "_Hector", "Class providing an interface to Hector")
         .def(py::init())
         .def_property_readonly("run_size", &Hector::run_size, "Number of steps to run")
         .def_property_readonly("spinup_size", &Hector::spinup_size, "Number of spinup steps run")

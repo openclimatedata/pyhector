@@ -30,8 +30,9 @@ from .default_config import _default_config
 from .units import units  # NOQA
 from .emissions import emissions
 from .output import output
-from .model import Hector as _Hector
-from .model import __hector_version__
+from ._binding import HectorException
+from ._binding import _Hector
+from ._binding import __hector_version__
 
 from ._version import get_versions
 
