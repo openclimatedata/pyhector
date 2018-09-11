@@ -159,7 +159,7 @@ def read_hector_constraint(constraint_file):
     df = pd.read_csv(constraint_file, index_col=0, comment=";")
     df = df[df.applymap(lambda x: isinstance(x, (int, float)))]
     df.index = df.index.astype(int)
-    return df.ix[:, 0]
+    return df.iloc[:, 0]
 
 
 def read_hector_output(csv_file):
