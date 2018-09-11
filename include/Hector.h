@@ -49,7 +49,7 @@ class Hector {
     std::size_t spinup_size() const;
     double end_date();
     double start_date();
-    void run(double until = -1);
+    void run(py::object until);
     void shutdown();
     void reset();
     void set(const std::string& section, const std::string& variable, const std::string& value);

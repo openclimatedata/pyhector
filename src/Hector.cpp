@@ -67,10 +67,10 @@ double Hector::end_date() { return core()->getEndDate(); }
 
 double Hector::start_date() { return core()->getStartDate(); }
 
-void Hector::run(double until) {
+void Hector::run(py::object until) {
     visitor.spinup_size = 0;
     core()->prepareToRun();
-    core()->run(until);
+    core()->run(until.is_none() ? -1 : until.cast<double>());
 }
 
 void Hector::shutdown() {
