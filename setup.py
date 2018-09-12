@@ -16,9 +16,11 @@ Find **usage** instructions in the `repository
 from setuptools import setup, Extension
 from setuptools.command.test import test as TestCommand
 import glob
+import os
 import sys
 import versioneer
 
+path = os.path.abspath(os.path.dirname(__file__))
 
 class PyTest(TestCommand):
     def finalize_options(self):
@@ -66,17 +68,21 @@ libpyhector = Extension(
     depends=list(glob.glob("include/*.h") + glob.glob("hector/headers/**/*.hpp")),
 )
 
+with open(os.path.join(path, 'README.rst'), "r") as f:
+    readme = f.read()
+
 setup(
     name="pyhector",
     version=versioneer.get_version(),
     cmdclass=cmdclass,
-    description="Python wrapper for the Hector simple climate model",
-    long_description=__doc__,
-    url="https://github.com/openclimatedata/pyhector",
-    author="Sven Willner, Robert Gieseke",
-    author_email="sven.willner@pik-potsdam.de, robert.gieseke@pik-potsdam.de",
-    license="GNU Affero General Public License v3",
-    platforms="any",
+    description='Python wrapper for the Hector simple climate model',
+    long_description=readme,
+    long_description_content_type="text/x-rst",
+    url='https://github.com/openclimatedata/pyhector',
+    author='Sven Willner, Robert Gieseke',
+    author_email='sven.willner@pik-potsdam.de, robert.gieseke@pik-potsdam.de',
+    license='GNU Affero General Public License v3',
+    platforms='any',
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
