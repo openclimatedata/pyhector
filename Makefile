@@ -52,8 +52,8 @@ test-testpypi-install:
 	$(eval TEMPVENV := $(shell mktemp -d))
 	python3 -m venv $(TEMPVENV)
 	$(TEMPVENV)/bin/pip install pip --upgrade
-	# Install dependencies not on testpypi registry
-	$(TEMPVENV)/bin/pip install pandas
+	# Install dependencies, because these are not on testpypi registry
+	$(TEMPVENV)/bin/pip install pandas pybind11
 	# Install pyhector without dependencies.
 	$(TEMPVENV)/bin/pip install \
 		-i https://testpypi.python.org/pypi pyhector \
@@ -62,4 +62,3 @@ test-testpypi-install:
 	$(TEMPVENV)/bin/python -c "import sys; sys.path.remove(''); import pyhector; print(pyhector.__version__)"
 
 .PHONY: watchdocs write_defaults write_constants plot_example publish-on-pypi test-pypi-install publish-on-testpypi test-testpypi-install
-
