@@ -1,7 +1,7 @@
 Changelog
 ---------
 
-2.1.1
+2.1.2
 ~~~~~
 
 - C++ bindings are using [pybind11](https://github.com/pybind/pybind11) now
