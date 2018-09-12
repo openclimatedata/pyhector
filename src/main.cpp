@@ -39,7 +39,7 @@ PYBIND11_MODULE(_binding, m) {
 
     py::class_<Hector>(m, "_Hector", "Class providing an interface to Hector")
         .def(py::init())
-        .def_property_readonly("run_size", &Hector::run_size, "Number of steps to run")
+        .def_property_readonly("run_size", &Hector::run_size, "Number of steps to run by default")
         .def_property_readonly("spinup_size", &Hector::spinup_size, "Number of spinup steps run")
         .def_property_readonly("start_date", &Hector::start_date, "Start date")
         .def_property_readonly("end_date", &Hector::end_date, "End date")
@@ -77,8 +77,18 @@ PYBIND11_MODULE(_binding, m) {
              )doc",
              py::arg("component"), py::arg("name"), py::arg("in_spinup") = false)
         .def("clear_observables", &Hector::clear_observables, "Clear observables registered so far.")
-        .def("reset", &Hector::reset, "Reset Hector.")
-        .def("run", &Hector::run, "Run Hector.", py::arg("until") = py::none())
+        .def("reset", &Hector::reset, "(Hard) reset Hector.")
+        .def("run", &Hector::run,
+             R"doc(
+                   Run Hector.
+
+                   Parameters
+                   ----------
+                   until : double, default ``None``
+                       Year to run until (including) or run till end date as given by
+                       configuration if None
+             )doc",
+             py::arg("until") = py::none())
         .def("shutdown", &Hector::shutdown, "Shutdown Hector.")
         .def("_set_string", (void (Hector::*)(const std::string&, const std::string&, const std::string&)) & Hector::set, "Set Parameters.")
         .def("_set_double", (void (Hector::*)(const std::string&, const std::string&, double)) & Hector::set, "Set Parameters.")
