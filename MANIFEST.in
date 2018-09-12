@@ -4,5 +4,5 @@ recursive-include pyhector/emissions *.csv
 include pyhector/rcp_default.ini
 include versioneer.py
 include pyhector/_version.py
-include pyhector/src/*.cpp
-include pyhector/include/*.h
+include src/*.cpp
+include include/*.h
