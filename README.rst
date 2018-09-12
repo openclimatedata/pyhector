@@ -39,8 +39,8 @@ Willner <http://www.pik-potsdam.de/~willner/>`__ and `Robert
 Gieseke <https://www.pik-potsdam.de/members/gieseke>`__ at the `Potsdam
 Institute for Climate Impact Research <https://www.pik-potsdam.de/>`__.
 
-Pyhector uses [pybind11](https://github.com/pybind/pybind11) to wrap
-Hector's API. The version of Hector used can be read using Pyhector's `__hector_version__` field.
+Pyhector uses `pybind11 <https://github.com/pybind/pybind11>`__ to wrap
+Hector's API. The version of Hector used can be read using Pyhector's ``__hector_version__`` field.
 
 Installation
 ------------
