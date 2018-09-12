@@ -1,11 +1,19 @@
 Changelog
 ---------
 
+2.1.0
+~~~~~
+
+- C++ bindings are using [pybind11](https://github.com/pybind/pybind11) now
+  (making the hector-wrapper obsolete)
+
 2.0.1
 ~~~~~
+
 - updated to Hector 2.0.1 (license clarification)
 
 2.0.0
+
 ~~~~~
 
 - updated to Hector 2.0.0
