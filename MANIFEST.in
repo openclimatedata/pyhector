@@ -6,3 +6,6 @@ include versioneer.py
 include pyhector/_version.py
 include src/*.cpp
 include include/*.h
+recursive-include hector/headers *.hpp
+include hector/LICENSE.md
+include hector/README.md
