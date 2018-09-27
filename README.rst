@@ -14,7 +14,7 @@ pyhector
 .. sec-begin-index
 
 **pyhector** is a Python interface for the simple global climate
-carbon-cycle model `Hector <https://github.com/JGCRI/hector>`__.
+carbon-cycle model `Hector <https://github.com/JGCRI/hector>`_.
 
 **pyhector** makes the simple climate model Hector easily installable
 and usable from Python and can for example be used in the analysis of
@@ -23,25 +23,25 @@ model emulation, and uncertainty analyses.
 
 `Hector <https://github.com/JGCRI/hector>`_ is written in C++ and
 developed at the `Pacific Northwest National
-Laboratory <https://www.pnl.gov/>`__. The model description is published
+Laboratory <https://www.pnl.gov/>`_. The model description is published
 in
 
     Hartin, C. A., Patel, P., Schwarber, A., Link, R. P., and
     Bond-Lamberty, B. P.: A simple object-oriented and open-source model
     for scientific and policy analyses of the global climate system –
     Hector v1.0, Geosci. Model Dev., 8, 939-955,
-    `doi:10.5194/gmd-8-939-2015 <https://dx.doi.org/10.5194/gmd-8-939-2015>`__,
+    `doi:10.5194/gmd-8-939-2015 <https://dx.doi.org/10.5194/gmd-8-939-2015>`_,
     2015.
 
-See the Hector `repository <https://github.com/JGCRI/hector>`__ and
-`wiki <https://github.com/JGCRI/hector/wiki>`__ for further information.
+See the Hector `repository <https://github.com/JGCRI/hector>`_ and
+`wiki <https://github.com/JGCRI/hector/wiki>`_ for further information.
 
 The Python interface **pyhector** is developed by `Sven
-Willner <http://www.pik-potsdam.de/~willner/>`__ and `Robert
-Gieseke <https://www.pik-potsdam.de/members/gieseke>`__ at the `Potsdam
-Institute for Climate Impact Research <https://www.pik-potsdam.de/>`__.
+Willner <http://www.pik-potsdam.de/~willner/>`_ and `Robert
+Gieseke <https://www.pik-potsdam.de/members/gieseke>`_ at the `Potsdam
+Institute for Climate Impact Research <https://www.pik-potsdam.de/>`_.
 
-Pyhector uses `pybind11 <https://github.com/pybind/pybind11>`__ to wrap
+Pyhector uses `pybind11 <https://github.com/pybind/pybind11>`_ to wrap
 Hector's API. The version of Hector used can be read using Pyhector's ``__hector_version__`` field.
 
 .. sec-end-index
@@ -53,11 +53,11 @@ Installation
 Prerequisites
 ~~~~~~~~~~~~~
 
-`Hector <https://github.com/JGCRI/hector>`__ requires
-`Boost <http://www.boost.org/>`__, so to install and use **pyhector**
+`Hector <https://github.com/JGCRI/hector>`_ requires
+`Boost <http://www.boost.org/>`_, so to install and use **pyhector**
 you need to have the filesystem and system modules of *Boost* version
 1.52 or later installed (see also the `Hector build
-instructions <https://github.com/JGCRI/hector/wiki/BuildHector>`__).
+instructions <https://github.com/JGCRI/hector/wiki/BuildHector>`_).
 
 On Ubuntu/Debian these can be installed by invoking
 
@@ -79,7 +79,7 @@ Install using pip
 ~~~~~~~~~~~~~~~~~
 
 You can simply install **pyhector** from
-`PyPI <https://pypi.python.org/pypi/pyhector>`__ by invoking
+`PyPI <https://pypi.python.org/pypi/pyhector>`_ by invoking
 
 .. code:: bash
 
@@ -91,11 +91,11 @@ You can simply install **pyhector** from
 Usage
 -----
 
-This repository also contains a `Jupyter Notebook <https://jupyter.readthedocs.io/en/latest/index.html>`__ you
-can `run live <http://mybinder.org/repo/openclimatedata/pyhector>`__ and
-experiment with, courtesy of the `Binder <http://mybinder.org/>`__
+This repository also contains a `Jupyter Notebook <https://jupyter.readthedocs.io/en/latest/index.html>`_ you
+can `run live <http://mybinder.org/repo/openclimatedata/pyhector>`_ and
+experiment with, courtesy of the `Binder <http://mybinder.org/>`_
 project. The notebook can be viewed
-as a `static version <http://nbviewer.jupyter.org/github/openclimatedata/pyhector/blob/master/index.ipynb>`__ using nbviewer.
+as a `static version <http://nbviewer.jupyter.org/github/openclimatedata/pyhector/blob/master/index.ipynb>`_ using nbviewer.
 
 Basic example
 ~~~~~~~~~~~~~
@@ -172,11 +172,11 @@ Tests can be run locally with
 .. |PyPI Version| image:: https://img.shields.io/pypi/v/pyhector.svg
    :target: https://pypi.org/project/pyhector/
 .. |Docs| image:: https://img.shields.io/badge/docs-latest-brightgreen.svg?style=flat
-   :target: http://pyhector.readthedocs.io/en/latest/
+   :target: https://pyhector.readthedocs.io/en/latest/
 .. |Launch Binder| image:: https://img.shields.io/badge/launch-binder-e66581.svg
    :target: https://mybinder.org/v2/gh/openclimatedata/pyhector/master?filepath=notebooks/index.ipynb
 .. |JOSS| image:: https://img.shields.io/badge/JOSS-10.21105%2Fjoss.00248-brightgreen.svg
-   :target: http://dx.doi.org/10.21105/joss.00248
+   :target: https://doi.org/10.21105/joss.00248
 .. |Codecov| image:: https://img.shields.io/codecov/c/github/openclimatedata/pyhector.svg
    :target: https://codecov.io/gh/openclimatedata/pyhector
 .. |Zenodo| image:: https://zenodo.org/badge/DOI/10.5281/zenodo.798350.svg
