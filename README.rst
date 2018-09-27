@@ -11,6 +11,8 @@ pyhector
 | |JOSS|         | |Zenodo|               |
 +----------------+------------------------+
 
+.. sec-begin-index
+
 **pyhector** is a Python interface for the simple global climate
 carbon-cycle model `Hector <https://github.com/JGCRI/hector>`__.
 
@@ -41,6 +43,9 @@ Institute for Climate Impact Research <https://www.pik-potsdam.de/>`__.
 
 Pyhector uses `pybind11 <https://github.com/pybind/pybind11>`__ to wrap
 Hector's API. The version of Hector used can be read using Pyhector's ``__hector_version__`` field.
+
+.. sec-end-index
+.. sec-begin-installation
 
 Installation
 ------------
@@ -80,6 +85,8 @@ You can simply install **pyhector** from
 
     pip install pyhector
 
+.. sec-end-installation
+.. sec-begin-usage
 
 Usage
 -----
@@ -126,6 +133,8 @@ Advanced example
     :alt: Temperature Plot of RCP scenarios
 
 .. image-end
+.. sec-end-usage
+.. sec-begin-development
 
 Development
 -----------
@@ -154,6 +163,7 @@ Tests can be run locally with
 
     python setup.py test
 
+.. sec-end-development
 
 .. |Build Status| image:: https://img.shields.io/travis/openclimatedata/pyhector.svg
    :target: https://travis-ci.org/openclimatedata/pyhector

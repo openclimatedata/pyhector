@@ -3,6 +3,7 @@
     :undoc-members:
     :show-inheritance:
 
+
 pyhector.constants
 ------------------
 
@@ -17,6 +18,7 @@ A dictionary with Hector's default configuration parameters.
 See also `the original config file on GitHub <https://github.com/openclimatedata/pyhector/blob/master/pyhector/rcp_default.ini>`_.
 In **pyhector** this INI-file is represented as a dictionary.
 
+
 pyhector.emissions
 ------------------
 
@@ -24,6 +26,7 @@ A dictionary with mapping from Hector components to emissions used in
 the respective component.
 
 .. include:: static/emissions_mapping.inc
+
 
 pyhector.output
 ---------------
@@ -40,6 +43,7 @@ A dictionary with Hector's available output variables::
         [...]
 
 .. include:: static/output_variables.inc
+
 
 pyhector.units
 --------------
