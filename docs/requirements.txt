@@ -1,3 +1,2 @@
 # For Readthedocs
-numpydoc
 tabulate

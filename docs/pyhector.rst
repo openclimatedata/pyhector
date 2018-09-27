@@ -23,14 +23,7 @@ pyhector.emissions
 A dictionary with mapping from Hector components to emissions used in
 the respective component.
 
-.. exec::
-    from pyhector import emissions
-    from tabulate import tabulate
-    print(tabulate(map(lambda item: ("``%s``" % item[0],
-                                     ", ".join(map(lambda i: "``%s``" % i, item[1]))),
-                       sorted(emissions.items())),
-                   ["component", "emissions"],
-                   tablefmt="grid"))
+.. include:: static/emissions_mapping.inc
 
 pyhector.output
 ---------------
@@ -46,29 +39,11 @@ A dictionary with Hector's available output variables::
         },
         [...]
 
-.. exec::
-    from pyhector import output
-    from tabulate import tabulate
-    sorted_output = sorted(output.items(),
-                              key=output.get("component"))
-    print(tabulate(map(lambda item: ("``%s``" % item[1]["component"],
-                                     "``%s``" % item[1]["variable"],
-                                     item[1]["description"],
-                                     "``%s``" % item[1]["unit"]),
-                       sorted_output),
-                   ["component", "variable", "description", "unit"],
-                   tablefmt="grid"))
+.. include:: static/output_variables.inc
 
 pyhector.units
 --------------
 
 A dictionary with emissions categories and their associated units.
 
-.. exec::
-    from pyhector import units
-    from tabulate import tabulate
-    print(tabulate(map(lambda item: ("``%s``" % item[0],
-                                     "``%s``" % item[1]),
-                       sorted(units.items())),
-                   ["emissions", "unit"],
-                   tablefmt="grid"))
+.. include:: static/units_dict.inc
