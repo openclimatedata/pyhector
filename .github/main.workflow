@@ -1,6 +1,6 @@
 workflow "Continous Integration" {
   on = "push"
-  resolves = ["Coverage"]
+  resolves = ["Coverage", "Black"]
 }
 
 action "Black" {

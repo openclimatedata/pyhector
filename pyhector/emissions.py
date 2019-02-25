@@ -40,5 +40,5 @@ emissions = {
     "HCF142b_halocarbon": ["HCF142b_emissions"],
     "HCF143_halocarbon": ["HCF143_emissions"],  # commented out in RCP
     "CH3Cl_halocarbon": ["CH3Cl_emissions"],
-    "CH3Br_halocarbon": ["CH3Br_emissions"]
+    "CH3Br_halocarbon": ["CH3Br_emissions"],
 }
