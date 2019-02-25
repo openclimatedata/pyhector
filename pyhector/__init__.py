@@ -95,7 +95,9 @@ class Hector(_Hector):
             for source in emissions[section]:
                 if source not in scenario.columns:
                     continue
-                self._set_timed_array(section, source, list(scenario.index), list(scenario[source]))
+                self._set_timed_array(
+                    section, source, list(scenario.index), list(scenario[source])
+                )
 
 
 def read_hector_input(csv_file):
@@ -173,16 +175,26 @@ def read_hector_output(csv_file):
     start_year = 1746
     output_stream = pd.read_csv(csv_file, skiprows=1)
 
-    wide = output_stream[output_stream.year >= start_year].pivot_table(index="year", columns="variable", values="value")
+    wide = output_stream[output_stream.year >= start_year].pivot_table(
+        index="year", columns="variable", values="value"
+    )
 
     return wide
 
 
 # Default Scenarios:
-rcp26 = read_hector_input(os.path.join(os.path.dirname(__file__), "./emissions/RCP26_emissions.csv"))
-rcp45 = read_hector_input(os.path.join(os.path.dirname(__file__), "./emissions/RCP45_emissions.csv"))
-rcp60 = read_hector_input(os.path.join(os.path.dirname(__file__), "./emissions/RCP6_emissions.csv"))
-rcp85 = read_hector_input(os.path.join(os.path.dirname(__file__), "./emissions/RCP85_emissions.csv"))
+rcp26 = read_hector_input(
+    os.path.join(os.path.dirname(__file__), "./emissions/RCP26_emissions.csv")
+)
+rcp45 = read_hector_input(
+    os.path.join(os.path.dirname(__file__), "./emissions/RCP45_emissions.csv")
+)
+rcp60 = read_hector_input(
+    os.path.join(os.path.dirname(__file__), "./emissions/RCP6_emissions.csv")
+)
+rcp85 = read_hector_input(
+    os.path.join(os.path.dirname(__file__), "./emissions/RCP85_emissions.csv")
+)
 
 
 def run(
@@ -237,11 +249,17 @@ def run(
         if outputs == "all":
             outputs = output.keys()
         for name in outputs:
-            h.add_observable(output[name]["component"], output[name]["variable"], output[name].get("needs_date", False))
+            h.add_observable(
+                output[name]["component"],
+                output[name]["variable"],
+                output[name].get("needs_date", False),
+            )
         h.run()
         results = {}
         for name in outputs:
-            results[name] = h.get_observable(output[name]["component"], output[name]["variable"])
+            results[name] = h.get_observable(
+                output[name]["component"], output[name]["variable"]
+            )
 
         # In Hector 1.x output value years are given as end of simulation
         # year, e.g. 1745-12-31 = 1746.0.
