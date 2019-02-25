@@ -13,7 +13,8 @@ from pyhector import (
     read_hector_input,
     write_hector_input,
     read_hector_output,
-    read_hector_constraint
+    read_hector_constraint,
+    constants
 )
 from pyhector.output import output
 
@@ -25,6 +26,10 @@ rcps = {
     'rcp60': rcp60,
     'rcp85': rcp85
 }
+
+
+def test_constants():
+    assert constants
 
 
 def test_read_hector_input():
