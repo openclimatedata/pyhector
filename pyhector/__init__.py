@@ -17,6 +17,8 @@ https://github.com/openclimatedata/pyhector
 
 """
 
+from copy import deepcopy
+
 import ctypes
 import os
 import pkg_resources
@@ -24,15 +26,13 @@ import pkg_resources
 import numpy as np
 import pandas as pd
 
-from copy import deepcopy
-
 from .default_config import _default_config
-from .units import units  # NOQA
+from .units import units
 from .emissions import emissions
 from .output import output
-from ._binding import HectorException
-from ._binding import _Hector
-from ._binding import __hector_version__
+from ._binding import HectorException  # pylint: disable=no-name-in-module
+from ._binding import _Hector  # pylint: disable=no-name-in-module
+from ._binding import __hector_version__  # pylint: disable=no-name-in-module
 
 from ._version import get_versions
 
@@ -47,7 +47,7 @@ class Hector(_Hector):
         self.reset()
         return self
 
-    def __exit__(self, type, value, traceback):
+    def __exit__(self, type_, value, traceback):
         self.shutdown()
 
     def set_value(self, section, variable, value):
@@ -152,6 +152,7 @@ def write_hector_input(scenario, path=None):
     f.write(out)
     if hasattr(f, "close"):
         f.close()
+    return None
 
 
 def read_hector_constraint(constraint_file):
@@ -197,13 +198,7 @@ rcp85 = read_hector_input(
 )
 
 
-def run(
-    scenario,
-    config=None,
-    base_config=None,
-    outputs=["temperature.Tgav", "simpleNbox.Ca", "forcing.Ftot"],
-    return_config=False,
-):
+def run(scenario, config=None, base_config=None, outputs=None, return_config=False):
     """
     Runs a scenario through the Hector climate model.
 
@@ -235,6 +230,8 @@ def run(
         When ``return_config`` is set to True results and
         parameters are returned as a tuple.
     """
+    if outputs is None:
+        outputs = ["temperature.Tgav", "simpleNbox.Ca", "forcing.Ftot"]
     if base_config is None:
         parameters = deepcopy(_default_config)
     else:
@@ -271,5 +268,4 @@ def run(
         results = pd.DataFrame(results, index=index)
     if return_config:
         return results, parameters
-    else:
-        return results
+    return results

@@ -1,6 +1,6 @@
 workflow "Continous Integration" {
   on = "push"
-  resolves = ["Bandit", "Black", "Coverage"]
+  resolves = ["Bandit", "Black", "Coverage", "Pylint"]
 }
 
 action "Bandit" {
@@ -32,4 +32,15 @@ action "Coverage" {
     MIN_COVERAGE = "75"
   }
   secrets = ["CODECOV_TOKEN"]
+}
+
+action "Pylint" {
+  uses = "./.github/actions/run"
+  args = [
+    "pip install pylint",
+    "pylint pyhector"
+  ]
+  env = {
+    PYTHON_VERSION = "3.7"
+  }
 }
