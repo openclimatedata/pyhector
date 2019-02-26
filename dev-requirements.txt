@@ -1,9 +1,9 @@
-pybind11
-pytest
+pybind11>=2.2
+pytest>=4.0
 pytest-cov
 notebook
 matplotlib
-sphinx
+sphinx>=1.4
 sphinx-autobuild
 numpydoc
 tabulate
