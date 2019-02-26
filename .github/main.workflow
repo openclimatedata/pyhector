@@ -17,7 +17,7 @@ action "Bandit" {
 action "Black" {
   uses = "./.github/actions/run"
   args = [
-    "black --check pyhector tests"
+    "black --check pyhector tests setup.py"
   ]
   env = {
     PYTHON_VERSION = "3.7"
