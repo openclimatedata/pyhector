@@ -53,3 +53,23 @@ action "Test coverage" {
     PIP_PACKAGES = "coverage pytest pytest-cov"
   }
 }
+
+
+workflow "Deployment" {
+  on = "release"
+  resolves = ["Publish on PyPi"]
+}
+
+action "Publish on PyPi" {
+  uses = "./.github/actions/run_installed"
+  args = [
+    "python setup.py sdist",
+    "twine upload dist/*"
+  ]
+  env = {
+    PYTHON_VERSION = "3.7"
+    PIP_PACKAGES = "twine"
+  }
+  needs = ["Bandit", "Black", "Pylint", "Test coverage"]
+  secrets = ["TWINE_USERNAME", "TWINE_PASSWORD"]
+}
