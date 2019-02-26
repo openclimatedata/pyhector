@@ -3,7 +3,8 @@ set -e
 
 if [ -n "$PIP_PACKAGES" ]
 then
-    pip install "$PIP_PACKAGES"
+    read -r -a PIP_PACKAGES <<< "$PIP_PACKAGES"
+    pip install "${PIP_PACKAGES[@]}"
 fi
 
 echo
