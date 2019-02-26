@@ -1,6 +1,6 @@
 workflow "Continuous Integration" {
   on = "push"
-  resolves = ["Bandit", "Black", "Coverage", "Pylint"]
+  resolves = ["Bandit", "Black", "Pylint", "Test coverage"]
 }
 
 action "Bandit" {
@@ -25,7 +25,18 @@ action "Black" {
   }
 }
 
-action "Coverage" {
+action "Pylint" {
+  uses = "./.github/actions/run_installed"
+  args = [
+    "pylint pyhector"
+  ]
+  env = {
+    PYTHON_VERSION = "3.7"
+    PIP_PACKAGES = "pylint"
+  }
+}
+
+action "Test coverage" {
   uses = "./.github/actions/run_installed"
   args = [
     "pytest --cov",
@@ -40,16 +51,5 @@ action "Coverage" {
     PYTHON_VERSION = "3.7"
     MIN_COVERAGE = "75"
     PIP_PACKAGES = "coverage pytest pytest-cov"
-  }
-}
-
-action "Pylint" {
-  uses = "./.github/actions/run_installed"
-  args = [
-    "pylint pyhector"
-  ]
-  env = {
-    PYTHON_VERSION = "3.7"
-    PIP_PACKAGES = "pylint"
   }
 }
