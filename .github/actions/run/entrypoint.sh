@@ -8,9 +8,7 @@ then
 fi
 
 echo
-echo "#################################################"
-echo
-echo "Starting ${GITHUB_WORKFLOW}: ${GITHUB_ACTION}"
+echo "################################################################################"
 echo
 
 printf "%s\\n" "$@" | bash -e
