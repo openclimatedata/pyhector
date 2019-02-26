@@ -13,7 +13,4 @@ echo
 echo "Starting ${GITHUB_WORKFLOW}: ${GITHUB_ACTION}"
 echo
 
-for CMD in "$@"
-do
-    $CMD
-done
+printf "%s\\n" "$@" | bash -e
