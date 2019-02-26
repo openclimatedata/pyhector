@@ -10,7 +10,6 @@ echo
 git submodule update --init
 pip install -e .
 pytest --cov
-codecov
 if ! coverage report --fail-under="$MIN_COVERAGE"
 then
     echo
