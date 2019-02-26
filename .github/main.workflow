@@ -60,9 +60,15 @@ workflow "Deployment" {
   resolves = ["Publish on PyPi"]
 }
 
+action "Filter master" {
+  uses = "actions/bin/filter@master"
+  args = "branch master"
+}
+
 action "Publish on PyPi" {
   uses = "./.github/actions/run_installed"
   args = [
+    "rm -rf build dist",
     "python setup.py sdist",
     "twine upload dist/*"
   ]
@@ -70,6 +76,6 @@ action "Publish on PyPi" {
     PYTHON_VERSION = "3.7"
     PIP_PACKAGES = "twine"
   }
-  needs = ["Bandit", "Black", "Pylint", "Test coverage"]
+  needs = ["Filter master", "Bandit", "Black", "Pylint", "Test coverage"]
   secrets = ["TWINE_USERNAME", "TWINE_PASSWORD"]
 }
