@@ -1,5 +1,5 @@
 ARG PYTHON_VERSION=latest
-FROM python:${PYTHON_VERSION}
+FROM python:$PYTHON_VERSION
 
 LABEL "com.github.actions.name"="Run for Python"
 LABEL "com.github.actions.description"="Run command in a Python-supporting environment"

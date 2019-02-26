@@ -6,22 +6,22 @@ workflow "Continous Integration" {
 action "Bandit" {
   uses = "./.github/actions/run"
   args = [
-    "pip install bandit",
     "bandit -c .bandit.yml -r ."
   ]
   env = {
     PYTHON_VERSION = "3.7"
+    PIP_PACKAGES = "bandit"
   }
 }
 
 action "Black" {
   uses = "./.github/actions/run"
   args = [
-    "pip install black",
     "black --check pyhector tests"
   ]
   env = {
     PYTHON_VERSION = "3.7"
+    PIP_PACKAGES = "black"
   }
 }
 
@@ -36,10 +36,10 @@ action "Coverage" {
 action "Pylint" {
   uses = "./.github/actions/run"
   args = [
-    "pip install pylint",
     "pylint pyhector"
   ]
   env = {
     PYTHON_VERSION = "3.7"
+    PIP_PACKAGES = "pylint"
   }
 }
