@@ -13,10 +13,7 @@ echo
 echo "Starting ${GITHUB_WORKFLOW}: ${GITHUB_ACTION}"
 echo
 
-git submodule update --init
+git submodule update --init --recursive
 pip install -e .
 
-for CMD in "$@"
-do
-    $CMD
-done
+printf "%s\\n" "$@" | bash -e
