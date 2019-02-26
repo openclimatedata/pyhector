@@ -2,8 +2,6 @@ pyhector
 ========
 
 +----------------+------------------------+
-| |Build Status| | |Codecov|              |
-+----------------+------------------------+
 | |PyPI Version| | |PyPI Python Versions| |
 +----------------+------------------------+
 | |Docs|         | |Launch Binder|        |
@@ -165,8 +163,6 @@ Tests can be run locally with
 
 .. sec-end-development
 
-.. |Build Status| image:: https://img.shields.io/travis/openclimatedata/pyhector.svg
-   :target: https://travis-ci.org/openclimatedata/pyhector
 .. |PyPI Python Versions| image:: https://img.shields.io/pypi/pyversions/pyhector.svg
    :target: https://pypi.org/project/pyhector/
 .. |PyPI Version| image:: https://img.shields.io/pypi/v/pyhector.svg
@@ -177,7 +173,5 @@ Tests can be run locally with
    :target: https://mybinder.org/v2/gh/openclimatedata/pyhector/master?filepath=notebooks/index.ipynb
 .. |JOSS| image:: https://img.shields.io/badge/JOSS-10.21105%2Fjoss.00248-brightgreen.svg
    :target: https://doi.org/10.21105/joss.00248
-.. |Codecov| image:: https://img.shields.io/codecov/c/github/openclimatedata/pyhector.svg
-   :target: https://codecov.io/gh/openclimatedata/pyhector
 .. |Zenodo| image:: https://zenodo.org/badge/DOI/10.5281/zenodo.798350.svg
    :target: https://zenodo.org/record/798350
