@@ -12,6 +12,9 @@ echo
 echo "Starting ${GITHUB_WORKFLOW}: ${GITHUB_ACTION}"
 echo
 
+git submodule update --init
+pip install -e .
+
 for CMD in "$@"
 do
     $CMD
