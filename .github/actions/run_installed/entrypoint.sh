@@ -7,7 +7,8 @@ then
     pip install "${PIP_PACKAGES[@]}"
 fi
 
-git submodule update --init --recursive
+git submodule update --init \
+    || (sleep 1; git submodule update --init) # Prevent occasional hiccup
 pip install -e .
 
 echo
