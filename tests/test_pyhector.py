@@ -9,23 +9,22 @@ from pandas.util.testing import assert_series_equal, assert_frame_equal
 
 import pyhector
 from pyhector import (
-    Hector, rcp26, rcp45, rcp60, rcp85,
+    Hector,
+    rcp26,
+    rcp45,
+    rcp60,
+    rcp85,
     read_hector_input,
     write_hector_input,
     read_hector_output,
     read_hector_constraint,
-    constants
+    constants,
 )
 from pyhector.output import output
 
 
 path = os.path.dirname(__file__)
-rcps = {
-    'rcp26': rcp26,
-    'rcp45': rcp45,
-    'rcp60': rcp60,
-    'rcp85': rcp85
-}
+rcps = {"rcp26": rcp26, "rcp45": rcp45, "rcp60": rcp60, "rcp85": rcp85}
 
 
 def test_constants():
@@ -34,8 +33,9 @@ def test_constants():
 
 def test_read_hector_input():
     rcp26 = read_hector_input(
-        os.path.join(os.path.dirname(__file__),
-                     '../pyhector/emissions/RCP26_emissions.csv')
+        os.path.join(
+            os.path.dirname(__file__), "../pyhector/emissions/RCP26_emissions.csv"
+        )
     )
     assert isinstance(rcp26, pd.DataFrame)
     assert rcp26.index[-1] == 2500
@@ -43,7 +43,7 @@ def test_read_hector_input():
 
 
 def test_write_hector_input(tmpdir):
-    testfile = tmpdir.join('test.csv')
+    testfile = tmpdir.join("test.csv")
     write_hector_input(rcp26, testfile)
     print(testfile.read())
     scen_rcp26 = read_hector_input(str(testfile))
@@ -58,7 +58,8 @@ def test_rcps():
         )
         output = pyhector.run(scenario)
         assert_series_equal(
-            output["temperature.Tgav"], original.Tgav, check_names=False)
+            output["temperature.Tgav"], original.Tgav, check_names=False
+        )
 
 
 def test_default_options():
@@ -68,9 +69,9 @@ def test_default_options():
 
 
 def test_units():
-    assert pyhector.units["ffi_emissions"] == 'GtC/yr'
-    assert pyhector.units["luc_emissions"] == 'GtC/yr'
-    assert pyhector.units["NOX_emissions"] == 'MtN/yr'
+    assert pyhector.units["ffi_emissions"] == "GtC/yr"
+    assert pyhector.units["luc_emissions"] == "GtC/yr"
+    assert pyhector.units["NOX_emissions"] == "MtN/yr"
 
 
 def test_output_variables():
@@ -89,7 +90,8 @@ def test_output_variables_needs_date():
 
 def test_use_base_config():
     results, params = pyhector.run(
-        rcp26,  base_config=pyhector._default_config, return_config=True)
+        rcp26, base_config=pyhector._default_config, return_config=True
+    )
     assert params == pyhector._default_config
 
 
@@ -121,15 +123,13 @@ def test_spinup_output():
             output[name]["component"],
             output[name]["variable"],
             output[name].get("needs_date", False),
-            in_spinup=True
+            in_spinup=True,
         )
         h.run()
         results = h.get_observable(
-            output[name]["component"],
-            output[name]["variable"],
-            in_spinup=True
+            output[name]["component"], output[name]["variable"], in_spinup=True
         )
-        assert(h.spinup_size == len(results))
+        assert h.spinup_size == len(results)
 
 
 # Turn off spinup
@@ -139,13 +139,13 @@ def test_turn_off_spinup():
         h.config(parameters)
         h.set_emissions(rcp45)
         h.run()
-        assert(h.spinup_size > 0)
+        assert h.spinup_size > 0
     with Hector() as h:
         parameters["core"]["do_spinup"] = False
         h.config(parameters)
         h.set_emissions(rcp45)
         h.run()
-        assert(h.spinup_size == 0)
+        assert h.spinup_size == 0
 
 
 # Turn on the constraint settings one by one and run the model
@@ -157,7 +157,9 @@ def test_constraint_co2():
     # Simplifying the overlapping date-range (later CO2 values are yearly.)
     assert_series_equal(
         output["simpleNbox.Ca"].loc[1750:1960:5],
-        lawdome_co2.loc[1750:1960], check_names=False)
+        lawdome_co2.loc[1750:1960],
+        check_names=False,
+    )
 
 
 # Radiative forcing
@@ -166,5 +168,5 @@ def test_constraint_forcing():
     forcing = read_hector_constraint(forcing_csv)
     output = pyhector.run(rcp45, {"forcing": {"Ftot_constrain": forcing}})
     assert_series_equal(
-        output["forcing.Ftot"].loc[1765:2300],
-        forcing.loc[1765:2300], check_names=False)
+        output["forcing.Ftot"].loc[1765:2300], forcing.loc[1765:2300], check_names=False
+    )

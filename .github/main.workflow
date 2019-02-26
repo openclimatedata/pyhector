@@ -7,7 +7,7 @@ action "Black" {
   uses = "./.github/actions/run"
   args = [
     "pip install black",
-    "black --check pyhector"
+    "black --check pyhector tests"
   ]
   env = {
     PYTHON_VERSION = "3.7"
