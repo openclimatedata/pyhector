@@ -8,8 +8,7 @@ LABEL "com.github.actions.color"="blue"
 
 RUN apt-get update; apt-get install -y libboost-system-dev libboost-filesystem-dev; apt-get clean
 RUN pip install --upgrade pip
-RUN pip install pytest pytest-cov
-RUN pip install codecov
+RUN pip install coverage pytest pytest-cov
 
 ADD entrypoint.sh /entrypoint.sh
 

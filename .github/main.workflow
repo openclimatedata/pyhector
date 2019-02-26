@@ -31,7 +31,6 @@ action "Coverage" {
     PYTHON_VERSION = "3.7"
     MIN_COVERAGE = "75"
   }
-  secrets = ["CODECOV_TOKEN"]
 }
 
 action "Pylint" {
