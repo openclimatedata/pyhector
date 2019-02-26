@@ -1,4 +1,4 @@
-workflow "Continous Integration" {
+workflow "Continuous Integration" {
   on = "push"
   resolves = ["Bandit", "Black", "Coverage", "Pylint"]
 }
