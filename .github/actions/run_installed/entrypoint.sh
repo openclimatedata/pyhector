@@ -7,13 +7,11 @@ then
     pip install "${PIP_PACKAGES[@]}"
 fi
 
-echo
-echo "#################################################"
-echo
-echo "Starting ${GITHUB_WORKFLOW}: ${GITHUB_ACTION}"
-echo
-
 git submodule update --init --recursive
 pip install -e .
+
+echo
+echo "################################################################################"
+echo
 
 printf "%s\\n" "$@" | bash -e
