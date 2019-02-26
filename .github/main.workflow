@@ -1,6 +1,17 @@
 workflow "Continous Integration" {
   on = "push"
-  resolves = ["Coverage", "Black"]
+  resolves = ["Bandit", "Black", "Coverage"]
+}
+
+action "Bandit" {
+  uses = "./.github/actions/run"
+  args = [
+    "pip install bandit",
+    "bandit -c .bandit.yml -r ."
+  ]
+  env = {
+    PYTHON_VERSION = "3.7"
+  }
 }
 
 action "Black" {

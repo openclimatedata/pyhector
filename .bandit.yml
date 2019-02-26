@@ -1,0 +1,4 @@
+exclude_dirs:
+  - pyhector/_version.py
+  - tests
+  - versioneer.py
