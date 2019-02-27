@@ -1,6 +1,13 @@
 Changelog
 ---------
 
+2.1.0a
+~~~~~~
+
+- update to Hector 2.1.0 (https://github.com/JGCRI/hector/releases/tag/v2.1.0)
+- switch to new versioning scheme:
+  Hector version + ascending letters denoting changes in Pyhector
+
 2.1.3
 ~~~~~
 
