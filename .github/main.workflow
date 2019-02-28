@@ -57,12 +57,12 @@ action "Test coverage" {
 
 workflow "Deployment" {
   on = "release"
-  resolves = ["Publish on PyPi"]
+  resolves = ["Create release"]
 }
 
-action "Filter master" {
+action "Filter tag" {
   uses = "actions/bin/filter@master"
-  args = "branch master"
+  args = "tag v*"
 }
 
 action "Publish on PyPi" {
@@ -76,6 +76,12 @@ action "Publish on PyPi" {
     PYTHON_VERSION = "3.7"
     PIP_PACKAGES = "twine"
   }
-  needs = ["Filter master", "Bandit", "Black", "Pylint", "Test coverage"]
+  needs = ["Filter tag", "Bandit", "Black", "Pylint", "Test coverage"]
   secrets = ["TWINE_USERNAME", "TWINE_PASSWORD"]
+}
+
+action "Create release" {
+  uses = "./.github/actions/create-release"
+  needs = ["Publish on PyPi"]
+  secrets = ["GITHUB_TOKEN"]
 }
