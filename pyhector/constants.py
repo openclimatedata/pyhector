@@ -136,7 +136,6 @@ variables = {
     "HC_TAU": "tau",
     "HC_RHO": "rho",
     "HC_MOLARMASS": "molarMass",
-    "HC_CALCDATE": "calcDate",
     "ATMOSPHERIC_CH4": "CH4",
     "PREINDUSTRIAL_CH4": "M0",
     "RF_CH4": "FCH4",

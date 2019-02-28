@@ -1,15 +1,15 @@
 all: write_defaults write_constants plot_example
 
-write_defaults:
+write_defaults: venv
 	sh -c '. ./venv/bin/activate; ./scripts/write_defaults.py'
 
-write_constants:
+write_constants: venv
 	sh -c './scripts/write_constants_py.sh > pyhector/constants.py'
 
-plot_example:
+plot_example: venv
 		sh -c '. ./venv/bin/activate; pip install matplotlib; python scripts/plot_example.py'
 
-watchdocs:
+watchdocs: venv
 	sh -c '. ./venv/bin/activate; sphinx-autobuild \
 	--watch ../pyhector \
 	--ignore "*.lock" \

@@ -5,7 +5,7 @@
 # Run this script as
 #   ./scripts/write_constants_py.sh > pyhector/constants.py
 
-HECTOR_ROOT=./hector-wrapper/hector
+HECTOR_ROOT=./hector
 HECTOR_SOURCE=$HECTOR_ROOT/source
 HECTOR_HEADERS=$HECTOR_ROOT/headers
 
