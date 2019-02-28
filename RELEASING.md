@@ -7,11 +7,21 @@ changes.
 
 ## Tag a Release
 
-`pyhector` uses a "v<major>.<minor>.<patch>" format, for example:
+`pyhector` uses a "v<hectormajor>.<hectorminor>.<hectorpatch>.<pyhectorversion>" format,
+for example:
 
-    git tag v1.0.0
+    git tag v2.1.0.5
 
-## Testing on TestPyPI
+This is the 6th (starting from zero) version of Pyhector for version 2.1.0 of Hector.
+Both bug fixes or API changes (which should be rare) are denoted by increasing the last digit.
+
+## Publishing on PyPI
+
+Releases are automatically published on PyPI when a version tag is pushed to GitHub.
+
+### Testing on TestPyPI
+
+If necessary, the packaging process can be tested on PyPI's testing instance.
 
 Run
 
@@ -21,25 +31,10 @@ and then
 
     make test-testpypi-install
 
-to publish and test `pyhector` on PyPI's testing instance.
+to publish and test the `pyhector` installation process.
 
 Once done the releases can be removed from the testing instance on
 https://testpypi.python.org/
-
-## Publish on PyPI
-
-Make sure the last commit in the repository is the tagged one.
-
-Then, run
-
-    make publish-on-pypi
-
-and then
-
-    make test-pypi-install
-
-to publish and test `pyhector` on PyPI.
-
 
 ## Notebook
 
