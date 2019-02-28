@@ -2,3 +2,7 @@ pyhector/_version.py export-subst
 docs/* linguist-documentation
 *.ipynb linguist-documentation
 .github export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+.gitmodules export-ignore
+.zenodo.json export-ignore
