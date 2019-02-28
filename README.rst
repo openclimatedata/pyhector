@@ -20,27 +20,28 @@ mitigation scenarios, in integrated assessment models, complex climate
 model emulation, and uncertainty analyses.
 
 `Hector <https://github.com/JGCRI/hector>`_ is written in C++ and
-developed at the `Pacific Northwest National
-Laboratory <https://www.pnl.gov/>`_. The model description is published
-in
+developed at the `Pacific Northwest National Laboratory
+<https://www.pnl.gov/>`_. The model description is published in
 
     Hartin, C. A., Patel, P., Schwarber, A., Link, R. P., and
-    Bond-Lamberty, B. P.: A simple object-oriented and open-source model
-    for scientific and policy analyses of the global climate system –
-    Hector v1.0, Geosci. Model Dev., 8, 939-955,
-    `doi:10.5194/gmd-8-939-2015 <https://dx.doi.org/10.5194/gmd-8-939-2015>`_,
-    2015.
+    Bond-Lamberty, B. P.: A simple object-oriented and open-source
+    model for scientific and policy analyses of the global climate
+    system – Hector v1.0, Geosci. Model Dev., 8, 939-955,
+    `doi:10.5194/gmd-8-939-2015
+    <https://dx.doi.org/10.5194/gmd-8-939-2015>`_, 2015.
 
 See the Hector `repository <https://github.com/JGCRI/hector>`_ and
-`wiki <https://github.com/JGCRI/hector/wiki>`_ for further information.
+`wiki <https://github.com/JGCRI/hector/wiki>`_ for further
+information.
 
-The Python interface **pyhector** is developed by `Sven
-Willner <http://www.pik-potsdam.de/~willner/>`_ and `Robert
-Gieseke <https://www.pik-potsdam.de/members/gieseke>`_ at the `Potsdam
+The Python interface **pyhector** is developed by `Sven Willner
+<http://www.pik-potsdam.de/~willner/>`_ and `Robert Gieseke
+<https://www.pik-potsdam.de/members/gieseke>`_ at the `Potsdam
 Institute for Climate Impact Research <https://www.pik-potsdam.de/>`_.
 
 Pyhector uses `pybind11 <https://github.com/pybind/pybind11>`_ to wrap
-Hector's API. The version of Hector used can be read using Pyhector's ``__hector_version__`` field.
+Hector's API. The version of Hector used can be read using Pyhector's
+``__hector_version__`` field.
 
 .. sec-end-index
 .. sec-begin-installation
@@ -51,9 +52,9 @@ Installation
 Prerequisites
 ~~~~~~~~~~~~~
 
-`Hector <https://github.com/JGCRI/hector>`_ requires
-`Boost <http://www.boost.org/>`_, so to install and use **pyhector**
-you need to have the filesystem and system modules of *Boost* version
+`Hector <https://github.com/JGCRI/hector>`_ requires `Boost
+<http://www.boost.org/>`_, so to install and use **pyhector** you need
+to have the filesystem and system modules of *Boost* version
 1.52 or later installed (see also the `Hector build
 instructions <https://github.com/JGCRI/hector/wiki/BuildHector>`_).
 
@@ -63,15 +64,17 @@ On Ubuntu/Debian these can be installed by invoking
 
     sudo apt-get install libboost-filesystem-dev libboost-system-dev
 
-On macOS *Boost* is available through the Homebrew package manager, it might be
-advisable to use a Homebrew installed Python for installing **pyhector**:
+On macOS *Boost* is available through the Homebrew package manager, it
+might be advisable to use a Homebrew installed Python for installing
+**pyhector**:
 
 .. code:: bash
 
     brew install boost
 
-Windows is (as Hector) in principle supported but not yet tested for **pyhector**.
-Pull request with installation notes for Windows are welcome.
+Windows is (as Hector) in principle supported but not yet tested for
+**pyhector**. Pull request with installation notes for Windows are
+welcome.
 
 Install using pip
 ~~~~~~~~~~~~~~~~~
@@ -89,11 +92,13 @@ You can simply install **pyhector** from
 Usage
 -----
 
-This repository also contains a `Jupyter Notebook <https://jupyter.readthedocs.io/en/latest/index.html>`_ you
-can `run live <http://mybinder.org/repo/openclimatedata/pyhector>`_ and
+This repository also contains a `Jupyter Notebook
+<https://jupyter.readthedocs.io/en/latest/index.html>`_ you can `run
+live <http://mybinder.org/repo/openclimatedata/pyhector>`_ and
 experiment with, courtesy of the `Binder <http://mybinder.org/>`_
-project. The notebook can be viewed
-as a `static version <http://nbviewer.jupyter.org/github/openclimatedata/pyhector/blob/master/index.ipynb>`_ using nbviewer.
+project. The notebook can be viewed as a `static version
+<http://nbviewer.jupyter.org/github/openclimatedata/pyhector/blob/master/index.ipynb>`_
+using nbviewer.
 
 Basic example
 ~~~~~~~~~~~~~
