@@ -12,4 +12,4 @@ Please also check the Hector repository, documentation and issue
 tracker as **pyhector** is only a thin interface around the Hector
 model:
 
-`https://github.com/JGCRI/hector`_
+https://github.com/JGCRI/hector
