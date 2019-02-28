@@ -4,7 +4,7 @@
 # See also https://github.com/JGCRI/hector/wiki/BuildHector
 
 scriptdir=$(dirname -- "$(readlink -e -- "$BASH_SOURCE")")
-cd $scriptdir/../hector-wrapper/hector
+cd $scriptdir/../hector
 
 
 ver=`awk '/define.*BOOST_LIB_VERSION/ {print $3}' /usr/include/boost/version.hpp`
