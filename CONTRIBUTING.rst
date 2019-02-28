@@ -1,5 +1,5 @@
 How to contribute
------------------
+~~~~~~~~~~~~~~~~~
 
 We welcome contributions to and questions about **pyhector**. Please
 report issues or discuss feature requests on pyhector's `issue tracker
