@@ -58,8 +58,10 @@ def test_rcps():
         )
         output = pyhector.run(scenario)
         assert_series_equal(
-            output["temperature.Tgav"], original.Tgav, check_names=False,
-            check_less_precise=True
+            output["temperature.Tgav"],
+            original.Tgav,
+            check_names=False,
+            check_less_precise=True,
         )
 
 
