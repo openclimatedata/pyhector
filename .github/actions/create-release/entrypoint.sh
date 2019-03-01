@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 VERSION="${GITHUB_REF/refs\/tags\/v/}"
 
-AWK_CODE=$(cat <<EOF
+# awk code to get description of the release from CHANGELOG.rst.
+# Assumes that the changelog uses captions with the exact version
+# number and a ~ type header (i.e. underline with ~ after the line
+# with the version number)
+GET_DESCRIPTION_AWK_CODE=$(cat <<EOF
 BEGIN {do_print=0}
 {
     if (\$0 == "${VERSION}") {
@@ -19,7 +23,7 @@ BEGIN {do_print=0}
 EOF
            )
 
-DESCRIPTION=$(awk "${AWK_CODE}" CHANGELOG.rst)
+DESCRIPTION=$(awk "${GET_DESCRIPTION_AWK_CODE}" CHANGELOG.rst)
 
 JSON=$(cat <<EOF
 {
