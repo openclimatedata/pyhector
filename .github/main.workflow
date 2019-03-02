@@ -4,7 +4,7 @@ workflow "Continuous Integration" {
 }
 
 action "Bandit" {
-  uses = "./.github/actions/run"
+  uses = "swillner/actions/python-run@master"
   args = [
     "bandit -c .bandit.yml -r ."
   ]
@@ -15,7 +15,7 @@ action "Bandit" {
 }
 
 action "Black" {
-  uses = "./.github/actions/run"
+  uses = "swillner/actions/python-run@master"
   args = [
     "black --check pyhector tests setup.py --exclude pyhector/_version.py"
   ]
@@ -81,7 +81,7 @@ action "Publish on PyPi" {
 }
 
 action "Create release" {
-  uses = "./.github/actions/create-release"
+  uses = "swillner/actions/create-release@master"
   needs = ["Publish on PyPi"]
   secrets = ["GITHUB_TOKEN"]
 }
