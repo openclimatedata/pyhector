@@ -7,21 +7,14 @@ then
     pip install "${PIP_PACKAGES[@]}"
 fi
 
+git submodule init
 while ! git submodule update # Filesystem quirks with Github actions?
 do
     sleep 2
 done
 
 mkdir /tmp/build
-python setup.py \
-       build_ext \
-       --parallel 1 \
-       --build-lib /tmp/build
-
-sleep 1
-echo
-echo "Installing"
-echo
+ln -s /tmp/build ./build
 pip install .
 
 echo
