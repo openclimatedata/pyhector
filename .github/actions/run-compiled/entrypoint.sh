@@ -7,9 +7,15 @@ then
     pip install "${PIP_PACKAGES[@]}"
 fi
 
-git submodule update --init \
-    || (sleep 1; git submodule update --init) # Prevent occasional hiccup
-pip install -e .
+sleep 1  # Filesystem quirks with Github actions?
+git submodule init
+sleep 1
+git submodule sync
+sleep 1
+git submodule update
+sleep 1
+
+pip install . --install-option "--parallel 1 --build-temp"  # Do not build in parallel
 
 echo
 echo "################################################################################"
