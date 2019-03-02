@@ -7,7 +7,7 @@ LABEL "com.github.actions.icon"="command"
 LABEL "com.github.actions.color"="blue"
 
 RUN apt-get update; apt-get install -y libboost-system-dev libboost-filesystem-dev; apt-get clean
-RUN pip install --upgrade pip numpy
+RUN pip install --upgrade pip numpy pybind11>=2.2
 
 ADD entrypoint.sh /entrypoint.sh
 
