@@ -15,7 +15,11 @@ sleep 1
 git submodule update
 sleep 1
 
-python setup.py build-ext --parallel 1 --build-temp
+mkdir /tmp/build
+python setup.py \
+       build_ext \
+       --parallel 1 \
+       --build-lib /tmp/build
 
 sleep 1
 echo
