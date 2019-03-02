@@ -15,7 +15,9 @@ sleep 1
 git submodule update
 sleep 1
 
-pip install . --install-option "--parallel 1 --build-temp"  # Do not build in parallel
+pip install . \
+    --install-option "--parallel 1" \
+    --install-option "--build-temp"
 
 echo
 echo "################################################################################"
