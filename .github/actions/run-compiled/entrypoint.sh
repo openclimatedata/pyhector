@@ -16,7 +16,7 @@ git submodule update
 sleep 1
 
 pip install . \
-    --install-option "--parallel 1" \
+    --install-option "-j 1" \
     --install-option "--build-temp"
 
 echo
