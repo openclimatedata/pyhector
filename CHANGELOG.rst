@@ -1,6 +1,12 @@
 Changelog
 ---------
 
+2.1.0.0
+~~~~~~~
+
+- switch to new versioning scheme:
+  Hector version + ascending number denoting changes in Pyhector
+
 2.1.0a
 ~~~~~~
 
