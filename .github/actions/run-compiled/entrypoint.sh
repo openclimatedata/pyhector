@@ -16,7 +16,7 @@ git submodule update
 sleep 1
 
 pip install . \
-    --install-option "--build-temp"
+    --build-option "--build-temp"
 
 echo
 echo "################################################################################"
