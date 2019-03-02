@@ -15,8 +15,13 @@ sleep 2
 git submodule update
 sleep 1
 
-pip install . \
-    --build-option "--build-temp"
+python setup.py build-ext --parallel 1 --build-temp
+
+sleep 1
+echo
+echo "Installing"
+echo
+pip install .
 
 echo
 echo "################################################################################"
