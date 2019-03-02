@@ -26,7 +26,7 @@ action "Black" {
 }
 
 action "Pylint" {
-  uses = "./.github/actions/run_installed"
+  uses = "./.github/actions/run-compiled"
   args = [
     "pylint pyhector"
   ]
@@ -37,7 +37,7 @@ action "Pylint" {
 }
 
 action "Test coverage" {
-  uses = "./.github/actions/run_installed"
+  uses = "./.github/actions/run-compiled"
   args = [
     "pytest --cov",
     "if ! coverage report --fail-under=\"$MIN_COVERAGE\"",
@@ -66,7 +66,7 @@ action "Filter tag" {
 }
 
 action "Publish on PyPi" {
-  uses = "./.github/actions/run_installed"
+  uses = "./.github/actions/run-compiled"
   args = [
     "rm -rf build dist",
     "python setup.py sdist",
