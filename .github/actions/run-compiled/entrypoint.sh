@@ -7,14 +7,7 @@ then
     pip install "${PIP_PACKAGES[@]}"
 fi
 
-git submodule init
-while ! git submodule update # Filesystem quirks with Github actions?
-do
-    sleep 2
-done
-
-mkdir /tmp/build
-ln -s /tmp/build ./build
+git submodule update --init
 pip install -e .
 
 echo
