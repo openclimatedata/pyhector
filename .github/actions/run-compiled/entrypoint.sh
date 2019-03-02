@@ -7,13 +7,10 @@ then
     pip install "${PIP_PACKAGES[@]}"
 fi
 
-sleep 1  # Filesystem quirks with Github actions?
-git submodule init
-sleep 1
-git submodule sync
-sleep 1
-git submodule update
-sleep 1
+while ! git submodule update # Filesystem quirks with Github actions?
+do
+    sleep 2
+done
 
 mkdir /tmp/build
 python setup.py \
