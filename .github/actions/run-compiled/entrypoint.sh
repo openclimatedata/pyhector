@@ -11,7 +11,7 @@ sleep 1  # Filesystem quirks with Github actions?
 git submodule init
 sleep 1
 git submodule sync
-sleep 2
+sleep 1
 git submodule update
 sleep 1
 
