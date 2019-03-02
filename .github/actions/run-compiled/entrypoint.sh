@@ -15,7 +15,7 @@ done
 
 mkdir /tmp/build
 ln -s /tmp/build ./build
-pip install .
+pip install -e .
 
 echo
 echo "################################################################################"
