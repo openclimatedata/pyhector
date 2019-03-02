@@ -1,6 +1,6 @@
 workflow "Continuous Integration" {
   on = "push"
-  resolves = ["Bandit", "Black", "Pylint", "Test coverage"]
+  resolves = ["Test coverage"]
 }
 
 action "Bandit" {
@@ -34,6 +34,7 @@ action "Pylint" {
     PYTHON_VERSION = "3.7"
     PIP_PACKAGES = "pylint"
   }
+  needs = ["Bandit", "Black"]
 }
 
 action "Test coverage" {
@@ -52,6 +53,7 @@ action "Test coverage" {
     MIN_COVERAGE = "75"
     PIP_PACKAGES = "coverage pytest pytest-cov"
   }
+  needs = ["Pylint"]
 }
 
 
@@ -76,7 +78,7 @@ action "Publish on PyPi" {
     PYTHON_VERSION = "3.7"
     PIP_PACKAGES = "twine"
   }
-  needs = ["Filter tag", "Bandit", "Black", "Pylint", "Test coverage"]
+  needs = ["Filter tag", "Test coverage"]
   secrets = ["TWINE_USERNAME", "TWINE_PASSWORD"]
 }
 
