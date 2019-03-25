@@ -6,8 +6,8 @@
 #include "Observable.h"
 #include <algorithm>
 #include <limits>
-#include "components/imodel_component.hpp"
-#include "core/core.hpp"
+#include "imodel_component.hpp"
+#include "core.hpp"
 
 namespace hector = Hector;
 namespace py = pybind11;
