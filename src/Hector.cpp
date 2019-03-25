@@ -6,9 +6,9 @@
 #include "Hector.h"
 #include <pybind11/numpy.h>
 #include <stdexcept>
-#include "components/component_data.hpp"
-#include "data/message_data.hpp"
-#include "data/unitval.hpp"
+#include "component_data.hpp"
+#include "message_data.hpp"
+#include "unitval.hpp"
 #include "h_exception.hpp"
 
 namespace hector = Hector;

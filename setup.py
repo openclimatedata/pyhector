@@ -58,7 +58,7 @@ libpyhector = Extension(
     language="c++",
     include_dirs=[
         "include",
-        "hector/headers",
+        "hector/inst/include",
         get_pybind_include(),
         get_pybind_include(user=True),
     ],
@@ -66,12 +66,9 @@ libpyhector = Extension(
     extra_compile_args=["-std=c++11"],
     sources=list(
         glob.glob("src/*.cpp")
-        + glob.glob("hector/source/core/*.cpp")
-        + glob.glob("hector/source/models/*.cpp")
-        + glob.glob("hector/source/components/*.cpp")
-        + glob.glob("hector/source/data/*.cpp")
+        + glob.glob("hector/src/*.cpp")
     ),
-    depends=list(glob.glob("include/*.h") + glob.glob("hector/headers/**/*.hpp")),
+    depends=list(glob.glob("include/*.h") + glob.glob("hector/inst/include/*.hpp")),
 )
 
 with open(os.path.join(path, "README.rst"), "r") as f:

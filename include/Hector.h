@@ -11,8 +11,8 @@
 #include <string>
 #include <vector>
 #include "Observable.h"
-#include "core/core.hpp"
-#include "visitors/avisitor.hpp"
+#include "core.hpp"
+#include "avisitor.hpp"
 
 namespace hector = Hector;
 namespace py = pybind11;
