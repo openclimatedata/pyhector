@@ -1,6 +1,12 @@
 Changelog
 ---------
 
+2.2.0.0
+~~~~~~~
+
+- update to Hector 2.2.0 (https://github.com/JGCRI/hector/releases/tag/v2.2.0)
+- add a new parameter "VOLCANIC_SCALE"
+
 2.1.0.0
 ~~~~~~~
 
