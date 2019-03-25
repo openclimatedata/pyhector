@@ -337,5 +337,11 @@ _default_config = {
             (2010, 0),
         ],
     },
-    "temperature": {"S": 3.0, "alpha": 1.0, "diff": 2.3, "enabled": True},
+    "temperature": {
+        "S": 3.0,
+        "alpha": 1.0,
+        "diff": 2.3,
+        "enabled": True,
+        "volscl": 1.0,
+    },
 }
