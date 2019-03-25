@@ -64,10 +64,7 @@ libpyhector = Extension(
     ],
     libraries=["m", "boost_system", "boost_filesystem"],
     extra_compile_args=["-std=c++11"],
-    sources=list(
-        glob.glob("src/*.cpp")
-        + glob.glob("hector/src/*.cpp")
-    ),
+    sources=list(glob.glob("src/*.cpp") + glob.glob("hector/src/*.cpp")),
     depends=list(glob.glob("include/*.h") + glob.glob("hector/inst/include/*.hpp")),
 )
 
