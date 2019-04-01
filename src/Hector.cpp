@@ -31,12 +31,6 @@ void Hector::Visitor::visit(hector::Core* hcore) {
     }
 }
 
-Hector::Hector() {
-    hector::Logger& glog = hector::Logger::getGlobalLogger();
-    glog.close();
-    glog.open("hector", false, false, hector::Logger::LogLevel::WARNING);
-}
-
 hector::Core* Hector::core() {
     if (!core_) {
         reset();
@@ -79,7 +73,7 @@ void Hector::shutdown() {
 }
 
 void Hector::reset() {
-    core_.reset(new hector::Core());
+    core_.reset(new hector::Core(hector::Logger::WARNING, false, false));
     core_->init();
     core_->addVisitor(&visitor);
     for (auto& observable : visitor.observables) {

@@ -41,7 +41,6 @@ class Hector {
     inline hector::Core* core();
 
   public:
-    Hector();
     void add_observable(std::string component, std::string name, bool need_date, bool in_spinup);
     py::array_t<double> get_observable(const std::string& component, const std::string& name, bool in_spinup) const;
     void clear_observables();
