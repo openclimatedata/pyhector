@@ -31,7 +31,7 @@ _default_config = {
     "HFC4310_halocarbon": {"molarMass": 252.0, "rho": 0.0004, "tau": 15.9},
     "N2O": {
         "N0": 272.9596,
-        "N2ON_emissions": [(1765, 11), (2000, 8), (2300, 8)],
+        "N2O_natural_emissions": [(1765, 11), (2000, 8), (2300, 8)],
         "TN2O0": 132,
         "UC_N2O": 4.8,
     },
