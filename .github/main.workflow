@@ -36,19 +36,19 @@ action "Formatting" {
 }
 
 action "Linters" {
-  uses = "swillner/actions/python-run@master"
+  uses = "./.github/actions/run-compiled"
   args = [
     "flake8 pyhector tests setup.py",
     "pylint pyhector"
   ]
   env = {
     PYTHON_VERSION = "3.7"
-    PIP_PACKAGES = "flake8 pylint ."
+    PIP_PACKAGES = "flake8 pylint"
   }
 }
 
 action "Tests" {
-  uses = "swillner/actions/python-run@master"
+  uses = "./.github/actions/run-compiled"
   args = [
     "pytest tests -r a --cov=pyhector --cov-report=''",
   ]
@@ -95,7 +95,7 @@ action "Filter master branch" {
 }
 
 action "Publish on PyPi" {
-  uses = "swillner/actions/python-run@master"
+  uses = "./.github/actions/run-compiled"
   args = [
     "rm -rf build dist",
     "python setup.py sdist",
@@ -103,7 +103,7 @@ action "Publish on PyPi" {
   ]
   env = {
     PYTHON_VERSION = "3.7"
-    PIP_PACKAGES = "twine ."
+    PIP_PACKAGES = "twine"
   }
   needs = ["Filter master branch"]
   secrets = ["TWINE_USERNAME", "TWINE_PASSWORD"]
