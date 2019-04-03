@@ -122,6 +122,7 @@ setup(
     package_data={"pyhector": ["rcp_default.ini", "emissions/*"]},
     include_package_data=True,
     packages=["pyhector"],
+    setup_requires=["pybind11>=2.2"],
     install_requires=["numpy", "pandas", "pybind11>=2.2"],
     tests_require=["pytest>=4.0", "pytest-cov"],
     ext_modules=[libpyhector],
