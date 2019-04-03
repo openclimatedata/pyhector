@@ -4,7 +4,7 @@ workflow "Continuous Integration" {
 }
 
 action "Documentation" {
-  uses = "swillner/actions/python-run@master"
+  uses = "./.github/actions/run-compiled"
   args = [
     "sphinx-build -M html docs docs/build -qW", # treat warnings as errors (-W)...
     "sphinx-build -M html docs docs/build -Eqn -b coverage", # ...but not when being nitpicky (-n)
