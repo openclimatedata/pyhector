@@ -17,24 +17,18 @@ https://github.com/openclimatedata/pyhector
 
 """
 
-from copy import deepcopy
-
-import ctypes
 import os
-import pkg_resources
+from copy import deepcopy
 
 import numpy as np
 import pandas as pd
 
+from ._binding import _Hector  # pylint: disable=no-name-in-module
+from ._version import get_versions
 from .default_config import _default_config
-from .units import units
 from .emissions import emissions
 from .output import output
-from ._binding import HectorException  # pylint: disable=no-name-in-module
-from ._binding import _Hector  # pylint: disable=no-name-in-module
-from ._binding import __hector_version__  # pylint: disable=no-name-in-module
-
-from ._version import get_versions
+from .units import units
 
 __version__ = get_versions()["version"]
 del get_versions

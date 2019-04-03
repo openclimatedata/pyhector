@@ -1,27 +1,25 @@
 # -*- coding: utf-8 -*-
 
 import os
+from copy import deepcopy
 
 import pandas as pd
-
-from copy import deepcopy
-from pandas.util.testing import assert_series_equal, assert_frame_equal
+from pandas.util.testing import assert_frame_equal, assert_series_equal
 
 import pyhector
 from pyhector import (
     Hector,
+    constants,
     rcp26,
     rcp45,
     rcp60,
     rcp85,
-    read_hector_input,
-    write_hector_input,
-    read_hector_output,
     read_hector_constraint,
-    constants,
+    read_hector_input,
+    read_hector_output,
+    write_hector_input,
 )
 from pyhector.output import output
-
 
 path = os.path.dirname(__file__)
 rcps = {"rcp26": rcp26, "rcp45": rcp45, "rcp60": rcp60, "rcp85": rcp85}
