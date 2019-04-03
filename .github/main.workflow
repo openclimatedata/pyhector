@@ -1,11 +1,23 @@
 workflow "Continuous Integration" {
   on = "push"
-  resolves = ["Coverage"]
+  resolves = ["Coverage", "Documentation", "Formatting", "Linters"]
+}
+
+action "Compile" {
+  uses = "./.github/actions/compile"
+  args = [
+    "git submodule update --init",
+    "pip install -e ."
+  ]
+  env = {
+    PYTHON_VERSION = "3.7"
+  }
 }
 
 action "Documentation" {
-  uses = "./.github/actions/run-compiled"
+  uses = "./.github/actions/compile"
   args = [
+    "pip install -e .",
     "sphinx-build -M html docs docs/build -qW", # treat warnings as errors (-W)...
     "sphinx-build -M html docs docs/build -Eqn -b coverage", # ...but not when being nitpicky (-n)
     "if [[ -s docs/build/html/python.txt ]]",
@@ -21,7 +33,7 @@ action "Documentation" {
     PYTHON_VERSION = "3.7"
     PIP_PACKAGES = "sphinx>=1.8 sphinx_rtd_theme"
   }
-  needs = ["Formatting", "Linters"]
+  needs = ["Compile"]
 }
 
 action "Formatting" {
@@ -37,8 +49,9 @@ action "Formatting" {
 }
 
 action "Linters" {
-  uses = "./.github/actions/run-compiled"
+  uses = "./.github/actions/compile"
   args = [
+    "pip install -e .",
     "flake8 pyhector tests setup.py",
     "pylint pyhector"
   ]
@@ -46,18 +59,20 @@ action "Linters" {
     PYTHON_VERSION = "3.7"
     PIP_PACKAGES = "flake8 pylint"
   }
+  needs = ["Compile"]
 }
 
 action "Tests" {
-  uses = "./.github/actions/run-compiled"
+  uses = "./.github/actions/compile"
   args = [
+    "pip install -e .",
     "pytest tests -r a --cov=pyhector --cov-report=''",
   ]
   env = {
     PYTHON_VERSION = "3.7"
     PIP_PACKAGES = "pytest pytest-cov"
   }
-  needs = ["Documentation"]
+  needs = ["Compile"]
 }
 
 action "Coverage" {
@@ -89,15 +104,11 @@ action "Filter tag" {
   args = "tag 'v*'"
 }
 
-action "Filter master branch" {
-  uses = "swillner/actions/filter-branch@master"
-  args = "master"
-  needs = "Filter tag"
-}
-
-action "Publish on PyPi" {
-  uses = "./.github/actions/run-compiled"
+action "Publish on PyPI" {
+  uses = "./.github/actions/compile"
   args = [
+    "git submodule update --init",
+    "pip install -e .",
     "rm -rf build dist",
     "python setup.py sdist",
     "twine upload dist/*"
@@ -106,12 +117,27 @@ action "Publish on PyPi" {
     PYTHON_VERSION = "3.7"
     PIP_PACKAGES = "twine"
   }
-  needs = ["Filter master branch"]
+  needs = ["Filter tag"]
   secrets = ["TWINE_USERNAME", "TWINE_PASSWORD"]
+}
+
+action "Test PyPI install" {
+  uses = "./.github/actions/compile"
+  args = [
+    "sleep 15",
+    "mkdir tmp",
+    "cd tmp",
+    "pip install pyhector",
+    "python -c 'import pyhector'"
+  ]
+  env = {
+    PYTHON_VERSION = "3.7"
+  }
+  needs = ["Publish on PyPI"]
 }
 
 action "Create release" {
   uses = "swillner/actions/create-release@master"
-  needs = ["Publish on PyPi"]
+  needs = ["Test PyPI install"]
   secrets = ["GITHUB_TOKEN"]
 }

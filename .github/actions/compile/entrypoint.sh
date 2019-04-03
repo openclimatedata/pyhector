@@ -7,9 +7,6 @@ then
     pip install "${PIP_PACKAGES[@]}"
 fi
 
-git submodule update --init
-pip install -e .
-
 echo
 echo "################################################################################"
 echo
