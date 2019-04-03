@@ -13,12 +13,13 @@ Find **usage** instructions in the `repository
 <https://github.com/openclimatedata/pyhector>`_.
 
 """
-from setuptools import setup, Extension
-from setuptools.command.test import test as TestCommand
 import glob
 import os
 import sys
+
 import versioneer
+from setuptools import Extension, setup
+from setuptools.command.test import test as TestCommand
 
 path = os.path.abspath(os.path.dirname(__file__))
 
@@ -122,6 +123,10 @@ setup(
     package_data={"pyhector": ["rcp_default.ini", "emissions/*"]},
     include_package_data=True,
     packages=["pyhector"],
+    extras_require={
+        "docs": ["sphinx>=1.8", "sphinx_rtd_theme"],
+        "tests": ["codecov", "pytest", "pytest-cov"],
+    },
     setup_requires=["pybind11>=2.2"],
     install_requires=["numpy", "pandas", "pybind11>=2.2"],
     tests_require=["pytest>=4.0", "pytest-cov"],

@@ -1,59 +1,80 @@
 workflow "Continuous Integration" {
   on = "push"
-  resolves = ["Test coverage"]
+  resolves = ["Coverage"]
 }
 
-action "Bandit" {
+action "Documentation" {
   uses = "swillner/actions/python-run@master"
   args = [
-    "bandit -c .bandit.yml -r ."
+    "sphinx-build -M html docs docs/build -qW", # treat warnings as errors (-W)...
+    "sphinx-build -M html docs docs/build -Eqn -b coverage", # ...but not when being nitpicky (-n)
+    "if [[ -s docs/build/html/python.txt ]]",
+    "then",
+    "    echo",
+    "    echo \"Error: Documentation missing:\"",
+    "    echo",
+    "    cat docs/build/html/python.txt",
+    "    exit 1",
+    "fi"
   ]
   env = {
     PYTHON_VERSION = "3.7"
-    PIP_PACKAGES = "bandit"
+    PIP_PACKAGES = ".[docs]"
   }
 }
 
-action "Black" {
+action "Formatting" {
   uses = "swillner/actions/python-run@master"
   args = [
-    "black --check pyhector tests setup.py --exclude pyhector/_version.py"
+    "black --check pyhector tests setup.py --exclude pyhector/_version.py",
+    "isort --check-only --quiet --recursive pyhector tests setup.py",
   ]
   env = {
     PYTHON_VERSION = "3.7"
-    PIP_PACKAGES = "black"
+    PIP_PACKAGES = "black isort"
   }
 }
 
-action "Pylint" {
-  uses = "./.github/actions/run-compiled"
+action "Linters" {
+  uses = "swillner/actions/python-run@master"
   args = [
+    "flake8 pyhector tests setup.py",
     "pylint pyhector"
   ]
   env = {
     PYTHON_VERSION = "3.7"
-    PIP_PACKAGES = "pylint"
+    PIP_PACKAGES = "flake8 pylint ."
   }
-  needs = ["Bandit", "Black"]
 }
 
-action "Test coverage" {
-  uses = "./.github/actions/run-compiled"
+action "Tests" {
+  uses = "swillner/actions/python-run@master"
   args = [
-    "pytest --cov",
-    "if ! coverage report --fail-under=\"$MIN_COVERAGE\"",
+    "pytest tests -r a --cov=pyhector --cov-report=''",
+  ]
+  env = {
+    PYTHON_VERSION = "3.7"
+    PIP_PACKAGES = ".[tests]"
+  }
+  needs = ["Documentation", "Formatting", "Linters"]
+}
+
+action "Coverage" {
+  uses = "swillner/actions/python-run@master"
+  args = [
+    "if ! coverage report --fail-under=\"$MIN_COVERAGE\" --show-missing",
     "then",
     "    echo",
-    "    echo \"Error: Coverage has to be at least ${MIN_COVERAGE}%\"",
+    "    echo \"Error: Test coverage has to be at least ${MIN_COVERAGE}%\"",
     "    exit 1",
     "fi"
   ]
   env = {
     PYTHON_VERSION = "3.7"
     MIN_COVERAGE = "75"
-    PIP_PACKAGES = "coverage pytest pytest-cov"
+    PIP_PACKAGES = "coverage"
   }
-  needs = ["Pylint"]
+  needs = ["Tests"]
 }
 
 
@@ -67,8 +88,14 @@ action "Filter tag" {
   args = "tag 'v*'"
 }
 
+action "Filter master branch" {
+  uses = "swillner/actions/filter-branch@master"
+  args = "master"
+  needs = "Filter tag"
+}
+
 action "Publish on PyPi" {
-  uses = "./.github/actions/run-compiled"
+  uses = "swillner/actions/python-run@master"
   args = [
     "rm -rf build dist",
     "python setup.py sdist",
@@ -76,9 +103,9 @@ action "Publish on PyPi" {
   ]
   env = {
     PYTHON_VERSION = "3.7"
-    PIP_PACKAGES = "twine"
+    PIP_PACKAGES = "twine ."
   }
-  needs = ["Filter tag", "Test coverage"]
+  needs = ["Filter master branch"]
   secrets = ["TWINE_USERNAME", "TWINE_PASSWORD"]
 }
 
