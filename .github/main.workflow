@@ -19,7 +19,7 @@ action "Documentation" {
   ]
   env = {
     PYTHON_VERSION = "3.7"
-    PIP_PACKAGES = ".[docs]"
+    PIP_PACKAGES = "sphinx>=1.8 sphinx_rtd_theme"
   }
 }
 
@@ -54,7 +54,7 @@ action "Tests" {
   ]
   env = {
     PYTHON_VERSION = "3.7"
-    PIP_PACKAGES = ".[tests]"
+    PIP_PACKAGES = "pytest pytest-cov"
   }
   needs = ["Documentation", "Formatting", "Linters"]
 }
