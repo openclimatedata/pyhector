@@ -21,6 +21,7 @@ action "Documentation" {
     PYTHON_VERSION = "3.7"
     PIP_PACKAGES = "sphinx>=1.8 sphinx_rtd_theme"
   }
+  needs = ["Formatting", "Linters"]
 }
 
 action "Formatting" {
@@ -56,7 +57,7 @@ action "Tests" {
     PYTHON_VERSION = "3.7"
     PIP_PACKAGES = "pytest pytest-cov"
   }
-  needs = ["Documentation", "Formatting", "Linters"]
+  needs = ["Documentation"]
 }
 
 action "Coverage" {
