@@ -1,11 +1,9 @@
 include LICENSE
-recursive-include tests/data *.csv
-recursive-include pyhector/emissions *.csv
-include pyhector/rcp_default.ini
-include versioneer.py
-include pyhector/_version.py
-include src/*.cpp
-include include/*.h
-recursive-include hector/headers *.hpp
 include hector/LICENSE.md
 include hector/README.md
+include hector/inst/include/*.hpp
+include include/*.h
+include pyhector/rcp_default.ini
+include versioneer.py
+recursive-include pyhector/emissions *.csv
+recursive-include tests/data *.csv
