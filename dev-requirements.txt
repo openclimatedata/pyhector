@@ -9,3 +9,4 @@ numpydoc
 tabulate
 twine
 wheel
+black

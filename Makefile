@@ -2,12 +2,15 @@ all: write_defaults write_constants plot_example
 
 write_defaults: venv
 	sh -c '. ./venv/bin/activate; ./scripts/write_defaults.py'
+	./venv/bin/black pyhector/units.py
+	./venv/bin/black pyhector/default_config.py
 
 write_constants: venv
 	sh -c './scripts/write_constants_py.sh > pyhector/constants.py'
+	./venv/bin/black pyhector/constants.py
 
 plot_example: venv
-		sh -c '. ./venv/bin/activate; pip install matplotlib; python scripts/plot_example.py'
+	sh -c '. ./venv/bin/activate; pip install matplotlib; python scripts/plot_example.py'
 
 watchdocs: venv
 	sh -c '. ./venv/bin/activate; sphinx-autobuild \
