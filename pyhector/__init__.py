@@ -23,7 +23,7 @@ from copy import deepcopy
 import numpy as np
 import pandas as pd
 
-from ._binding import __hector_version__  # noqa: F401 # pylint: disable=no-name-in-module
+from ._binding import __hector_version__  # noqa: F401  # pylint: disable=E0611
 from ._binding import _Hector  # pylint: disable=no-name-in-module
 from ._version import get_versions
 from .default_config import _default_config
