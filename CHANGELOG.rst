@@ -1,6 +1,13 @@
 Changelog
 ---------
 
+2.2.2.0
+~~~~~~~
+
+- update to Hector 2.2.2 (https://github.com/JGCRI/hector/releases/tag/v2.2.2)
+- includes new output variables from Hector 2.2.1
+
+
 2.2.0.1
 ~~~~~~~
 
