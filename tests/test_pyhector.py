@@ -171,3 +171,8 @@ def test_constraint_forcing():
     assert_series_equal(
         output["forcing.Ftot"].loc[1765:2300], forcing.loc[1765:2300], check_names=False
     )
+
+
+# Ensure that Hector version and Pyhector version match
+def test_hector_version():
+    assert ".".join(pyhector.__version__.split(".")[:3]) == pyhector.__hector_version__
