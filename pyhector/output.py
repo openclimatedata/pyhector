@@ -651,4 +651,22 @@ output = {
         "unit": "degC",
         "variable": "Tgaveq",
     },
+    "temperature.Tgav_land": {
+        "component": "temperature",
+        "description": "average land temperature anomaly",
+        "unit": "degC",
+        "variable": "Tgav_land",
+    },
+    "temperature.Tgav_ocean_ST": {
+        "component": "temperature",
+        "description": "average ocean surface temperature anomaly",
+        "unit": "degC",
+        "variable": "Tgav_ocean_ST",
+    },
+    "temperature.Tgav_ocean_air": {
+        "component": "temperature",
+        "description": "average ocean air temperature anomaly",
+        "unit": "degC",
+        "variable": "Tgav_ocean_air",
+    },
 }
