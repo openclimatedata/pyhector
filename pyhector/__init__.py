@@ -24,6 +24,7 @@ import numpy as np
 import pandas as pd
 
 from ._binding import _Hector  # pylint: disable=no-name-in-module
+from ._binding import __hector_version__  # pylint: disable=no-name-in-module
 from ._version import get_versions
 from .default_config import _default_config
 from .emissions import emissions
