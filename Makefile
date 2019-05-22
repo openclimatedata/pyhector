@@ -64,4 +64,12 @@ test-testpypi-install:
 	# Remove local directory from path to get actual installed version.
 	$(TEMPVENV)/bin/python -c "import sys; sys.path.remove(''); import pyhector; print(pyhector.__version__)"
 
-.PHONY: watchdocs write_defaults write_constants plot_example publish-on-pypi test-pypi-install publish-on-testpypi test-testpypi-install
+black: venv
+	@status=$$(git status --porcelain pyhector tests); \
+	if test "x$${status}" = x; then \
+		./venv/bin/black --exclude _version.py setup.py pyhector tests; \
+	else \
+		echo Not trying any formatting. Working directory is dirty ... >&2; \
+	fi;
+
+.PHONY: watchdocs write_defaults write_constants plot_example publish-on-pypi test-pypi-install publish-on-testpypi test-testpypi-install black
