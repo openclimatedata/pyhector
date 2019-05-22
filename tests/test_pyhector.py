@@ -175,4 +175,7 @@ def test_constraint_forcing():
 
 # Ensure that Hector version and Pyhector version match
 def test_hector_version():
-    assert ".".join(pyhector.__version__.split(".")[:3]) == pyhector.__hector_version__
+    if "+" in pyhector.__version__:
+        pass
+    else:
+        assert ".".join(pyhector.__version__.split(".")[:3]) == pyhector.__hector_version__
