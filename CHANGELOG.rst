@@ -1,10 +1,11 @@
 Changelog
 ---------
 
-Unreleased
-~~~~~~~~~~
+2.3.0.0
+~~~~~~~
 
 - fix ``__hector_version__`` field
+- update to Hector 2.3.0 (https://github.com/JGCRI/hector/releases/tag/v2.3.0)
 
 2.2.2.0
 ~~~~~~~
