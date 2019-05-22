@@ -178,4 +178,6 @@ def test_hector_version():
     if "+" in pyhector.__version__:
         pass
     else:
-        assert ".".join(pyhector.__version__.split(".")[:3]) == pyhector.__hector_version__
+        assert (
+            ".".join(pyhector.__version__.split(".")[:3]) == pyhector.__hector_version__
+        )
