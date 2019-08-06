@@ -1,6 +1,10 @@
 Changelog
 ---------
 
+2.4.0.0
+~~~~~~~
+- update to Hector 2.4.0 (revamped multi-biome system)
+
 2.3.1.0
 ~~~~~~~
 - update to Hector 2.3.1
