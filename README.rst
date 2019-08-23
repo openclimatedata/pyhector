@@ -28,7 +28,7 @@ developed at the `Pacific Northwest National Laboratory
     model for scientific and policy analyses of the global climate
     system – Hector v1.0, Geosci. Model Dev., 8, 939-955,
     `doi:10.5194/gmd-8-939-2015
-    <https://dx.doi.org/10.5194/gmd-8-939-2015>`_, 2015.
+    <https://doi.org/10.5194/gmd-8-939-2015>`_, 2015.
 
 See the Hector `repository <https://github.com/JGCRI/hector>`_ and
 `wiki <https://github.com/JGCRI/hector/wiki>`_ for further
