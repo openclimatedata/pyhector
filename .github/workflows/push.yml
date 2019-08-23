@@ -1,56 +1,68 @@
 on: push
+
 name: Continuous Integration
+
 jobs:
-  compile:
-    name: Compile
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.7]
+
     steps:
     - uses: actions/checkout@master
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+
     - name: Compile
-      uses: ./.github/actions/compile
-      env:
-        PYTHON_VERSION: "3.7"
-      with:
-        args: '"git submodule update --init" "pip install -e ."'
+      run: |
+        git submodule update --init
+        pip install --upgrade pip
+        pip install -e .
+
     - name: Tests
-      uses: ./.github/actions/compile
-      env:
-        PIP_PACKAGES: pytest pytest-cov
-        PYTHON_VERSION: "3.7"
-      with:
-        args: '"pip install -e ." "pytest tests -r a --cov=pyhector --cov-report=''''"'
+      run: |
+        pip install pytest pytest-cov
+        pytest tests -r a --cov=pyhector --cov-report=''
+
     - name: Linters
-      uses: ./.github/actions/compile
-      env:
-        PIP_PACKAGES: flake8 pylint
-        PYTHON_VERSION: "3.7"
-      with:
-        args: '"pip install -e ." "flake8 pyhector tests setup.py" "pylint pyhector"'
+      run: |
+        pip install flake8 pylint
+        flake8 pyhector tests setup.py
+        pylint pyhector
+
     - name: Formatting
-      uses: swillner/actions/python-run@master
-      env:
-        PIP_PACKAGES: black isort
-        PYTHON_VERSION: "3.7"
-      with:
-        args: '"black --check pyhector tests setup.py --exclude pyhector/_version.py"
-          "isort --check-only --quiet --recursive pyhector tests setup.py"'
+      run: |
+        pip install black isort
+        black --check pyhector tests setup.py --exclude pyhector/_version.py
+        isort --check-only --quiet --recursive pyhector tests setup.py
+
     - name: Documentation
-      uses: ./.github/actions/compile
-      env:
-        PIP_PACKAGES: sphinx>=1.8 sphinx_rtd_theme
-        PYTHON_VERSION: "3.7"
-      with:
-        args: '"pip install -e ." "sphinx-build -M html docs docs/build -qW" "sphinx-build
-          -M html docs docs/build -Eqn -b coverage" "if [[ -s docs/build/html/python.txt
-          ]]" then "    echo" "    echo \"Error: Documentation missing:\"" "    echo"
-          "    cat docs/build/html/python.txt" "    exit 1" fi'
+      run: |
+        pip install sphinx>=1.8 sphinx_rtd_theme
+        sphinx-build -M html docs docs/build -qW
+        sphinx-build -M html docs docs/build -Eqn -b coverage
+        if [[ -s docs/build/html/python.txt ]]
+        then
+          echo
+          echo "Error: Documentation missing:"
+          echo
+          cat docs/build/html/python.txt
+          exit 1
+        fi
+
     - name: Coverage
-      uses: swillner/actions/python-run@master
       env:
         MIN_COVERAGE: "75"
-        PIP_PACKAGES: coverage
-        PYTHON_VERSION: "3.7"
-      with:
-        args: '"if ! coverage report --fail-under=\"$MIN_COVERAGE\" --show-missing"
-          then "    echo" "    echo \"Error: Test coverage has to be at least ${MIN_COVERAGE}%\""
-          "    exit 1" fi'
+
+      run: |
+        pip install coverage
+        if ! coverage report --fail-under="$MIN_COVERAGE" --show-missing
+        then
+          echo
+          echo "Error: Test coverage has to be at least ${MIN_COVERAGE}%"
+          exit 1
+        fi
