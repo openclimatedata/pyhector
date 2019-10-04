@@ -19,8 +19,9 @@ jobs:
 
     - name: Compile
       run: |
-        git submodule update --init
+        sudo apt install libboost-filesystem-dev libboost-system-dev
         pip install --upgrade pip
+        git submodule update --init
         pip install -e .
 
     - name: Tests
