@@ -3,7 +3,6 @@
 #   Robert Gieseke <rob.g@web.de>
 # Free software under GNU Affero General Public License v3, see LICENSE
 
-# -*- coding: utf-8 -*-
 
 """
 pyhector
