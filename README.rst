@@ -36,8 +36,7 @@ information.
 
 The Python interface **pyhector** is developed by `Sven Willner
 <http://www.pik-potsdam.de/~willner/>`_ and `Robert Gieseke
-<https://www.pik-potsdam.de/members/gieseke>`_ at the `Potsdam
-Institute for Climate Impact Research <https://www.pik-potsdam.de/>`_.
+<https://github.com/rgieseke>`_.
 
 Pyhector uses `pybind11 <https://github.com/pybind/pybind11>`_ to wrap
 Hector's API. The version of Hector used can be read using Pyhector's
