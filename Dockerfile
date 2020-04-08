@@ -1,6 +1,6 @@
 FROM jupyter/scipy-notebook:281505737f8a
 
-MAINTAINER Robert Gieseke <robert.gieseke@pik-potsdam.de>
+MAINTAINER Robert Gieseke <rob.g@web.de>
 
 USER root
 
