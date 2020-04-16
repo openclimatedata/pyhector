@@ -21,7 +21,7 @@ model emulation, and uncertainty analyses.
 
 `Hector <https://github.com/JGCRI/hector>`_ is written in C++ and
 developed at the `Pacific Northwest National Laboratory
-<https://www.pnl.gov/>`_. The model description is published in
+<https://www.pnnl.gov/>`_. The model description is published in
 
     Hartin, C. A., Patel, P., Schwarber, A., Link, R. P., and
     Bond-Lamberty, B. P.: A simple object-oriented and open-source
