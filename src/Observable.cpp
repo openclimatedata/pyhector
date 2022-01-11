@@ -84,7 +84,7 @@ py::array_t<double> Observable::get_array() const {
         delete[] data;
     });
 
-    array.reset(new py::array_t<double>{{values.size()}, data, handle});
+    array.reset(new py::array_t<double>{static_cast<ssize_t>(values.size()), data, handle});
     return *array.get();
 }
 
