@@ -96,7 +96,7 @@ This repository also contains a `Jupyter Notebook
 live <http://mybinder.org/repo/openclimatedata/pyhector>`_ and
 experiment with, courtesy of the `Binder <http://mybinder.org/>`_
 project. The notebook can be viewed as a `static version
-<http://nbviewer.jupyter.org/github/openclimatedata/pyhector/blob/master/index.ipynb>`_
+<http://nbviewer.jupyter.org/github/openclimatedata/pyhector/blob/main/index.ipynb>`_
 using nbviewer.
 
 Basic example
@@ -174,7 +174,7 @@ Tests can be run locally with
 .. |Docs| image:: https://img.shields.io/badge/docs-latest-brightgreen.svg?style=flat
    :target: https://pyhector.readthedocs.io/en/latest/
 .. |Launch Binder| image:: https://img.shields.io/badge/launch-binder-e66581.svg
-   :target: https://mybinder.org/v2/gh/openclimatedata/pyhector/master?filepath=notebooks/index.ipynb
+   :target: https://mybinder.org/v2/gh/openclimatedata/pyhector/main?filepath=notebooks/index.ipynb
 .. |JOSS| image:: https://img.shields.io/badge/JOSS-10.21105%2Fjoss.00248-brightgreen.svg
    :target: https://doi.org/10.21105/joss.00248
 .. |Zenodo| image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1194599.svg
