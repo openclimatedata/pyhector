@@ -33,7 +33,7 @@ jobs:
       run: |
         pip install flake8 pylint
         flake8 pyhector tests setup.py
-        pylint pyhector
+        pylint --fail-under=9.5 pyhector
 
     - name: Formatting
       run: |
