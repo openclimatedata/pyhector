@@ -138,7 +138,7 @@ def write_hector_input(scenario, path=None):
     out += scenario.to_csv()
 
     if isinstance(path, str):
-        f = open(path, "w")
+        f = open(path, "w", encoding="UTF-8")
     elif path is None:
         return out
     else:
