@@ -1,6 +1,10 @@
 Changelog
 ---------
 
+2.4.0.1
+~~~~~~~
+- fix for pybind issue on ARM
+
 2.4.0.0
 ~~~~~~~
 - update to Hector 2.4.0 (revamped multi-biome system)
