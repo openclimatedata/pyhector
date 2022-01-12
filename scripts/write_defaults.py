@@ -9,11 +9,9 @@
 import ast
 import configparser
 import os
-
-import pandas as pd
-
 from pprint import pformat
 
+import pandas as pd
 
 # Default config from `ini`-file
 default_config = os.path.join(os.path.dirname(__file__),

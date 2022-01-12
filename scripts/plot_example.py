@@ -1,6 +1,7 @@
 import os
 
 import matplotlib.pyplot as plt
+
 plt.style.use("ggplot")
 plt.rcParams["figure.figsize"] = 10, 5
 plt.rcParams["font.family"] = "serif"

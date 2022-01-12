@@ -17,9 +17,10 @@ import glob
 import os
 import sys
 
-import versioneer
 from setuptools import Extension, setup
 from setuptools.command.test import test as TestCommand
+
+import versioneer
 
 path = os.path.abspath(os.path.dirname(__file__))
 
