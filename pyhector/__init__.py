@@ -98,7 +98,7 @@ def read_hector_input(csv_file):
     """
     Reads a Hector CSV file and returns it as a Pandas DataFrame.
     """
-    df = pd.read_csv(csv_file, skiprows=3, index_col=0)
+    df = pd.read_csv(csv_file, index_col=0, comment=";")
     df.name = os.path.splitext(os.path.basename(csv_file))[0]
     return df
 
@@ -178,6 +178,7 @@ def read_hector_output(csv_file):
 
 
 # Default Scenarios:
+# TODO remove once SSPs added
 rcp26 = read_hector_input(
     os.path.join(os.path.dirname(__file__), "./emissions/RCP26_emissions.csv")
 )
@@ -190,6 +191,13 @@ rcp60 = read_hector_input(
 rcp85 = read_hector_input(
     os.path.join(os.path.dirname(__file__), "./emissions/RCP85_emissions.csv")
 )
+
+ssp126 = read_hector_input(
+    os.path.join(
+        os.path.dirname(__file__), "./emissions/ssp126_emiss-constraints_rf.csv"
+    )
+)
+# TODO add others
 
 
 def run(scenario, config=None, base_config=None, outputs=None, return_config=False):
@@ -225,7 +233,11 @@ def run(scenario, config=None, base_config=None, outputs=None, return_config=Fal
         parameters are returned as a tuple.
     """
     if outputs is None:
-        outputs = ["temperature.Tgav", "simpleNbox.Ca", "forcing.Ftot"]
+        outputs = [
+            "temperature.global_tas",
+            "simpleNbox.CO2_concentration",
+            "forcing.RF_tot",
+        ]
     if base_config is None:
         parameters = deepcopy(_default_config)
     else:
@@ -252,6 +264,7 @@ def run(scenario, config=None, base_config=None, outputs=None, return_config=Fal
                 output[name]["component"], output[name]["variable"]
             )
 
+        # TODO Check this
         # In Hector 1.x output value years are given as end of simulation
         # year, e.g. 1745-12-31 = 1746.0.
         # See https://github.com/JGCRI/hector/issues/177

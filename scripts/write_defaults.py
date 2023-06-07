@@ -15,7 +15,7 @@ import pandas as pd
 
 # Default config from `ini`-file
 default_config = os.path.join(os.path.dirname(__file__),
-                              '../pyhector/rcp_default.ini')
+                              '../pyhector/ssp_default.ini')
 config = configparser.ConfigParser(inline_comment_prefixes=(';'))
 config.optionxform = str
 config.read(default_config)
@@ -55,7 +55,9 @@ for section in config.sections():
                 parameters[section][option] = value
 
 # Volcanic RF (from Volcanic_RF.csv)
-parameters["so2"]["SV"] = [
+# TODO Check
+parameters["so2"] = {
+  "SV":  [
     (1765, 0),
     (1766, 0.11622211),
     (1767, 0.23244422),
@@ -302,7 +304,9 @@ parameters["so2"]["SV"] = [
     (2008,0),
     (2009,0),
     (2010,0)
-]
+    ]
+    }
+
 
 
 output += "_default_config = {\n    " + \
