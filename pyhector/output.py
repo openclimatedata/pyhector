@@ -160,11 +160,11 @@ output = {
         "unit": "pptv",
         "variable": "hc_concentration",
     },
-    "forcing.Ftot": {
+    "forcing.RF_tot": {
         "component": "forcing",
         "description": "total global radiative forcing",
         "unit": "W/m2",
-        "variable": "Ftot",
+        "variable": "RF_tot",
     },
     "forcing.FBC": {
         "component": "forcing",
@@ -578,11 +578,11 @@ output = {
         "needs_date": True,
         "variable": "O3",
     },
-    "simpleNbox.Ca": {
+    "simpleNbox.CO2_concentration": {
         "component": "simpleNbox",
         "description": "atmospheric CO2 concentration",
         "unit": "ppmv CO2",
-        "variable": "Ca",
+        "variable": "CO2_concentration",
     },
     "simpleNbox.atm_land_flux": {
         "component": "simpleNbox",
@@ -641,11 +641,11 @@ output = {
         "unit": "Pg C",
         "variable": "veg_c",
     },
-    "temperature.Tgav": {
+    "temperature.global_tas": {
         "component": "temperature",
         "description": "global atmospheric temperature anomaly",
         "unit": "degC",
-        "variable": "Tgav",
+        "variable": "global_tas",
     },
     "temperature.Tgaveq": {
         "component": "temperature",
