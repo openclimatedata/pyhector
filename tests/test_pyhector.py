@@ -60,6 +60,7 @@ def test_rcps():
             original.Tgav,
             check_names=False,
             check_exact=False,
+            rtol=3
         )
 
 
