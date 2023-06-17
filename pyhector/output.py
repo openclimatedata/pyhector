@@ -507,7 +507,7 @@ output = {
         "description": "total atmosphere ocean flux",
         "unit": "Pg C/yr",
         "variable": "atm_ocean_flux",
-        "needs_date": True
+        "needs_date": True,
     },
     "ocean.atm_ocean_flux_HL": {
         "component": "ocean",
@@ -589,7 +589,7 @@ output = {
         "description": "flux of carbon between the " "atmosphere and the ocean",
         "unit": "Pg C/yr",
         "variable": "atm_land_flux",
-        "needs_date": True
+        "needs_date": True,
     },
     "simpleNbox.atmos_c": {
         "component": "simpleNbox",
