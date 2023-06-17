@@ -4,7 +4,7 @@ import os
 from copy import deepcopy
 
 import pandas as pd
-from pandas.util.testing import assert_frame_equal, assert_series_equal
+from pandas.testing import assert_frame_equal, assert_series_equal
 
 import pyhector
 from pyhector import (
@@ -59,7 +59,7 @@ def test_rcps():
             output["temperature.Tgav"],
             original.Tgav,
             check_names=False,
-            check_less_precise=True,
+            check_exact=False,
         )
 
 
