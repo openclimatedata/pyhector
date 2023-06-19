@@ -1,6 +1,11 @@
 Changelog
 ---------
 
+2.5.0.0
+~~~~~~~
+
+- update to Hector 2.5.0 (https://github.com/JGCRI/hector/releases/tag/rcmip-tier1)
+
 2.4.0.1
 ~~~~~~~
 - fix for pybind issue on ARM
