@@ -1,10 +1,11 @@
 Changelog
 ---------
 
-2.5.0.0
+2.5.0.2
 ~~~~~~~
 
 - update to Hector 2.5.0 (https://github.com/JGCRI/hector/releases/tag/rcmip-tier1)
+- fix install errors with newer setuptools
 
 2.4.0.1
 ~~~~~~~
