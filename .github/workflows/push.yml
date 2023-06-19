@@ -3,7 +3,7 @@ on: push
 name: Continuous Integration
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -67,3 +67,24 @@ jobs:
           echo "Error: Test coverage has to be at least ${MIN_COVERAGE}%"
           exit 1
         fi
+
+  deploy-pypi:
+    needs: test
+    if: startsWith(github.event.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Create source distribution
+        run: |
+          python setup.py sdist
+      - name: Publish package to PyPI
+        # pypi-publish releases:
+        # https://github.com/pypa/gh-action-pypi-publish/releases
+        uses: pypa/gh-action-pypi-publish@a56da0b891b3dc519c7ee3284aff1fad93cc8598
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
