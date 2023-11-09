@@ -73,7 +73,7 @@ might be advisable to use a Homebrew installed Python for installing
 
 Windows is (as Hector) in principle supported but not yet tested for
 **pyhector**. Pull request with installation notes for Windows are
-welcome.
+welcome. Read one example of a windows installation `here <docs/windows/installation.md>`_.
 
 Install using pip
 ~~~~~~~~~~~~~~~~~
