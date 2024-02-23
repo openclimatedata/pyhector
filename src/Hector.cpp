@@ -4,25 +4,32 @@
  */
 
 #include "Hector.h"
+
 #include <pybind11/numpy.h>
+
 #include <stdexcept>
+
 #include "component_data.hpp"
+#include "h_exception.hpp"
 #include "message_data.hpp"
 #include "unitval.hpp"
-#include "h_exception.hpp"
 
 namespace hector = Hector;
 namespace py = pybind11;
 
 namespace pyhector {
 
-bool Hector::Visitor::shouldVisit(bool in_spinup, double date) {
-    current_date = date;
-    return true;
-}
+Hector::Visitor::~Visitor() = default;
+
+bool Hector::Visitor::shouldVisit(bool in_spinup, double date) { return true; }
 
 void Hector::Visitor::visit(hector::Core* hcore) {
-    const auto time_index = static_cast<int>(current_date - hcore->getStartDate() - 1);
+    const auto current_date = hcore->getCurrentDate();
+    const auto start_date = hcore->getStartDate();
+    if (start_date > current_date) {
+        throw std::runtime_error("Start date is after current date");
+    }
+    const auto time_index = static_cast<std::size_t>(current_date - start_date);
     for (auto& observable : observables) {
         observable.read_data(hcore, current_date, time_index, spinup_size);
     }
