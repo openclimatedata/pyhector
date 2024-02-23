@@ -28,13 +28,13 @@ class Hector {
         friend class Hector;
 
       protected:
-        double current_date = 0;
         std::vector<Observable> observables;
         std::size_t spinup_size = 0;
 
       public:
-        bool shouldVisit(const bool in_spinup, const double date);
-        void visit(hector::Core* core);
+        ~Visitor() override;
+        bool shouldVisit(const bool in_spinup, const double date) override;
+        void visit(hector::Core* core) override;
     };
 
     Visitor visitor;
