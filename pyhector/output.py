@@ -165,6 +165,7 @@ output = {
         "description": "total global radiative forcing",
         "unit": "W/m2",
         "variable": "RF_tot",
+        "needs_date": True
     },
     "forcing.FBC": {
         "component": "forcing",
@@ -583,6 +584,7 @@ output = {
         "description": "atmospheric CO2 concentration",
         "unit": "ppmv CO2",
         "variable": "CO2_concentration",
+        "needs_date": True
     },
     "simpleNbox.atm_land_flux": {
         "component": "simpleNbox",
