@@ -4,10 +4,12 @@
  */
 
 #include "Observable.h"
+
 #include <algorithm>
 #include <limits>
-#include "imodel_component.hpp"
+
 #include "core.hpp"
+#include "imodel_component.hpp"
 
 namespace hector = Hector;
 namespace py = pybind11;
@@ -24,18 +26,11 @@ Observable::Observable(
     reset(hcore);
 }
 
-void Observable::read_data(hector::Core* hcore, double current_date, std::size_t time_index, std::size_t spinup_index) {
+void Observable::read_data(hector::Core* hcore, double current_date, std::size_t index) {
     if (in_spinup == hcore->inSpinup()) {
         hector::message_data info;
         if (needs_date) {
             info.date = current_date;
-        }
-
-        std::size_t index;
-        if (in_spinup) {
-            index = spinup_index;
-        } else {
-            index = time_index;
         }
 
         double value;

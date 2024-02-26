@@ -37,7 +37,7 @@ class Observable {
   public:
     Observable(hector::Core* hcore, std::string component_name_p, std::string name_p, bool needs_date_p, bool in_spinup_p, std::size_t expected_run_size_p);
     bool matches(const std::string& component_name_p, const std::string& name_p, bool in_spinup_p) const;
-    void read_data(hector::Core* hcore, double current_date, std::size_t time_index, std::size_t spinup_index);
+    void read_data(hector::Core* hcore, double current_date, std::size_t index);
     void reset(hector::Core* hcore);
     py::array_t<double> get_array() const;
 };

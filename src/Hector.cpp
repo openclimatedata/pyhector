@@ -21,17 +21,33 @@ namespace pyhector {
 
 Hector::Visitor::~Visitor() = default;
 
-bool Hector::Visitor::shouldVisit(bool in_spinup, double date) { return true; }
+bool Hector::Visitor::shouldVisit(bool in_spinup, double date) {
+    // if in_spinup is true, date starts from 1, but last value is the start date (then hcore->inSpinup() is false already)
+    // if in_spinup is false, date starts from start date + 1
+    current_date = date;
+    return true;
+}
 
 void Hector::Visitor::visit(hector::Core* hcore) {
-    const auto current_date = hcore->getCurrentDate();
-    const auto start_date = hcore->getStartDate();
-    if (start_date > current_date) {
-        throw std::runtime_error("Start date is after current date");
+    if (std::isnan(current_date)) {
+        return;  // unfortunately, Hector calls visit with date 0 before shouldVisit
     }
-    const auto time_index = static_cast<std::size_t>(current_date - start_date);
+    // unfortunately hcore->getCurrentDate() does not work (it always yields the start date)
+    std::size_t index;
+    if (hcore->inSpinup()) {
+        index = static_cast<std::size_t>(current_date - 1);
+        if (index != spinup_size) {
+            throw std::runtime_error("Spinup size mismatch");
+        }
+    } else {
+        const auto start_date = hcore->getStartDate();
+        if (start_date > current_date) {
+            throw std::runtime_error("Start date is after current date");
+        }
+        index = static_cast<std::size_t>(current_date - start_date);
+    }
     for (auto& observable : observables) {
-        observable.read_data(hcore, current_date, time_index, spinup_size);
+        observable.read_data(hcore, current_date, index);
     }
     if (hcore->inSpinup()) {
         ++spinup_size;
