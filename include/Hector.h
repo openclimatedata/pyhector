@@ -30,6 +30,7 @@ class Hector {
       protected:
         std::vector<Observable> observables;
         std::size_t spinup_size = 0;
+        double current_date = std::numeric_limits<double>::quiet_NaN();
 
       public:
         ~Visitor() override;
