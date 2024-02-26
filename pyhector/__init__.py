@@ -99,7 +99,9 @@ def read_hector_input(csv_file):
     Reads a Hector CSV file and returns it as a Pandas DataFrame.
     """
     df = pd.read_csv(csv_file, index_col=0, comment=";")
-    df.name = os.path.splitext(os.path.basename(csv_file))[0]
+    cols = [c for c in df.columns if "_emissions" in c or "_uptake" in c]
+    df = df[cols]
+    df.name = os.path.splitext(os.path.basename(csv_file))[0].split("_", maxsplit=1)[0].upper()
     return df
 
 

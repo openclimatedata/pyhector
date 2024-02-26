@@ -30,14 +30,17 @@ def test_constants():
 
 
 def test_read_hector_input():
-    rcp26 = read_hector_input(
+    ssp126 = read_hector_input(
         os.path.join(
-            os.path.dirname(__file__), "../pyhector/emissions/RCP26_emissions.csv"
+            os.path.dirname(__file__), "../pyhector/emissions/ssp126_emiss-constraints_rf.csv"
         )
     )
-    assert isinstance(rcp26, pd.DataFrame)
-    assert rcp26.index[-1] == 2500
-    assert rcp26.name == "RCP26_emissions"
+    assert isinstance(ssp126, pd.DataFrame)
+    assert ssp126.index[-1] == 2300
+    assert ssp126.name == "SSP126"
+    assert "daccs_uptake" in ssp126.columns
+    assert "ffi_emissions" in ssp126.columns
+    assert "CO2_constrain" not in ssp126.columns
 
 
 def test_write_hector_input(tmpdir):
