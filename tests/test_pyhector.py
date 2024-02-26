@@ -26,7 +26,16 @@ from pyhector import (
 from pyhector.output import output
 
 path = os.path.dirname(__file__)
-# rcps = {"rcp26": rcp26, "rcp45": rcp45, "rcp60": rcp60, "rcp85": rcp85}
+ssps = {
+    "ssp119": ssp119,
+    "ssp126": ssp126,
+    "ssp245": ssp245,
+    "ssp370": ssp370,
+    "ssp434": ssp434,
+    "ssp460": ssp460,
+    "ssp534-over": ssp534_over,
+    "ssp585": ssp585,
+}
 
 
 def test_constants():
@@ -56,16 +65,16 @@ def test_write_hector_input(tmpdir):
     assert_frame_equal(ssp126, scen_ssp126)
 
 
-def test_rcps():
-    # Compare output of Pyhector with original Hector output streams for RCPs.
-    for name, scenario in rcps.items():
+def test_ssps():
+    # Compare output of Pyhector with original Hector output streams for SSPs.
+    for name, scenario in ssps.items():
         original = read_hector_output(
             os.path.join(path, "./data/outputstream_{}.csv".format(name))
         )
         output = pyhector.run(scenario)
         assert_series_equal(
-            output["temperature.Tgav"],
-            original.Tgav,
+            output["temperature.global_tas"],
+            original.global_tas,
             check_names=False,
             check_exact=False,
             rtol=3,
