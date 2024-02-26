@@ -264,11 +264,7 @@ def run(scenario, config=None, base_config=None, outputs=None, return_config=Fal
                 output[name]["component"], output[name]["variable"]
             )
 
-        # TODO Check this
-        # In Hector 1.x output value years are given as end of simulation
-        # year, e.g. 1745-12-31 = 1746.0.
-        # See https://github.com/JGCRI/hector/issues/177
-        start = int(parameters["core"]["startDate"]) + 1
+        start = int(parameters["core"]["startDate"])
         # End of range is non-inclusive in Python ranges.
         end = int(parameters["core"]["endDate"]) + 1
         index = np.arange(start, end)
