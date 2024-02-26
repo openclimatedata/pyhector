@@ -10,10 +10,14 @@ import pyhector
 from pyhector import (
     Hector,
     constants,
-    rcp26,
-    rcp45,
-    rcp60,
-    rcp85,
+    ssp119,
+    ssp126,
+    ssp245,
+    ssp370,
+    ssp434,
+    ssp460,
+    ssp534_over,
+    ssp585,
     read_hector_constraint,
     read_hector_input,
     read_hector_output,
@@ -22,7 +26,7 @@ from pyhector import (
 from pyhector.output import output
 
 path = os.path.dirname(__file__)
-rcps = {"rcp26": rcp26, "rcp45": rcp45, "rcp60": rcp60, "rcp85": rcp85}
+# rcps = {"rcp26": rcp26, "rcp45": rcp45, "rcp60": rcp60, "rcp85": rcp85}
 
 
 def test_constants():
@@ -32,7 +36,8 @@ def test_constants():
 def test_read_hector_input():
     ssp126 = read_hector_input(
         os.path.join(
-            os.path.dirname(__file__), "../pyhector/emissions/ssp126_emiss-constraints_rf.csv"
+            os.path.dirname(__file__),
+            "../pyhector/emissions/ssp126_emiss-constraints_rf.csv",
         )
     )
     assert isinstance(ssp126, pd.DataFrame)
@@ -45,10 +50,10 @@ def test_read_hector_input():
 
 def test_write_hector_input(tmpdir):
     testfile = tmpdir.join("test.csv")
-    write_hector_input(rcp26, testfile)
+    write_hector_input(ssp126, testfile)
     print(testfile.read())
-    scen_rcp26 = read_hector_input(str(testfile))
-    assert_frame_equal(rcp26, scen_rcp26)
+    scen_ssp126 = read_hector_input(str(testfile))
+    assert_frame_equal(ssp126, scen_ssp126)
 
 
 def test_rcps():

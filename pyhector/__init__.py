@@ -101,7 +101,11 @@ def read_hector_input(csv_file):
     df = pd.read_csv(csv_file, index_col=0, comment=";")
     cols = [c for c in df.columns if "_emissions" in c or "_uptake" in c]
     df = df[cols]
-    df.name = os.path.splitext(os.path.basename(csv_file))[0].split("_", maxsplit=1)[0].upper()
+    df.name = (
+        os.path.splitext(os.path.basename(csv_file))[0]
+        .split("_", maxsplit=1)[0]
+        .upper()
+    )
     return df
 
 
@@ -194,12 +198,46 @@ rcp85 = read_hector_input(
     os.path.join(os.path.dirname(__file__), "./emissions/RCP85_emissions.csv")
 )
 
+ssp119 = read_hector_input(
+    os.path.join(
+        os.path.dirname(__file__), "./emissions/ssp119_emiss-constraints_rf.csv"
+    )
+)
 ssp126 = read_hector_input(
     os.path.join(
         os.path.dirname(__file__), "./emissions/ssp126_emiss-constraints_rf.csv"
     )
 )
-# TODO add others
+ssp245 = read_hector_input(
+    os.path.join(
+        os.path.dirname(__file__), "./emissions/ssp245_emiss-constraints_rf.csv"
+    )
+)
+ssp370 = read_hector_input(
+    os.path.join(
+        os.path.dirname(__file__), "./emissions/ssp370_emiss-constraints_rf.csv"
+    )
+)
+ssp434 = read_hector_input(
+    os.path.join(
+        os.path.dirname(__file__), "./emissions/ssp434_emiss-constraints_rf.csv"
+    )
+)
+ssp460 = read_hector_input(
+    os.path.join(
+        os.path.dirname(__file__), "./emissions/ssp460_emiss-constraints_rf.csv"
+    )
+)
+ssp534_over = read_hector_input(
+    os.path.join(
+        os.path.dirname(__file__), "./emissions/ssp534-over_emiss-constraints_rf.csv"
+    )
+)
+ssp585 = read_hector_input(
+    os.path.join(
+        os.path.dirname(__file__), "./emissions/ssp585_emiss-constraints_rf.csv"
+    )
+)
 
 
 def run(scenario, config=None, base_config=None, outputs=None, return_config=False):
