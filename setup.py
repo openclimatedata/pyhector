@@ -127,7 +127,7 @@ setup(
         "tests": ["codecov", "pytest", "pytest-cov"],
     },
     setup_requires=["pybind11>=2.2"],
-    install_requires=["numpy", "pandas", "pybind11>=2.2"],
+    install_requires=["numpy", "pandas", "pyarrow", "pybind11>=2.2"],
     tests_require=["pytest>=4.0", "pytest-cov"],
     ext_modules=ext_modules,
     zip_safe=False,
