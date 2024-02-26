@@ -310,5 +310,7 @@ def run(scenario, config=None, base_config=None, outputs=None, return_config=Fal
         return results, parameters
     return results
 
+
 from . import _version
-__version__ = _version.get_versions()['version']
+
+__version__ = _version.get_versions()["version"]

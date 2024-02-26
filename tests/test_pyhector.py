@@ -82,8 +82,9 @@ def test_ssps():
 
 
 def test_default_options():
+    # Original dictionary with default options should remain unchanged.
     assert pyhector._default_config["core"]["endDate"] == 2300
-    pyhector.run(rcp26, {"core": {"endDate": 2100}})
+    pyhector.run(ssp126, {"core": {"endDate": 2100}})
     assert pyhector._default_config["core"]["endDate"] == 2300
 
 
@@ -94,22 +95,22 @@ def test_units():
 
 
 def test_output_variables():
-    results = pyhector.run(rcp26)
+    results = pyhector.run(ssp126)
     assert len(results.columns) == 3
-    results = pyhector.run(rcp26, outputs="all")
+    results = pyhector.run(ssp126, outputs="all")
     assert len(results.columns) == len(pyhector.output.keys())
 
 
 def test_output_variables_needs_date():
     # Some outputs require the "needs_date" flag to be set to True.
-    needing_date = ["CH4.CH4", "N2O.N2O", "OH.TAU_OH", "ozone.O3"]
-    results = pyhector.run(rcp26, outputs=needing_date)
+    needing_date = ["CH4.CH4_concentration", "N2O.N2O_concentration", "OH.TAU_OH", "ozone.O3_concentration"]
+    results = pyhector.run(ssp126, outputs=needing_date)
     assert list(results.columns) == needing_date
 
 
 def test_use_base_config():
     results, params = pyhector.run(
-        rcp26, base_config=pyhector._default_config, return_config=True
+        ssp126, base_config=pyhector._default_config, return_config=True
     )
     assert params == pyhector._default_config
 
@@ -124,10 +125,9 @@ def test_reading_constraint_file():
 # Tests following Hector's `test_hector.sh` script
 # Make sure the model handles year changes
 def test_year_changes():
-    results = pyhector.run(rcp45, {"core": {"startDate": 1745}})
-    # Output dates are reported as end of simulation year (1745-12-31 = 1746.0)
-    assert results.index[0] == 1746
-    results = pyhector.run(rcp45, {"core": {"endDate": 2250}})
+    results = pyhector.run(ssp245, {"core": {"startDate": 1745}})
+    assert results.index[0] == 1745
+    results = pyhector.run(ssp245, {"core": {"endDate": 2250}})
     assert results.index[-1] == 2250
 
 
@@ -136,12 +136,12 @@ def test_spinup_output():
     parameters = deepcopy(pyhector._default_config)
     with Hector() as h:
         h.config(parameters)
-        h.set_emissions(rcp45)
-        name = "simpleNbox.Ca"
+        h.set_emissions(ssp245)
+        name = "simpleNbox.CO2_concentration"
         h.add_observable(
             output[name]["component"],
             output[name]["variable"],
-            output[name].get("needs_date", False),
+            output[name].get("needs_date", True),
             in_spinup=True,
         )
         h.run()
@@ -156,13 +156,13 @@ def test_turn_off_spinup():
     parameters = deepcopy(pyhector._default_config)
     with Hector() as h:
         h.config(parameters)
-        h.set_emissions(rcp45)
+        h.set_emissions(ssp245)
         h.run()
         assert h.spinup_size > 0
     with Hector() as h:
         parameters["core"]["do_spinup"] = False
         h.config(parameters)
-        h.set_emissions(rcp45)
+        h.set_emissions(ssp245)
         h.run()
         assert h.spinup_size == 0
 
@@ -172,10 +172,11 @@ def test_turn_off_spinup():
 def test_constraint_co2():
     lawdome_co2_csv = os.path.join(path, "data/lawdome_co2.csv")
     lawdome_co2 = read_hector_constraint(lawdome_co2_csv)
-    output = pyhector.run(rcp45, {"simpleNbox": {"Ca_constrain": lawdome_co2}})
+    output = pyhector.run(ssp245, {"simpleNbox": {"CO2_concentration": lawdome_co2}})
+    print(output)
     # Simplifying the overlapping date-range (later CO2 values are yearly.)
     assert_series_equal(
-        output["simpleNbox.Ca"].loc[1750:1960:5],
+        output["simpleNbox.CO2_concentration"].loc[1750:1960:5],
         lawdome_co2.loc[1750:1960],
         check_names=False,
     )
@@ -185,9 +186,9 @@ def test_constraint_co2():
 def test_constraint_forcing():
     forcing_csv = os.path.join(path, "data/MAGICC_RF_4.5.csv")
     forcing = read_hector_constraint(forcing_csv)
-    output = pyhector.run(rcp45, {"forcing": {"Ftot_constrain": forcing}})
+    output = pyhector.run(ssp245, {"forcing": {"RF_tot_constrain": forcing}})
     assert_series_equal(
-        output["forcing.Ftot"].loc[1765:2300], forcing.loc[1765:2300], check_names=False
+        output["forcing.RF_tot"].loc[1765:2300], forcing.loc[1765:2300], check_names=False
     )
 
 
