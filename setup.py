@@ -106,7 +106,7 @@ setup(
     long_description_content_type="text/x-rst",
     url="https://github.com/openclimatedata/pyhector",
     author="Sven Willner, Robert Gieseke",
-    author_email="sven.willner@pik-potsdam.de, rob.g@web.de",
+    author_email="sven.willner@gmail.com, rob.g@web.de",
     license="GNU Affero General Public License v3",
     platforms="any",
     classifiers=[
