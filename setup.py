@@ -13,11 +13,10 @@ Find **usage** instructions in the `repository
 <https://github.com/openclimatedata/pyhector>`_.
 
 """
-import glob
 import os
 import sys
 
-from setuptools import Extension, setup
+from setuptools import setup
 from setuptools.command.test import test as TestCommand
 
 from pybind11.setup_helpers import Pybind11Extension
