@@ -103,7 +103,12 @@ def test_output_variables():
 
 def test_output_variables_needs_date():
     # Some outputs require the "needs_date" flag to be set to True.
-    needing_date = ["CH4.CH4_concentration", "N2O.N2O_concentration", "OH.TAU_OH", "ozone.O3_concentration"]
+    needing_date = [
+        "CH4.CH4_concentration",
+        "N2O.N2O_concentration",
+        "OH.TAU_OH",
+        "ozone.O3_concentration",
+    ]
     results = pyhector.run(ssp126, outputs=needing_date)
     assert list(results.columns) == needing_date
 
@@ -187,7 +192,9 @@ def test_constraint_forcing():
     forcing = read_hector_constraint(forcing_csv)
     output = pyhector.run(ssp245, {"forcing": {"RF_tot_constrain": forcing}})
     assert_series_equal(
-        output["forcing.RF_tot"].loc[1765:2300], forcing.loc[1765:2300], check_names=False
+        output["forcing.RF_tot"].loc[1765:2300],
+        forcing.loc[1765:2300],
+        check_names=False,
     )
 
 
