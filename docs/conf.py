@@ -19,7 +19,7 @@ from _version import get_versions  # isort:skip # append path before
 # -- Project information -----------------------------------------------------
 
 project = "pyhector"
-copyright = "2017, Sven Willner, Robert Gieseke"
+copyright = "2017 - 2024, Sven Willner, Robert Gieseke"
 author = "Sven Willner, Robert Gieseke"
 version = get_versions()["version"]  # The short X.Y version
 release = version  # The full version, including alpha/beta/rc tags
@@ -123,7 +123,7 @@ autodoc_default_options = {
 }
 coverage_write_headline = False  # do not write headlines.
 intersphinx_mapping = {
-    "numpy": ("https://docs.scipy.org/doc/numpy", None),
+    "numpy": ("https://numpy.org/doc/stable/", None),
     "python": ("https://docs.python.org/3", None),
 }
 napoleon_google_docstring = False
