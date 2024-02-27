@@ -151,11 +151,6 @@ dependencies and install in a virtual environment with ``pip``.
     python3 -m venv venv
     ./venv/bin/pip install --editable --verbose .
 
-To remove build files
-
-.. code:: bash
-    rm -rf build **/*.so
-
 
 To update **pyhector** and all submodules you can run
 
