@@ -8,14 +8,13 @@ plt.rcParams["font.family"] = "serif"
 plt.rcParams["font.size"] = 12
 
 import pyhector
-from pyhector import rcp26, rcp45, rcp60, rcp85
+from pyhector import ssp119, ssp126, ssp245, ssp370, ssp434, ssp460, ssp534_over, ssp585
 
-path = os.path.join(os.path.dirname(__file__),
-                    '../docs/example-plot.png')
+path = os.path.join(os.path.dirname(__file__), "../docs/example-plot.png")
 
-for rcp in [rcp85, rcp60, rcp45, rcp26]:
+for rcp in [ssp119, ssp126, ssp245, ssp370, ssp434, ssp460, ssp534_over, ssp585]:
     output = pyhector.run(rcp, {"core": {"endDate": 2100}})
-    temp = output["temperature.Tgav"]
+    temp = output["temperature.global_tas"]
     temp = temp.loc[1850:] - temp.loc[1850:1900].mean()
     temp.plot(label=rcp.name.split("_")[0])
 plt.title("Global mean temperature")
