@@ -89,9 +89,9 @@ def test_default_options():
 
 
 def test_units():
-    assert pyhector.units["ffi_emissions"] == "GtC/yr"
-    assert pyhector.units["luc_emissions"] == "GtC/yr"
-    assert pyhector.units["NOX_emissions"] == "MtN/yr"
+    assert pyhector.units["ffi_emissions"] == "PgC year-1"
+    assert pyhector.units["luc_emissions"] == "PgC year-1"
+    assert pyhector.units["NOX_emissions"] == "Tg N year-1"
 
 
 def test_output_variables():
