@@ -15,7 +15,7 @@ pyhector.default_config
 -----------------------
 
 A dictionary with Hector's default configuration parameters.
-See also `the original config file on GitHub <https://github.com/openclimatedata/pyhector/blob/main/pyhector/rcp_default.ini>`_.
+See also `the original config file on GitHub <https://github.com/JGCRI/hector/blob/main/inst/input/hector_ssp119.ini>`_.
 In **pyhector** this INI-file is represented as a dictionary.
 
 

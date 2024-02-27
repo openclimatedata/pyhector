@@ -3,7 +3,7 @@
     :end-before: image-start
 
 .. image:: example-plot.png
-    :alt: Temperature Plot of RCP scenarios
+    :alt: Temperature Plot of SSP scenarios
 
 .. include:: ../README.rst
     :start-after: image-end
