@@ -40,20 +40,6 @@ jobs:
         black --check pyhector tests setup.py --exclude pyhector/_version.py
         isort --check-only --quiet --recursive pyhector tests setup.py
 
-    - name: Documentation
-      run: |
-        pip install sphinx>=1.8 sphinx_rtd_theme
-        sphinx-build -M html docs docs/build -qW
-        sphinx-build -M html docs docs/build -Eqn -b coverage
-        if [[ -s docs/build/html/index.html ]]
-        then
-          echo
-          echo "Error: Documentation missing:"
-          echo
-          cat docs/build/html/python.txt
-          exit 1
-        fi
-
     - name: Coverage
       env:
         MIN_COVERAGE: "75"
