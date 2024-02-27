@@ -172,8 +172,7 @@ def test_turn_off_spinup():
 def test_constraint_co2():
     lawdome_co2_csv = os.path.join(path, "data/lawdome_co2.csv")
     lawdome_co2 = read_hector_constraint(lawdome_co2_csv)
-    output = pyhector.run(ssp245, {"simpleNbox": {"CO2_concentration": lawdome_co2}})
-    print(output)
+    output = pyhector.run(ssp245, {"simpleNbox": {"CO2_constrain": lawdome_co2}})
     # Simplifying the overlapping date-range (later CO2 values are yearly.)
     assert_series_equal(
         output["simpleNbox.CO2_concentration"].loc[1750:1960:5],
