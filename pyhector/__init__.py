@@ -181,20 +181,6 @@ def read_hector_output(csv_file):
 
 
 # Default Scenarios:
-# TODO remove once SSPs added
-rcp26 = read_hector_input(
-    os.path.join(os.path.dirname(__file__), "./emissions/RCP26_emissions.csv")
-)
-rcp45 = read_hector_input(
-    os.path.join(os.path.dirname(__file__), "./emissions/RCP45_emissions.csv")
-)
-rcp60 = read_hector_input(
-    os.path.join(os.path.dirname(__file__), "./emissions/RCP6_emissions.csv")
-)
-rcp85 = read_hector_input(
-    os.path.join(os.path.dirname(__file__), "./emissions/RCP85_emissions.csv")
-)
-
 ssp119 = read_hector_input(
     os.path.join(
         os.path.dirname(__file__), "./emissions/ssp119_emiss-constraints_rf.csv"
