@@ -13,11 +13,11 @@ plt.rcParams["font.size"] = 12
 
 path = os.path.join(os.path.dirname(__file__), "../docs/example-plot.png")
 
-for rcp in [ssp119, ssp126, ssp245, ssp370, ssp434, ssp460, ssp534_over, ssp585]:
-    output = pyhector.run(rcp, {"core": {"endDate": 2100}})
+for ssp in [ssp119, ssp126, ssp245, ssp370, ssp434, ssp460, ssp534_over, ssp585]:
+    output = pyhector.run(ssp, {"core": {"endDate": 2100}})
     temp = output["temperature.global_tas"]
     temp = temp.loc[1850:] - temp.loc[1850:1900].mean()
-    temp.plot(label=rcp.name.split("_")[0])
+    temp.plot(label=ssp.name)
 plt.title("Global mean temperature")
 plt.ylabel("°C over pre-industrial (1850-1900 mean)")
 plt.legend(loc="best")
