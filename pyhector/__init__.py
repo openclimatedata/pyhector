@@ -22,14 +22,13 @@ from copy import deepcopy
 import numpy as np
 import pandas as pd
 
+from . import _version
 from ._binding import __hector_version__  # noqa: F401  # pylint: disable=E0611
 from ._binding import _Hector  # pylint: disable=no-name-in-module
 from .default_config import _default_config
 from .emissions import emissions
 from .output import output
 from .units import units
-
-from . import _version
 
 __version__ = _version.get_versions()["version"]
 
