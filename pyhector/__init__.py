@@ -295,5 +295,3 @@ def run(scenario, config=None, base_config=None, outputs=None, return_config=Fal
     if return_config:
         return results, parameters
     return results
-
-
