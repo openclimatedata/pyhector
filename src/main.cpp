@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Sven Willner <sven.willner@pik-potsdam.de>
+ * Copyright (c) 2018 - 2024 Sven Willner <sven.willner@gmail.com>
  * Free software under GNU Affero General Public License v3, see LICENSE
  */
 

@@ -1,5 +1,5 @@
-# Copyright (c) 2017-2020 pyhector authors:
-#   Sven Willner <sven.willner@pik-potsdam.de>
+# Copyright (c) 2017-2024 pyhector authors:
+#   Sven Willner <sven.willner@gmail.com>
 #   Robert Gieseke <rob.g@web.de>
 # Free software under GNU Affero General Public License v3, see LICENSE
 
