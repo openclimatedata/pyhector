@@ -17,10 +17,9 @@ Find **usage** instructions in the `repository
 import os
 import sys
 
+from pybind11.setup_helpers import Pybind11Extension
 from setuptools import setup
 from setuptools.command.test import test as TestCommand
-
-from pybind11.setup_helpers import Pybind11Extension
 
 import versioneer
 
