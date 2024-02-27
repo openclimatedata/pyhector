@@ -453,77 +453,78 @@ output = {
         "unit": "pptv",
         "variable": "hc_concentration",
     },
-    # "ocean.CO3_HL": {
-    #     "component": "ocean",
-    #     "description": "carbonate ion - high latitude",
-    #     "unit": "umol/kg",
-    #     "variable": "CO3_HL",
-    # },
-    # "ocean.CO3_LL": {
-    #     "component": "ocean",
-    #     "description": "carbonate ion - low latitude",
-    #     "unit": "umol/kg",
-    #     "variable": "CO3_LL",
-    # },
-    # "ocean.DIC_HL": {
-    #     "component": "ocean",
-    #     "description": "dissolved inorganic carbon - high latitude",
-    #     "unit": "umol/kg",
-    #     "variable": "DIC_HL",
-    # },
-    # "ocean.DIC_LL": {
-    #     "component": "ocean",
-    #     "description": "dissolved inorganic carbon - low latitude",
-    #     "unit": "umol/kg",
-    #     "variable": "DIC_LL",
-    # },
-    # "ocean.HL_DO_Cflux": {
-    #     "component": "ocean",
-    #     "description": "flux of carbon from the high latitude " "to the deep ocean",
-    #     "unit": "Pg C/yr",
-    #     "variable": "HL_DO_Cflux",
-    # },
-    # "ocean.OmegaAr_HL": {
-    #     "component": "ocean",
-    #     "description": "aragnoite saturation - high latitude",
-    #     "unit": "(unitless)",
-    #     "variable": "OmegaAr_HL",
-    # },
-    # "ocean.OmegaAr_LL": {
-    #     "component": "ocean",
-    #     "description": "aragnoite saturation - low latitude",
-    #     "unit": "(unitless)",
-    #     "variable": "OmegaAr_LL",
-    # },
-    # "ocean.OmegaCa_HL": {
-    #     "component": "ocean",
-    #     "description": "calcite saturation - high latitude",
-    #     "unit": "(unitless)",
-    #     "variable": "OmegaCa_HL",
-    # },
-    # "ocean.OmegaCa_LL": {
-    #     "component": "ocean",
-    #     "description": "calcite saturation - low latitude",
-    #     "unit": "(unitless)",
-    #     "variable": "OmegaCa_LL",
-    # },
-    # "ocean.PCO2_HL": {
-    #     "component": "ocean",
-    #     "description": "partial pressure CO2 - high latitude",
-    #     "unit": "uatm",
-    #     "variable": "PCO2_HL",
-    # },
-    # "ocean.PCO2_LL": {
-    #     "component": "ocean",
-    #     "description": "partial pressure CO2 - low latitude",
-    #     "unit": "uatm",
-    #     "variable": "PCO2_LL",
-    # },
-    # "ocean.Revelle_HL": {
+    "ocean.HL_CO3": {
+        "component": "ocean",
+        "description": "carbonate ion - high latitude",
+        "unit": "umol/kg",
+        "variable": "HL_CO3",
+    },
+    "ocean.LL_CO3": {
+        "component": "ocean",
+        "description": "carbonate ion - low latitude",
+        "unit": "umol/kg",
+        "variable": "LL_CO3",
+    },
+    "ocean.HL_DIC": {
+        "component": "ocean",
+        "description": "dissolved inorganic carbon - high latitude",
+        "unit": "umol/kg",
+        "variable": "HL_DIC",
+    },
+    "ocean.LL_DIC": {
+        "component": "ocean",
+        "description": "dissolved inorganic carbon - low latitude",
+        "unit": "umol/kg",
+        "variable": "LL_DIC",
+    },
+    "ocean.HL_downwelling": {
+        "component": "ocean",
+        "description": "flux of carbon from the high latitude " "to the deep ocean",
+        "unit": "Pg C/yr",
+        "variable": "HL_downwelling",
+    },
+    "ocean.HL_OmegaAr": {
+        "component": "ocean",
+        "description": "aragnoite saturation - high latitude",
+        "unit": "(unitless)",
+        "variable": "HL_OmegaAr",
+    },
+    "ocean.HL_OmegaAr": {
+        "component": "ocean",
+        "description": "aragnoite saturation - low latitude",
+        "unit": "(unitless)",
+        "variable": "HL_OmegaAr",
+    },
+    "ocean.HL_OmegaCa": {
+        "component": "ocean",
+        "description": "calcite saturation - high latitude",
+        "unit": "(unitless)",
+        "variable": "HL_OmegaCa",
+    },
+    "ocean.HL_OmegaCa": {
+        "component": "ocean",
+        "description": "calcite saturation - low latitude",
+        "unit": "(unitless)",
+        "variable": "HL_OmegaCa",
+    },
+    "ocean.HL_PCO2": {
+        "component": "ocean",
+        "description": "partial pressure CO2 - high latitude",
+        "unit": "uatm",
+        "variable": "HL_PCO2",
+    },
+    "ocean.LL_PCO2": {
+        "component": "ocean",
+        "description": "partial pressure CO2 - low latitude",
+        "unit": "uatm",
+        "variable": "LL_PCO2",
+    },
+    # TODO Assertion failed: Active chemistry required
+    # "ocean.HL_Revelle": {
     #     "component": "ocean",
     #     "description": "Revelle factor - high latitude",
     #     "unit": "(unitless)",
-    #     "variable": "Revelle_HL",
+    #     "variable": "HL_Revelle",
     # },
     # "ocean.Revelle_LL": {
     #     "component": "ocean",
@@ -531,87 +532,87 @@ output = {
     #     "unit": "(unitless)",
     #     "variable": "Revelle_LL",
     # },
-    # "ocean.Temp_HL": {
-    #     "component": "ocean",
-    #     "description": "ocean surface temperature - high latitude",
-    #     "unit": "degC",
-    #     "variable": "Temp_HL",
-    # },
-    # "ocean.Temp_LL": {
-    #     "component": "ocean",
-    #     "description": "ocean surface temperature - low latitude",
-    #     "unit": "degC",
-    #     "variable": "Temp_LL",
-    # },
-    # "ocean.atm_ocean_flux": {
-    #     "component": "ocean",
-    #     "description": "total atmosphere ocean flux",
-    #     "unit": "Pg C/yr",
-    #     "variable": "atm_ocean_flux",
-    #     "needs_date": True,
-    # },
-    # "ocean.atm_ocean_flux_HL": {
-    #     "component": "ocean",
-    #     "description": "flux of carbon between the atmosphere and high "
-    #     "latitude surface box",
-    #     "unit": "Pg C/yr",
-    #     "variable": "atm_ocean_flux_HL",
-    # },
-    # "ocean.atm_ocean_flux_LL": {
-    #     "component": "ocean",
-    #     "description": "flux of carbon between the "
-    #     "atmosphere and low latitude surface box",
-    #     "unit": "Pg C/yr",
-    #     "variable": "atm_ocean_flux_LL",
-    # },
-    # "ocean.carbon_DO": {
-    #     "component": "ocean",
-    #     "description": "carbon pool - deep ocean",
-    #     "unit": "Pg C",
-    #     "variable": "carbon_DO",
-    # },
-    # "ocean.carbon_HL": {
-    #     "component": "ocean",
-    #     "description": "carbon pool - high latitude surface ocean",
-    #     "unit": "Pg C",
-    #     "variable": "carbon_HL",
-    # },
-    # "ocean.carbon_IO": {
-    #     "component": "ocean",
-    #     "description": "carbon pool - intermediate ocean",
-    #     "unit": "Pg C",
-    #     "variable": "carbon_IO",
-    # },
-    # "ocean.carbon_LL": {
-    #     "component": "ocean",
-    #     "description": "carbon pool - low latitude surface ocean",
-    #     "unit": "Pg C",
-    #     "variable": "carbon_LL",
-    # },
-    # "ocean.ocean_c": {
-    #     "component": "ocean",
-    #     "description": "total ocean carbon pool",
-    #     "unit": "Pg C",
-    #     "variable": "ocean_c",
-    # },
-    # "ocean.ocean_timesteps": {
-    #     "component": "ocean",
-    #     "description": "time step the ocean operates on",
-    #     "unit": "(unitless)",
-    #     "variable": "ocean_timesteps",
-    # },
-    # "ocean.pH_HL": {
-    #     "component": "ocean",
-    #     "description": "pH - high latitude",
-    #     "unit": "pH",
-    #     "variable": "pH_HL",
-    # },
-    # "ocean.pH_LL": {
-    #     "component": "ocean",
-    #     "description": "pH - low latitude",
-    #     "unit": "pH",
-    #     "variable": "pH_LL",
-    # },
+    "ocean.HL_sst": {
+        "component": "ocean",
+        "description": "ocean surface temperature - high latitude",
+        "unit": "degC",
+        "variable": "HL_sst",
+    },
+    "ocean.LL_sst": {
+        "component": "ocean",
+        "description": "ocean surface temperature - low latitude",
+        "unit": "degC",
+        "variable": "LL_sst",
+    },
+    "ocean.ocean_uptake": {
+        "component": "ocean",
+        "description": "total atmosphere ocean flux",
+        "unit": "Pg C/yr",
+        "variable": "ocean_uptake",
+        "needs_date": True,
+    },
+    "ocean.HL_ocean_uptake": {
+        "component": "ocean",
+        "description": "flux of carbon between the atmosphere and high "
+        "latitude surface box",
+        "unit": "Pg C/yr",
+        "variable": "HL_ocean_uptake",
+    },
+    "ocean.LL_ocean_uptake": {
+        "component": "ocean",
+        "description": "flux of carbon between the "
+        "atmosphere and low latitude surface box",
+        "unit": "Pg C/yr",
+        "variable": "LL_ocean_uptake",
+    },
+    "ocean.DO_ocean_c": {
+        "component": "ocean",
+        "description": "carbon pool - deep ocean",
+        "unit": "Pg C",
+        "variable": "DO_ocean_c",
+    },
+    "ocean.HL_ocean_c": {
+        "component": "ocean",
+        "description": "carbon pool - high latitude surface ocean",
+        "unit": "Pg C",
+        "variable": "HL_ocean_c",
+    },
+    "ocean.IO_ocean_c": {
+        "component": "ocean",
+        "description": "carbon pool - intermediate ocean",
+        "unit": "Pg C",
+        "variable": "IO_ocean_c",
+    },
+    "ocean.LL_ocean_c": {
+        "component": "ocean",
+        "description": "carbon pool - low latitude surface ocean",
+        "unit": "Pg C",
+        "variable": "LL_ocean_c",
+    },
+    "ocean.ocean_c": {
+        "component": "ocean",
+        "description": "total ocean carbon pool",
+        "unit": "Pg C",
+        "variable": "ocean_c",
+    },
+    "ocean.ocean_timesteps": {
+        "component": "ocean",
+        "description": "time step the ocean operates on",
+        "unit": "(unitless)",
+        "variable": "ocean_timesteps",
+    },
+    "ocean.HL_pH": {
+        "component": "ocean",
+        "description": "pH - high latitude",
+        "unit": "pH",
+        "variable": "HL_pH",
+    },
+    "ocean.LL_pH": {
+        "component": "ocean",
+        "description": "pH - low latitude",
+        "unit": "pH",
+        "variable": "LL_pH",
+    },
     "ozone.O3_concentration": {
         "component": "ozone",
         "description": "tropospheric ozone concentration",
@@ -626,19 +627,20 @@ output = {
         "variable": "CO2_concentration",
         "needs_date": True,
     },
-    # "simpleNbox.atm_land_flux": {
+    # TODO: Error: "Interpolation requested but not allowed (?) date: 1745"
+    # "simpleNbox.NBP": {
     #     "component": "simpleNbox",
     #     "description": "flux of carbon between the atmosphere and the ocean",
     #     "unit": "Pg C/yr",
-    #     "variable": "atm_land_flux",
+    #     "variable": "NBP",
     #     "needs_date": True,
     # },
-    # "simpleNbox.atmos_c": {
-    #     "component": "simpleNbox",
-    #     "description": "total atmospheric carbon pool",
-    #     "unit": "Pg C",
-    #     "variable": "atmos_c",
-    # },
+    "simpleNbox.atmos_co2": {
+        "component": "simpleNbox",
+        "description": "total atmospheric carbon pool",
+        "unit": "Pg C",
+        "variable": "atmos_co2",
+    },
     "simpleNbox.atmos_c_residual": {
         "component": "simpleNbox",
         "description": "the difference between calculated CO2 and and "
@@ -659,18 +661,18 @@ output = {
         "unit": "Pg C",
         "variable": "earth_c",
     },
-    # "simpleNbox.npp": {
-    #     "component": "simpleNbox",
-    #     "description": "net primary production (land)",
-    #     "unit": "Pg C/yr",
-    #     "variable": "npp",
-    # },
-    # "simpleNbox.rh": {
-    #     "component": "simpleNbox",
-    #     "description": "heterotrophic respiration (land)",
-    #     "unit": "Pg C/yr",
-    #     "variable": "rh",
-    # },
+    "simpleNbox.NPP": {
+        "component": "simpleNbox",
+        "description": "net primary production (land)",
+        "unit": "Pg C/yr",
+        "variable": "NPP",
+    },
+    "simpleNbox.RH": {
+        "component": "simpleNbox",
+        "description": "heterotrophic respiration (land)",
+        "unit": "Pg C/yr",
+        "variable": "RH",
+    },
     "simpleNbox.soil_c": {
         "component": "simpleNbox",
         "description": "total soil carbon pool",
@@ -685,32 +687,36 @@ output = {
     },
     "temperature.global_tas": {
         "component": "temperature",
-        "description": "global atmospheric temperature anomaly",
+        "description": "global mean air temperature anomaly",
         "unit": "degC",
         "variable": "global_tas",
     },
-    # "temperature.Tgaveq": {
-    #     "component": "temperature",
-    #     "description": "temperature change without accounting " "for ocean heat uptake",
-    #     "unit": "degC",
-    #     "variable": "Tgaveq",
-    # },
-    # "temperature.Tgav_land": {
-    #     "component": "temperature",
-    #     "description": "average land temperature anomaly",
-    #     "unit": "degC",
-    #     "variable": "Tgav_land",
-    # },
-    # "temperature.Tgav_ocean_ST": {
-    #     "component": "temperature",
-    #     "description": "average ocean surface temperature anomaly",
-    #     "unit": "degC",
-    #     "variable": "Tgav_ocean_ST",
-    # },
-    # "temperature.Tgav_ocean_air": {
-    #     "component": "temperature",
-    #     "description": "average ocean air temperature anomaly",
-    #     "unit": "degC",
-    #     "variable": "Tgav_ocean_air",
-    # },
+    "temperature.gmst": {
+        "component": "temperature",
+        "description": "global mean surface temperature anomaly",
+        "unit": "degC",
+        "variable": "gmst",
+    },
+    "temperature.sst": {
+        "component": "temperature",
+        "description": "average sea surface temperature anomaly",
+        "unit": "degC",
+        "variable": "sst",
+    },
+    "temperature.ocean_tas": {
+        "component": "temperature",
+        "description": "average air temperature anomaly over the ocean",
+        "unit": "degC",
+        "variable": "ocean_tas",
+    },
+    "temperature.land_tas": {
+        "component": "temperature",
+        "description": (
+            "average air temperature anomaly over land, land surface "
+            "temperature and air temperature over land are assumed to be equivalent."
+        ),
+        "unit": "degC",
+        "variable": "land_tas",
+    },
+    # TODO heat flux outputs of temperature component
 }
