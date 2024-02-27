@@ -489,11 +489,11 @@ output = {
         "unit": "(unitless)",
         "variable": "HL_OmegaAr",
     },
-    "ocean.HL_OmegaAr": {
+    "ocean.LL_OmegaAr": {
         "component": "ocean",
         "description": "aragnoite saturation - low latitude",
         "unit": "(unitless)",
-        "variable": "HL_OmegaAr",
+        "variable": "LL_OmegaAr",
     },
     "ocean.HL_OmegaCa": {
         "component": "ocean",
@@ -501,11 +501,11 @@ output = {
         "unit": "(unitless)",
         "variable": "HL_OmegaCa",
     },
-    "ocean.HL_OmegaCa": {
+    "ocean.LL_OmegaCa": {
         "component": "ocean",
         "description": "calcite saturation - low latitude",
         "unit": "(unitless)",
-        "variable": "HL_OmegaCa",
+        "variable": "LL_OmegaCa",
     },
     "ocean.HL_PCO2": {
         "component": "ocean",
