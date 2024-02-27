@@ -24,14 +24,14 @@ import pandas as pd
 
 from ._binding import __hector_version__  # noqa: F401  # pylint: disable=E0611
 from ._binding import _Hector  # pylint: disable=no-name-in-module
-from ._version import get_versions
 from .default_config import _default_config
 from .emissions import emissions
 from .output import output
 from .units import units
 
-__version__ = get_versions()["version"]
-del get_versions
+from . import _version
+
+__version__ = _version.get_versions()["version"]
 
 
 class Hector(_Hector):
@@ -297,6 +297,3 @@ def run(scenario, config=None, base_config=None, outputs=None, return_config=Fal
     return results
 
 
-from . import _version
-
-__version__ = _version.get_versions()["version"]
