@@ -10,6 +10,9 @@ import pyhector
 from pyhector import (
     Hector,
     constants,
+    read_hector_constraint,
+    read_hector_input,
+    read_hector_output,
     ssp119,
     ssp126,
     ssp245,
@@ -18,9 +21,6 @@ from pyhector import (
     ssp460,
     ssp534_over,
     ssp585,
-    read_hector_constraint,
-    read_hector_input,
-    read_hector_output,
     write_hector_input,
 )
 from pyhector.output import output
