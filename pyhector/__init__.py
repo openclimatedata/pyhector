@@ -229,8 +229,8 @@ def run(scenario, config=None, base_config=None, outputs=None, return_config=Fal
     Parameters
     ----------
     scenario : DataFrame
-        DataFrame with emissions. See ``pyhector.rcp26`` for an
-        example and :mod:`pyhector.units` for units of emissions values.
+        DataFrame with emissions and albedo forcing. See ``pyhector.ssp126`` for
+        an example and :mod:`pyhector.units` for units of emissions values.
     config : dictionary, default ``None``
         Additional config options that overwrite the base
         config.
