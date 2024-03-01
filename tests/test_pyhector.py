@@ -117,6 +117,8 @@ def test_use_base_config():
     results, params = pyhector.run(
         ssp126, base_config=pyhector._default_config, return_config=True
     )
+    # RF_albedo is added from scenario input in `run` function.
+    del params["simpleNbox"]["RF_albedo"]
     assert params == pyhector._default_config
 
 
