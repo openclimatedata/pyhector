@@ -3,7 +3,7 @@ include hector/LICENSE.md
 include hector/README.md
 include hector/inst/include/*.hpp
 include include/*.h
-include pyhector/rcp_default.ini
+include pyhector/ssp_default.ini
 include versioneer.py
 recursive-include pyhector/emissions *.csv
 recursive-include tests/data *.csv
