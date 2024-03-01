@@ -70,7 +70,7 @@ _default_config = {
         "rho_CH3Cl": 5e-06,
         "tau": 0.9,
     },
-    "CH4": {"CH4N": 338, "M0": 731.41, "Tsoil": 160, "Tstrat": 120, "UC_CH4": 2.78},
+    "CH4": {"CH4N": 335, "M0": 731.41, "Tsoil": 160, "Tstrat": 120, "UC_CH4": 2.78},
     "HCFC141b_halocarbon": {
         "delta_HCFC141b": 0.0,
         "molarMass": 116.9,
@@ -139,7 +139,7 @@ _default_config = {
     },
     "N2O": {
         "N0": 273.87,
-        "N2O_natural_emissions": [(1750, 9.7)],
+        "N2O_natural_emissions": [(1750, 9.72)],
         "TN2O0": 132,
         "UC_N2O": 4.8,
     },
@@ -176,10 +176,10 @@ _default_config = {
         "delta_ch4": -0.14,
         "delta_co2": 0.05,
         "delta_n2o": 0.07,
-        "rho_bc": 0.0508,
-        "rho_nh3": -0.00208,
-        "rho_oc": -0.00621,
-        "rho_so2": -7.24e-06,
+        "rho_bc": 0.06386286,
+        "rho_nh3": -0.002146032,
+        "rho_oc": -0.006407143,
+        "rho_so2": -7.469841e-06,
     },
     "halon1211_halocarbon": {
         "delta_halon1211": 0.0,
@@ -213,15 +213,15 @@ _default_config = {
     "simpleNbox": {
         "C0": 277.15,
         "atmos_co2": 590.33,
-        "beta": 0.55,
+        "beta": 0.53,
         "detritus_c": 55,
         "f_litterd": 0.98,
         "f_nppd": 0.6,
         "f_nppv": 0.35,
         "npp_flux0": 56.2,
-        "permafrost_c": 0,
-        "q10_rh": 2.2,
-        "soil_c": 1782,
+        "permafrost_c": 865,
+        "q10_rh": 1.76,
+        "soil_c": 917,
         "veg_c": 550,
     },
     "so2": {
@@ -784,12 +784,5 @@ _default_config = {
             (2300, 0.0),
         ]
     },
-    "temperature": {
-        "S": 3.0,
-        "alpha": 1.0,
-        "diff": 1.16,
-        "enabled": True,
-        "qco2": 3.75,
-        "volscl": 1.0,
-    },
+    "temperature": {"S": 3.0, "alpha": 1.0, "diff": 2.38, "qco2": 3.75, "volscl": 1.0},
 }
