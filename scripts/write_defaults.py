@@ -66,10 +66,8 @@ for section in config.sections():
                     value = ast.literal_eval(value)
                 parameters[section][option] = value
 
-# Volcanic RF (from Volcanic_RF.csv)
-# TODO Check
+# Volcanic RF (from default {ssp*}_emiss-constraints_rf.csv file)
 parameters["so2"] = {"SV": list(zip(default_input["SV"].index, default_input["SV"]))}
-
 
 output += (
     "_default_config = {\n    "

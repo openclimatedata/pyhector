@@ -98,7 +98,7 @@ def read_hector_input(csv_file):
     Reads a Hector CSV file and returns it as a Pandas DataFrame.
     """
     df = pd.read_csv(csv_file, index_col=0, comment=";")
-    cols = [c for c in df.columns if "_emissions" in c or "_uptake" in c]
+    cols = [c for c in df.columns if "_emissions" in c or "_uptake" in c or "RF_" in c]
     df = df[cols]
     df.name = (
         os.path.splitext(os.path.basename(csv_file))[0]
@@ -269,6 +269,10 @@ def run(scenario, config=None, base_config=None, outputs=None, return_config=Fal
             for option, value in data.items():
                 parameters[key][option] = value
     with Hector() as h:
+        if "RF_albedo" in scenario.columns:
+            parameters["simpleNbox"]["RF_albedo"] = list(
+                zip(scenario["RF_albedo"].index, scenario["RF_albedo"])
+            )
         h.config(parameters)
         h.set_emissions(scenario)
         if outputs == "all":
