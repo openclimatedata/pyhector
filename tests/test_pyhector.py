@@ -72,13 +72,13 @@ def test_ssps():
             os.path.join(path, "./data/outputstream_{}.csv".format(name))
         )
         output = pyhector.run(scenario)
-        assert_series_equal(
-            output["temperature.global_tas"],
-            original.global_tas,
-            check_names=False,
-            check_exact=False,
-            rtol=3,
-        )
+        assert (
+            original["global_tas"].map(lambda x: float(f"{x:.5e}"[:7]))
+            - output["temperature.global_tas"]
+            .map(lambda x: float(f"{x:.5e}"[:7]))
+            .abs()
+            < 6e-4
+        ).all()
 
 
 def test_default_options():
