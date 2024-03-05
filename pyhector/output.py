@@ -627,14 +627,12 @@ output = {
         "variable": "CO2_concentration",
         "needs_date": True,
     },
-    # TODO: Error: "Interpolation requested but not allowed (?) date: 1745"
-    # "simpleNbox.NBP": {
-    #     "component": "simpleNbox",
-    #     "description": "flux of carbon between the atmosphere and the ocean",
-    #     "unit": "Pg C/yr",
-    #     "variable": "NBP",
-    #     "needs_date": True,
-    # },
+    "simpleNbox.NBP": {
+        "component": "simpleNbox",
+        "description": "flux of carbon between the atmosphere and the ocean",
+        "unit": "Pg C/yr",
+        "variable": "NBP",
+    },
     "simpleNbox.atmos_co2": {
         "component": "simpleNbox",
         "description": "total atmospheric carbon pool",
