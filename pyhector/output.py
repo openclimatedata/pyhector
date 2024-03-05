@@ -1,5 +1,64 @@
 """Hector output variables."""
 
+# Currently not readable in Pyhector
+
+# "ocean.HL_Revelle": {
+#     "component": "ocean",
+#     "description": "HL Revelle",
+#     "unit": "(unitless)",
+#     "variable": "HL_Revelle"
+# },
+# "ocean.LL_Revelle": {
+#     "component": "ocean",
+#     "description": "LL Revelle",
+#     "unit": "(unitless)",
+#     "variable": "LL_Revelle",
+# },
+# Problem with reading data: "Interpolation requested but not allowed (slr) date: 1745"
+# "slr.slr": {
+#     "component": "slr",
+#     "description": "sea level rise",
+#     "unit": "cm",
+#     "variable": "slr",
+#     "needs_date": True,
+# },
+# "slr.slr_no_ice": {
+#     "component": "slr",
+#     "description": "sea level rise, no ice",
+#     "unit": "cm",
+#     "variable": "slr",
+#     "needs_date": True,
+# },
+# "slr.sl_rc": {
+#     "component": "slr",
+#     "description": "sea level rate of change",
+#     "unit": "cm/yr",
+#     "variable": "sl_rc",
+#     "needs_date": True,
+# },
+# "slr.sl_rc_no_ice": {
+#     "component": "slr",
+#     "description": "sea level rate of change, no ice",
+#     "unit": "cm/yr",
+#     "variable": "sl_rc_no_ice",
+#     "needs_date": True,
+# },
+# "forcing.RF_SO2d": {
+#     "component": "forcing",
+#     "description": "radiative forcing from SO2d",
+#     "unit": "W/m2",
+#     "variable": "RF_SO2d",
+#     "needs_date": True,
+# },
+# "forcing.RF_SO2i": {
+#     "component": "forcing",
+#     "description": "radiative forcing from SO2i",
+#     "unit": "W/m2",
+#     "variable": "RF_SO2i",
+#     "needs_date": True,
+# },
+
+
 output = {
     "C2F6_halocarbon.hc_concentration": {
         "component": "C2F6_halocarbon",
@@ -112,7 +171,7 @@ output = {
     },
     "HFC227ea_halocarbon.hc_concentration": {
         "component": "HFC227ea_halocarbon",
-        "description": "HFC227ea " "concentration",
+        "description": "HFC227ea concentration",
         "unit": "pptv",
         "variable": "hc_concentration",
     },
@@ -124,7 +183,7 @@ output = {
     },
     "HFC245fa_halocarbon.hc_concentration": {
         "component": "HFC245fa_halocarbon",
-        "description": "HFC245fa " "concentration",
+        "description": "HFC245fa concentration",
         "unit": "pptv",
         "variable": "hc_concentration",
     },
@@ -160,11 +219,11 @@ output = {
         "unit": "pptv",
         "variable": "hc_concentration",
     },
-    "forcing.RF_tot": {
+    "forcing.FCH4": {
         "component": "forcing",
-        "description": "total global radiative forcing",
+        "description": "radiative forcing from CH4",
         "unit": "W/m2",
-        "variable": "RF_tot",
+        "variable": "FCH4",
         "needs_date": True,
     },
     "forcing.RF_BC": {
@@ -186,13 +245,6 @@ output = {
         "description": "radiative forcing from CCl4",
         "unit": "W/m2",
         "variable": "RF_CCl4",
-        "needs_date": True,
-    },
-    "forcing.RF_FCF4": {
-        "component": "forcing",
-        "description": "radiative forcing from CF4",
-        "unit": "W/m2",
-        "variable": "RF_CF4",
         "needs_date": True,
     },
     "forcing.RF_CFC11": {
@@ -251,18 +303,18 @@ output = {
         "variable": "RF_CH3Cl",
         "needs_date": True,
     },
-    "forcing.FCH4": {
-        "component": "forcing",
-        "description": "radiative forcing from CH4",
-        "unit": "W/m2",
-        "variable": "FCH4",
-        "needs_date": True,
-    },
     "forcing.RF_CO2": {
         "component": "forcing",
         "description": "radiative forcing from CO2",
         "unit": "W/m2",
         "variable": "RF_CO2",
+        "needs_date": True,
+    },
+    "forcing.RF_FCF4": {
+        "component": "forcing",
+        "description": "radiative forcing from CF4",
+        "unit": "W/m2",
+        "variable": "RF_CF4",
         "needs_date": True,
     },
     "forcing.RF_H2O_strat": {
@@ -349,18 +401,18 @@ output = {
         "variable": "RF_HFC4310",
         "needs_date": True,
     },
-    "forcing.RF_NH3": {
-        "component": "forcing",
-        "description": "radiative forcing from NH3",
-        "unit": "W/m2",
-        "variable": "RF_NH3",
-        "needs_date": True,
-    },
     "forcing.RF_N2O": {
         "component": "forcing",
         "description": "radiative forcing from N2O",
         "unit": "W/m2",
         "variable": "RF_N2O",
+        "needs_date": True,
+    },
+    "forcing.RF_NH3": {
+        "component": "forcing",
+        "description": "radiative forcing from NH3",
+        "unit": "W/m2",
+        "variable": "RF_NH3",
         "needs_date": True,
     },
     "forcing.RF_O3_trop": {
@@ -391,20 +443,20 @@ output = {
         "variable": "RF_SO2",
         "needs_date": True,
     },
-    # "forcing.RF_SO2d": {
-    #     "component": "forcing",
-    #     "description": "radiative forcing from SO2d",
-    #     "unit": "W/m2",
-    #     "variable": "RF_SO2d",
-    #     "needs_date": True,
-    # },
-    # "forcing.RF_SO2i": {
-    #     "component": "forcing",
-    #     "description": "radiative forcing from SO2i",
-    #     "unit": "W/m2",
-    #     "variable": "RF_SO2i",
-    #     "needs_date": True,
-    # },
+    "forcing.RF_aci": {
+        "component": "forcing",
+        "description": "aerosol-cloud interactions forcing, includes contributions from SO2, BC and OC",
+        "unit": "W/m2",
+        "variable": "RF_aci",
+        "needs_date": True,
+    },
+    "forcing.RF_albedo": {
+        "component": "forcing",
+        "description": "radiative forcing from terrestrial albedo forcing",
+        "unit": "W/m2",
+        "variable": "RF_albedo",
+        "needs_date": True,
+    },
     "forcing.RF_halon1211": {
         "component": "forcing",
         "description": "radiative forcing from halon1211",
@@ -426,11 +478,18 @@ output = {
         "variable": "RF_halon2402",
         "needs_date": True,
     },
-    "forcing.RF_albedo": {
+    "forcing.RF_misc": {
         "component": "forcing",
-        "description": "radiative forcing from terrestrial albedo forcing",
+        "description": "miscellaneous radiative forcing read in from ini",
         "unit": "W/m2",
-        "variable": "RF_albedo",
+        "variable": "RF_misc",
+        "needs_date": True,
+    },
+    "forcing.RF_tot": {
+        "component": "forcing",
+        "description": "total global radiative forcing",
+        "unit": "W/m2",
+        "variable": "RF_tot",
         "needs_date": True,
     },
     "forcing.RF_vol": {
@@ -438,20 +497,6 @@ output = {
         "description": "volcanic radiative forcing",
         "unit": "W/m2",
         "variable": "RF_vol",
-        "needs_date": True,
-    },
-    "forcing.RF_aci": {
-        "component": "forcing",
-        "description": "aerosol-cloud interactions forcing, includes contributions from SO2, BC and OC",
-        "unit": "W/m2",
-        "variable": "RF_aci",
-        "needs_date": True,
-    },
-    "forcing.RF_misc": {
-        "component": "forcing",
-        "description": "miscellaneous radiative forcing read in from ini",
-        "unit": "W/m2",
-        "variable": "RF_misc",
         "needs_date": True,
     },
     "halon1211_halocarbon.hc_concentration": {
@@ -472,11 +517,11 @@ output = {
         "unit": "pptv",
         "variable": "hc_concentration",
     },
-    "temperature.heatflux": {
-        "component": "temperature",
-        "description": "Ocean Heatflux",
-        "unit": "W/m2",
-        "variable": "heatflux",
+    "ocean.DO_ocean_c": {
+        "component": "ocean",
+        "description": "carbon pool - deep ocean",
+        "unit": "Pg C",
+        "variable": "DO_ocean_c",
     },
     "ocean.HL_CO3": {
         "component": "ocean",
@@ -484,29 +529,11 @@ output = {
         "unit": "umol/kg",
         "variable": "HL_CO3",
     },
-    "ocean.LL_CO3": {
-        "component": "ocean",
-        "description": "carbonate ion - low latitude",
-        "unit": "umol/kg",
-        "variable": "LL_CO3",
-    },
     "ocean.HL_DIC": {
         "component": "ocean",
         "description": "dissolved inorganic carbon - high latitude",
         "unit": "umol/kg",
         "variable": "HL_DIC",
-    },
-    "ocean.LL_DIC": {
-        "component": "ocean",
-        "description": "dissolved inorganic carbon - low latitude",
-        "unit": "umol/kg",
-        "variable": "LL_DIC",
-    },
-    "ocean.HL_downwelling": {
-        "component": "ocean",
-        "description": "flux of carbon from the high latitude " "to the deep ocean",
-        "unit": "Pg C/yr",
-        "variable": "HL_downwelling",
     },
     "ocean.HL_OmegaAr": {
         "component": "ocean",
@@ -514,35 +541,11 @@ output = {
         "unit": "(unitless)",
         "variable": "HL_OmegaAr",
     },
-    "ocean.LL_OmegaAr": {
-        "component": "ocean",
-        "description": "aragnoite saturation - low latitude",
-        "unit": "(unitless)",
-        "variable": "LL_OmegaAr",
-    },
-    # "ocean.HL_Revelle": {
-    #     "component": "ocean",
-    #     "description": "HL Revelle",
-    #     "unit": "(unitless)",
-    #     "variable": "HL_Revelle"
-    # },
-    # "ocean.LL_Revelle": {
-    #     "component": "ocean",
-    #     "description": "LL Revelle",
-    #     "unit": "(unitless)",
-    #     "variable": "LL_Revelle",
-    # },
     "ocean.HL_OmegaCa": {
         "component": "ocean",
         "description": "calcite saturation - high latitude",
         "unit": "(unitless)",
         "variable": "HL_OmegaCa",
-    },
-    "ocean.LL_OmegaCa": {
-        "component": "ocean",
-        "description": "calcite saturation - low latitude",
-        "unit": "(unitless)",
-        "variable": "LL_OmegaCa",
     },
     "ocean.HL_PCO2": {
         "component": "ocean",
@@ -550,63 +553,11 @@ output = {
         "unit": "uatm",
         "variable": "HL_PCO2",
     },
-    "ocean.LL_PCO2": {
+    "ocean.HL_downwelling": {
         "component": "ocean",
-        "description": "partial pressure CO2 - low latitude",
-        "unit": "uatm",
-        "variable": "LL_PCO2",
-    },
-    # TODO Assertion failed: Active chemistry required
-    # "ocean.HL_Revelle": {
-    #     "component": "ocean",
-    #     "description": "Revelle factor - high latitude",
-    #     "unit": "(unitless)",
-    #     "variable": "HL_Revelle",
-    # },
-    # "ocean.Revelle_LL": {
-    #     "component": "ocean",
-    #     "description": "Revelle factor - low latitude",
-    #     "unit": "(unitless)",
-    #     "variable": "Revelle_LL",
-    # },
-    "ocean.HL_sst": {
-        "component": "ocean",
-        "description": "ocean surface temperature - high latitude",
-        "unit": "degC",
-        "variable": "HL_sst",
-    },
-    "ocean.LL_sst": {
-        "component": "ocean",
-        "description": "ocean surface temperature - low latitude",
-        "unit": "degC",
-        "variable": "LL_sst",
-    },
-    "ocean.ocean_uptake": {
-        "component": "ocean",
-        "description": "total atmosphere ocean flux",
+        "description": "flux of carbon from the high latitude to the deep ocean",
         "unit": "Pg C/yr",
-        "variable": "ocean_uptake",
-        "needs_date": True,
-    },
-    "ocean.HL_ocean_uptake": {
-        "component": "ocean",
-        "description": "flux of carbon between the atmosphere and high "
-        "latitude surface box",
-        "unit": "Pg C/yr",
-        "variable": "HL_ocean_uptake",
-    },
-    "ocean.LL_ocean_uptake": {
-        "component": "ocean",
-        "description": "flux of carbon between the "
-        "atmosphere and low latitude surface box",
-        "unit": "Pg C/yr",
-        "variable": "LL_ocean_uptake",
-    },
-    "ocean.DO_ocean_c": {
-        "component": "ocean",
-        "description": "carbon pool - deep ocean",
-        "unit": "Pg C",
-        "variable": "DO_ocean_c",
+        "variable": "HL_downwelling",
     },
     "ocean.HL_ocean_c": {
         "component": "ocean",
@@ -614,17 +565,83 @@ output = {
         "unit": "Pg C",
         "variable": "HL_ocean_c",
     },
+    "ocean.HL_ocean_uptake": {
+        "component": "ocean",
+        "description": "flux of carbon between the atmosphere and high latitude surface box",
+        "unit": "Pg C/yr",
+        "variable": "HL_ocean_uptake",
+    },
+    "ocean.HL_pH": {
+        "component": "ocean",
+        "description": "pH - high latitude",
+        "unit": "pH",
+        "variable": "HL_pH",
+    },
+    "ocean.HL_sst": {
+        "component": "ocean",
+        "description": "ocean surface temperature - high latitude",
+        "unit": "degC",
+        "variable": "HL_sst",
+    },
     "ocean.IO_ocean_c": {
         "component": "ocean",
         "description": "carbon pool - intermediate ocean",
         "unit": "Pg C",
         "variable": "IO_ocean_c",
     },
+    "ocean.LL_CO3": {
+        "component": "ocean",
+        "description": "carbonate ion - low latitude",
+        "unit": "umol/kg",
+        "variable": "LL_CO3",
+    },
+    "ocean.LL_DIC": {
+        "component": "ocean",
+        "description": "dissolved inorganic carbon - low latitude",
+        "unit": "umol/kg",
+        "variable": "LL_DIC",
+    },
+    "ocean.LL_OmegaAr": {
+        "component": "ocean",
+        "description": "aragnoite saturation - low latitude",
+        "unit": "(unitless)",
+        "variable": "LL_OmegaAr",
+    },
+    "ocean.LL_OmegaCa": {
+        "component": "ocean",
+        "description": "calcite saturation - low latitude",
+        "unit": "(unitless)",
+        "variable": "LL_OmegaCa",
+    },
+    "ocean.LL_PCO2": {
+        "component": "ocean",
+        "description": "partial pressure CO2 - low latitude",
+        "unit": "uatm",
+        "variable": "LL_PCO2",
+    },
     "ocean.LL_ocean_c": {
         "component": "ocean",
         "description": "carbon pool - low latitude surface ocean",
         "unit": "Pg C",
         "variable": "LL_ocean_c",
+    },
+    "ocean.LL_ocean_uptake": {
+        "component": "ocean",
+        "description": "flux of carbon between the atmosphere and low latitude surface box",
+        "unit": "Pg C/yr",
+        "variable": "LL_ocean_uptake",
+    },
+    "ocean.LL_pH": {
+        "component": "ocean",
+        "description": "pH - low latitude",
+        "unit": "pH",
+        "variable": "LL_pH",
+    },
+    "ocean.LL_sst": {
+        "component": "ocean",
+        "description": "ocean surface temperature - low latitude",
+        "unit": "degC",
+        "variable": "LL_sst",
     },
     "ocean.ocean_c": {
         "component": "ocean",
@@ -638,17 +655,12 @@ output = {
         "unit": "(unitless)",
         "variable": "ocean_timesteps",
     },
-    "ocean.HL_pH": {
+    "ocean.ocean_uptake": {
         "component": "ocean",
-        "description": "pH - high latitude",
-        "unit": "pH",
-        "variable": "HL_pH",
-    },
-    "ocean.LL_pH": {
-        "component": "ocean",
-        "description": "pH - low latitude",
-        "unit": "pH",
-        "variable": "LL_pH",
+        "description": "total atmosphere ocean flux",
+        "unit": "Pg C/yr",
+        "variable": "ocean_uptake",
+        "needs_date": True,
     },
     "ozone.O3_concentration": {
         "component": "ozone",
@@ -670,32 +682,6 @@ output = {
         "unit": "Pg C/yr",
         "variable": "NBP",
     },
-    "simpleNbox.atmos_co2": {
-        "component": "simpleNbox",
-        "description": "total atmospheric carbon pool",
-        "unit": "Pg C",
-        "variable": "atmos_co2",
-    },
-    "simpleNbox.atmos_c_residual": {
-        "component": "simpleNbox",
-        "description": "the difference between calculated CO2 and and "
-        "prescribed CO2 when running with prescribed CO2 "
-        "concentrations",
-        "unit": "Pg C",
-        "variable": "atmos_c_residual",
-    },
-    "simpleNbox.detritus_c": {
-        "component": "simpleNbox",
-        "description": "total detritus carbon pool",
-        "unit": "Pg C",
-        "variable": "detritus_c",
-    },
-    "simpleNbox.earth_c": {
-        "component": "simpleNbox",
-        "description": "total carbon pool - used a mass " "balance check",
-        "unit": "Pg C",
-        "variable": "earth_c",
-    },
     "simpleNbox.NPP": {
         "component": "simpleNbox",
         "description": "net primary production (land)",
@@ -708,23 +694,29 @@ output = {
         "unit": "Pg C/yr",
         "variable": "RH",
     },
-    "simpleNbox.rh_ch4": {
+    "simpleNbox.atmos_c_residual": {
         "component": "simpleNbox",
-        "description": "thawed permafrost decomposed as CH4",
-        "unit": "Pg C/yr",
-        "variable": "rh_ch4",
-    },
-    "simpleNbox.soil_c": {
-        "component": "simpleNbox",
-        "description": "total soil carbon pool",
+        "description": "the difference between calculated CO2 and and prescribed CO2 when running with prescribed CO2 concentrations",
         "unit": "Pg C",
-        "variable": "soil_c",
+        "variable": "atmos_c_residual",
     },
-    "simpleNbox.veg_c": {
+    "simpleNbox.atmos_co2": {
         "component": "simpleNbox",
-        "description": "total vegetation carbon pool",
+        "description": "total atmospheric carbon pool",
         "unit": "Pg C",
-        "variable": "veg_c",
+        "variable": "atmos_co2",
+    },
+    "simpleNbox.detritus_c": {
+        "component": "simpleNbox",
+        "description": "total detritus carbon pool",
+        "unit": "Pg C",
+        "variable": "detritus_c",
+    },
+    "simpleNbox.earth_c": {
+        "component": "simpleNbox",
+        "description": "total carbon pool - used a mass balance check",
+        "unit": "Pg C",
+        "variable": "earth_c",
     },
     "simpleNbox.f_frozen": {
         "component": "simpleNbox",
@@ -738,11 +730,29 @@ output = {
         "unit": "Pg C",
         "variable": "permafrost_c",
     },
+    "simpleNbox.rh_ch4": {
+        "component": "simpleNbox",
+        "description": "thawed permafrost decomposed as CH4",
+        "unit": "Pg C/yr",
+        "variable": "rh_ch4",
+    },
+    "simpleNbox.soil_c": {
+        "component": "simpleNbox",
+        "description": "total soil carbon pool",
+        "unit": "Pg C",
+        "variable": "soil_c",
+    },
     "simpleNbox.thawedp_c": {
         "component": "simpleNbox",
         "description": "thawed perfafrost c",
         "unit": "Pg C",
         "variable": "thawedp_c",
+    },
+    "simpleNbox.veg_c": {
+        "component": "simpleNbox",
+        "description": "total vegetation carbon pool",
+        "unit": "Pg C",
+        "variable": "veg_c",
     },
     "temperature.global_tas": {
         "component": "temperature",
@@ -756,32 +766,11 @@ output = {
         "unit": "degC",
         "variable": "gmst",
     },
-    "temperature.sst": {
+    "temperature.heatflux": {
         "component": "temperature",
-        "description": "average sea surface temperature anomaly",
-        "unit": "degC",
-        "variable": "sst",
-    },
-    "temperature.ocean_tas": {
-        "component": "temperature",
-        "description": "average air temperature anomaly over the ocean",
-        "unit": "degC",
-        "variable": "ocean_tas",
-    },
-    "temperature.land_tas": {
-        "component": "temperature",
-        "description": (
-            "average air temperature anomaly over land, land surface "
-            "temperature and air temperature over land are assumed to be equivalent."
-        ),
-        "unit": "degC",
-        "variable": "land_tas",
-    },
-    "temperature.heatflux_mixed": {
-        "component": "temperature",
-        "description": "heatflux mixed",
+        "description": "Ocean Heatflux",
         "unit": "W/m2",
-        "variable": "heatflux_mixed",
+        "variable": "heatflux",
     },
     "temperature.heatflux_interior": {
         "component": "temperature",
@@ -789,33 +778,28 @@ output = {
         "unit": "W/m2",
         "variable": "heatflux_interior",
     },
-    # Problem with reading data: "Interpolation requested but not allowed (slr) date: 1745"
-    # "slr.slr": {
-    #     "component": "slr",
-    #     "description": "sea level rise",
-    #     "unit": "cm",
-    #     "variable": "slr",
-    #     "needs_date": True,
-    # },
-    # "slr.slr_no_ice": {
-    #     "component": "slr",
-    #     "description": "sea level rise, no ice",
-    #     "unit": "cm",
-    #     "variable": "slr",
-    #     "needs_date": True,
-    # },
-    # "slr.sl_rc": {
-    #     "component": "slr",
-    #     "description": "sea level rate of change",
-    #     "unit": "cm/yr",
-    #     "variable": "sl_rc",
-    #     "needs_date": True,
-    # },
-    # "slr.sl_rc_no_ice": {
-    #     "component": "slr",
-    #     "description": "sea level rate of change, no ice",
-    #     "unit": "cm/yr",
-    #     "variable": "sl_rc_no_ice",
-    #     "needs_date": True,
-    # },
+    "temperature.heatflux_mixed": {
+        "component": "temperature",
+        "description": "heatflux mixed",
+        "unit": "W/m2",
+        "variable": "heatflux_mixed",
+    },
+    "temperature.land_tas": {
+        "component": "temperature",
+        "description": "average air temperature anomaly over land, land surface temperature and air temperature over land are assumed to be equivalent.",
+        "unit": "degC",
+        "variable": "land_tas",
+    },
+    "temperature.ocean_tas": {
+        "component": "temperature",
+        "description": "average air temperature anomaly over the ocean",
+        "unit": "degC",
+        "variable": "ocean_tas",
+    },
+    "temperature.sst": {
+        "component": "temperature",
+        "description": "average sea surface temperature anomaly",
+        "unit": "degC",
+        "variable": "sst",
+    },
 }
