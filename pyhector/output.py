@@ -1,7 +1,5 @@
 """Hector output variables."""
 
-# TODO check commented out output variables
-
 output = {
     "C2F6_halocarbon.hc_concentration": {
         "component": "C2F6_halocarbon",
@@ -351,6 +349,13 @@ output = {
         "variable": "RF_HFC4310",
         "needs_date": True,
     },
+    "forcing.RF_NH3": {
+        "component": "forcing",
+        "description": "radiative forcing from NH3",
+        "unit": "W/m2",
+        "variable": "RF_NH3",
+        "needs_date": True,
+    },
     "forcing.RF_N2O": {
         "component": "forcing",
         "description": "radiative forcing from N2O",
@@ -435,6 +440,20 @@ output = {
         "variable": "RF_vol",
         "needs_date": True,
     },
+    "forcing.RF_aci": {
+        "component": "forcing",
+        "description": "aerosol-cloud interactions forcing, includes contributions from SO2, BC and OC",
+        "unit": "W/m2",
+        "variable": "RF_aci",
+        "needs_date": True,
+    },
+    "forcing.RF_misc": {
+        "component": "forcing",
+        "description": "miscellaneous radiative forcing read in from ini",
+        "unit": "W/m2",
+        "variable": "RF_misc",
+        "needs_date": True,
+    },
     "halon1211_halocarbon.hc_concentration": {
         "component": "halon1211_halocarbon",
         "description": "halon1211 concentration",
@@ -452,6 +471,12 @@ output = {
         "description": "halono2402 concentration",
         "unit": "pptv",
         "variable": "hc_concentration",
+    },
+    "temperature.heatflux": {
+        "component": "temperature",
+        "description": "Ocean Heatflux",
+        "unit": "W/m2",
+        "variable": "heatflux",
     },
     "ocean.HL_CO3": {
         "component": "ocean",
@@ -495,6 +520,18 @@ output = {
         "unit": "(unitless)",
         "variable": "LL_OmegaAr",
     },
+    # "ocean.HL_Revelle": {
+    #     "component": "ocean",
+    #     "description": "HL Revelle",
+    #     "unit": "(unitless)",
+    #     "variable": "HL_Revelle"
+    # },
+    # "ocean.LL_Revelle": {
+    #     "component": "ocean",
+    #     "description": "LL Revelle",
+    #     "unit": "(unitless)",
+    #     "variable": "LL_Revelle",
+    # },
     "ocean.HL_OmegaCa": {
         "component": "ocean",
         "description": "calcite saturation - high latitude",
@@ -671,6 +708,12 @@ output = {
         "unit": "Pg C/yr",
         "variable": "RH",
     },
+    "simpleNbox.rh_ch4": {
+        "component": "simpleNbox",
+        "description": "thawed permafrost decomposed as CH4",
+        "unit": "Pg C/yr",
+        "variable": "rh_ch4",
+    },
     "simpleNbox.soil_c": {
         "component": "simpleNbox",
         "description": "total soil carbon pool",
@@ -682,6 +725,24 @@ output = {
         "description": "total vegetation carbon pool",
         "unit": "Pg C",
         "variable": "veg_c",
+    },
+    "simpleNbox.f_frozen": {
+        "component": "simpleNbox",
+        "description": "fraction frozen",
+        "unit": "(unitless)",
+        "variable": "f_frozen",
+    },
+    "simpleNbox.permafrost_c": {
+        "component": "simpleNbox",
+        "description": "Permafrost C pool",
+        "unit": "Pg C",
+        "variable": "permafrost_c",
+    },
+    "simpleNbox.thawedp_c": {
+        "component": "simpleNbox",
+        "description": "thawed perfafrost c",
+        "unit": "Pg C",
+        "variable": "thawedp_c",
     },
     "temperature.global_tas": {
         "component": "temperature",
@@ -716,5 +777,45 @@ output = {
         "unit": "degC",
         "variable": "land_tas",
     },
-    # TODO heat flux outputs of temperature component
+    "temperature.heatflux_mixed": {
+        "component": "temperature",
+        "description": "heatflux mixed",
+        "unit": "W/m2",
+        "variable": "heatflux_mixed",
+    },
+    "temperature.heatflux_interior": {
+        "component": "temperature",
+        "description": "heatflux interior",
+        "unit": "W/m2",
+        "variable": "heatflux_interior",
+    },
+    # Problem with reading data: "Interpolation requested but not allowed (slr) date: 1745"
+    # "slr.slr": {
+    #     "component": "slr",
+    #     "description": "sea level rise",
+    #     "unit": "cm",
+    #     "variable": "slr",
+    #     "needs_date": True,
+    # },
+    # "slr.slr_no_ice": {
+    #     "component": "slr",
+    #     "description": "sea level rise, no ice",
+    #     "unit": "cm",
+    #     "variable": "slr",
+    #     "needs_date": True,
+    # },
+    # "slr.sl_rc": {
+    #     "component": "slr",
+    #     "description": "sea level rate of change",
+    #     "unit": "cm/yr",
+    #     "variable": "sl_rc",
+    #     "needs_date": True,
+    # },
+    # "slr.sl_rc_no_ice": {
+    #     "component": "slr",
+    #     "description": "sea level rate of change, no ice",
+    #     "unit": "cm/yr",
+    #     "variable": "sl_rc_no_ice",
+    #     "needs_date": True,
+    # },
 }

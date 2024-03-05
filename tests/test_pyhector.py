@@ -113,6 +113,16 @@ def test_output_variables_needs_date():
     assert list(results.columns) == needing_date
 
 
+def test_compare_with_outputstream_variables():
+    outputstream = read_hector_output(
+        os.path.join(path, "./data/outputstream_ssp119.csv")
+    )
+    outputstream_variables = set(outputstream.columns)
+    output_variables = set([i["variable"] for i in pyhector.output.values()])
+    # Currently not working are 4 slr and 2 revelle variables.
+    assert len(outputstream_variables.difference(output_variables)) == 6
+
+
 def test_use_base_config():
     results, params = pyhector.run(
         ssp126, base_config=pyhector._default_config, return_config=True
