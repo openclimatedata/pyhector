@@ -123,6 +123,20 @@ def test_compare_with_outputstream_variables():
     assert len(outputstream_variables.difference(output_variables)) == 6
 
 
+def test_compare_with_outputstream_units():
+    outputstream = pd.read_csv(
+        os.path.join(path, "./data/outputstream_ssp119.csv"), comment="#"
+    )
+    output_variables = outputstream[
+        ["component", "variable", "units"]
+    ].drop_duplicates()
+    for _, (component, variable, unit) in output_variables.iterrows():
+        if unit == "(undefined)" or f"{component}.{variable}" not in output.keys():
+            continue
+
+        assert output[f"{component}.{variable}"]["unit"] == unit
+
+
 def test_use_base_config():
     results, params = pyhector.run(
         ssp126, base_config=pyhector._default_config, return_config=True
