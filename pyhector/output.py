@@ -658,7 +658,7 @@ output = {
     "ocean.ocean_uptake": {
         "component": "ocean",
         "description": "total atmosphere ocean flux",
-        "unit": "Pg C/yr",
+        "unit": "Pg C",
         "variable": "ocean_uptake",
         "needs_date": True,
     },
