@@ -21,21 +21,14 @@ model emulation, and uncertainty analyses.
 
 `Hector <https://github.com/JGCRI/hector>`_ is written in C++ and
 developed at the `Pacific Northwest National Laboratory
-<https://www.pnnl.gov/>`_. The model description is published in
-
-    Hartin, C. A., Patel, P., Schwarber, A., Link, R. P., and
-    Bond-Lamberty, B. P.: A simple object-oriented and open-source
-    model for scientific and policy analyses of the global climate
-    system – Hector v1.0, Geosci. Model Dev., 8, 939-955,
-    `doi:10.5194/gmd-8-939-2015
-    <https://doi.org/10.5194/gmd-8-939-2015>`_, 2015.
+<https://www.pnnl.gov/>`_.
 
 See the Hector `repository <https://github.com/JGCRI/hector>`_ and
-`wiki <https://github.com/JGCRI/hector/wiki>`_ for further
+`documentation website <https://jgcri.github.io/hector/>`_ for further
 information.
 
 The Python interface **pyhector** is developed by `Sven Willner
-<http://www.pik-potsdam.de/~willner/>`_ and `Robert Gieseke
+<http://svenwillner.com>`_ and `Robert Gieseke
 <https://github.com/rgieseke>`_.
 
 Pyhector uses `pybind11 <https://github.com/pybind/pybind11>`_ to wrap
@@ -53,9 +46,8 @@ Prerequisites
 
 `Hector <https://github.com/JGCRI/hector>`_ requires `Boost
 <http://www.boost.org/>`_, so to install and use **pyhector** you need
-to have the filesystem and system modules of *Boost* version
-1.52 or later installed (see also the `Hector build
-instructions <https://github.com/JGCRI/hector/wiki/BuildHector>`_).
+to have the filesystem and system modules of *Boost* installed (see also the `Hector build
+instructions <https://jgcri.github.io/hector/articles/BuildHector.html#standalone-executable>`_).
 
 On Ubuntu/Debian these can be installed by invoking
 
@@ -78,7 +70,7 @@ welcome.
 Install using pip
 ~~~~~~~~~~~~~~~~~
 
-You can simply install **pyhector** from
+You can install **pyhector** from
 `PyPI <https://pypi.python.org/pypi/pyhector>`_ by invoking
 
 .. code:: bash
@@ -106,7 +98,7 @@ Basic example
 
     import pyhector
 
-    output = pyhector.run(pyhector.rcp26)
+    output = pyhector.run(pyhector.ssp126)
 
 Advanced example
 ~~~~~~~~~~~~~~~~
