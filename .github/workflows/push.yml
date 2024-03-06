@@ -67,6 +67,7 @@ jobs:
           python-version: "3.11"
       - name: Create source distribution
         run: |
+          pip install pybind
           python setup.py sdist
       - name: Publish package to PyPI
         # pypi-publish releases:
