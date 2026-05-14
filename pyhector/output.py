@@ -736,6 +736,18 @@ output = {
         "unit": "Pg C/yr",
         "variable": "rh_ch4",
     },
+    "simpleNbox.rh_det": {
+        "component": "simpleNbox",
+        "description": "heterotrophic respiration from detritus pool",
+        "unit": "Pg C/yr",
+        "variable": "rh_det",
+    },
+    "simpleNbox.rh_soil": {
+        "component": "simpleNbox",
+        "description": "heterotrophic respiration from soil pool",
+        "unit": "Pg C/yr",
+        "variable": "rh_soil",
+    },
     "simpleNbox.soil_c": {
         "component": "simpleNbox",
         "description": "total soil carbon pool",
