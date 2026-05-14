@@ -219,11 +219,11 @@ output = {
         "unit": "pptv",
         "variable": "hc_concentration",
     },
-    "forcing.FCH4": {
+    "forcing.RF_CH4": {
         "component": "forcing",
         "description": "radiative forcing from CH4",
         "unit": "W/m2",
-        "variable": "FCH4",
+        "variable": "RF_CH4",
         "needs_date": True,
     },
     "forcing.RF_BC": {
