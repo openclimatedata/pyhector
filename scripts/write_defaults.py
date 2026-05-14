@@ -26,6 +26,25 @@ default_input_file = os.path.join(
 default_input = pd.read_csv(default_input_file, comment=";")
 default_input = default_input.set_index("Date")
 
+# Timeseries from core_inputs.csv (CH4N, N2O_natural_emissions, SV)
+core_inputs_file = os.path.join(
+    os.path.dirname(__file__), "../hector/inst/input/tables/core_inputs.csv"
+)
+core_inputs = pd.read_csv(
+    core_inputs_file,
+    comment=";",
+    sep=",",
+    skipinitialspace=True,
+).set_index("Date")
+# Each timeseries is stored as a list of (year, value) tuples
+CORE_INPUTS_TIMESERIES = {
+    "CH4N": list(zip(core_inputs.index, core_inputs["CH4N"])),
+    "N2O_natural_emissions": list(zip(core_inputs.index, core_inputs["N2O_natural_emissions"])),
+    "SV": list(zip(core_inputs.index, core_inputs["SV"])),
+}
+# ini options whose value is "csv:tables/core_inputs.csv"
+CSV_CORE_INPUTS_OPTIONS = set(CORE_INPUTS_TIMESERIES.keys())
+
 output = '"""Dictionary with default config."""\n\n'
 
 parameters = {}
@@ -53,6 +72,11 @@ for section in config.sections():
                     value = "pyhector-run"
                 elif option in ["enabled", "do_spinup"]:
                     value = True if int(value) == 1 else False
+                # ini entries like "CH4N=csv:tables/core_inputs.csv" are
+                # inlined directly from the pre-loaded core_inputs.csv data.
+                elif value.startswith("csv:") and option in CSV_CORE_INPUTS_OPTIONS:
+                    parameters[section][option] = CORE_INPUTS_TIMESERIES[option]
+                    continue
                 # Values containing a unit like "H0=35.0,pptv" are split and
                 # turned into a tuple.
                 elif "," in value:
@@ -65,9 +89,6 @@ for section in config.sections():
                 else:
                     value = ast.literal_eval(value)
                 parameters[section][option] = value
-
-# Volcanic RF (from default {ssp*}_emiss-constraints_rf.csv file)
-parameters["so2"] = {"SV": list(zip(default_input["SV"].index, default_input["SV"]))}
 
 output += (
     "_default_config = {\n    "

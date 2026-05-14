@@ -1,6 +1,12 @@
 Changelog
 ---------
 
+3.5.0.0
+~~~~~~~
+
+- update to Hector 3.5.0 (https://github.com/JGCRI/hector/releases/tag/v3.5.0)
+
+
 3.2.0.0
 ~~~~~~~
 

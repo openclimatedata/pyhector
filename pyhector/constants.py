@@ -252,7 +252,7 @@ variables = {
     "HCDELTA_CH3Br": "delta_CH3Br",
     "CH4_CONC": "CH4_concentration",
     "PREINDUSTRIAL_CH4": "M0",
-    "RF_CH4": "FCH4",
+    "RF_CH4": "RF_CH4",
     "EMISSIONS_CH4": "CH4_emissions",
     "CONSTRAINT_CH4": "CH4_constrain",
     "NATURAL_CH4": "CH4N",

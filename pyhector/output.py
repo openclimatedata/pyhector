@@ -219,11 +219,11 @@ output = {
         "unit": "pptv",
         "variable": "hc_concentration",
     },
-    "forcing.FCH4": {
+    "forcing.RF_CH4": {
         "component": "forcing",
         "description": "radiative forcing from CH4",
         "unit": "W/m2",
-        "variable": "FCH4",
+        "variable": "RF_CH4",
         "needs_date": True,
     },
     "forcing.RF_BC": {
@@ -735,6 +735,18 @@ output = {
         "description": "thawed permafrost decomposed as CH4",
         "unit": "Pg C/yr",
         "variable": "rh_ch4",
+    },
+    "simpleNbox.rh_det": {
+        "component": "simpleNbox",
+        "description": "heterotrophic respiration from detritus pool",
+        "unit": "Pg C/yr",
+        "variable": "rh_det",
+    },
+    "simpleNbox.rh_soil": {
+        "component": "simpleNbox",
+        "description": "heterotrophic respiration from soil pool",
+        "unit": "Pg C/yr",
+        "variable": "rh_soil",
     },
     "simpleNbox.soil_c": {
         "component": "simpleNbox",
